@@ -6,6 +6,7 @@
 package ru.sfedu.kibimedia.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,10 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author DPosadsky
  */
 @Controller
-public class HomeController {
+public class IndexController {
     
     @RequestMapping(value="/", method = RequestMethod.GET)
-    public String viewHome() {
+    public String viewHome(Model model) {
+        model.addAttribute("news", Integer.valueOf(5));
         return "index";
     }
     
