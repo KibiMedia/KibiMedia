@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ru.sfedu.kibimedia.utils.Settings;
 
 /**
  *
@@ -19,7 +20,9 @@ public class IndexController {
     
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String viewHome(Model model) {
-        model.addAttribute("news", Integer.valueOf(5));
+        model.addAttribute("imgUrl", Settings.projectName + "/resources/images/page-1_img4.jpg");
+        model.addAttribute("description", "Some text some text some text some text some text some text some text ");
+        model.addAttribute("title", "AllRight!!!");
         return "index";
     }
     

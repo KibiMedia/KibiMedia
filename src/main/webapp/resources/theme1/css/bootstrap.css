@@ -1231,7 +1231,7 @@ th {
   font-weight: 900;
   font-size: 94px;
   line-height: 95px;
-  color: #ffffff;
+  color: #7d7d7d;
   text-transform: uppercase;
 }
 .parallax .wrap strong small {
@@ -1241,7 +1241,7 @@ th {
 }
 .parallax .wrap * + p {
   margin-top: 8px;
-  color: #ffffff;
+  color: #7d7d7d;
 }
 .parallax .wrap * + .btn {
   margin-top: 23px;
