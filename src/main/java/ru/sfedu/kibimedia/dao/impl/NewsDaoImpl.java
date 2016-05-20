@@ -5,21 +5,21 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
-import ru.sfedu.kibimedia.dao.TaskDao;
+import ru.sfedu.kibimedia.dao.NewsDao;
 import ru.sfedu.kibimedia.tables.News;
-//import dev.dposadsky.java.swingteacherdesktop.utils.HibernateUtils;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-//import org.hibernate.Session;
-//import org.hibernate.criterion.Order;
-//import org.hibernate.criterion.Restrictions;
+import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+import ru.sfedu.kibimedia.utils.HibernateUtils;
 /**
  *
  * @author Тамара
  */
-public class NewsDaoImpl implements TaskDao {
-    
+public class NewsDaoImpl implements NewsDao {
+
     @Override
     public void addNews(News news) throws SQLException {
         Session session = null;
@@ -58,7 +58,7 @@ public class NewsDaoImpl implements TaskDao {
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getTask(id));
+            session.delete(getNews(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -104,5 +104,6 @@ public class NewsDaoImpl implements TaskDao {
         
         return allNews;
     }
+    
     
 }
