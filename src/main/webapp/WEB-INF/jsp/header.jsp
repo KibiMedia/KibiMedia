@@ -9,15 +9,13 @@
       <div class="container top-sect">
         <div class="navbar-header">
           <h1 class="navbar-brand">
-            <a data-type='rd-navbar-brand'  href="./">Киби<small>Медиа</small></a>
+            <a data-type='rd-navbar-brand'  href="/">Киби<small>Медиа</small></a>
           </h1>
           <a class="search-form_toggle" href="#"></a>
         </div>
 
         <div class="help-box text-right">
-          <p>Need help?</p>
-          <a href="callto:#">800-2345-6789</a>
-          <small><span>Hours:</span>  6am-4pm PST M-Th; &nbsp;6am-3pm PST Fri</small>
+          <img src="${sfeduLogo}" width="150" height="150" alt="">
         </div>
       </div>
 
@@ -28,40 +26,20 @@
 
             <div class="">  
               <ul class="nav navbar-nav sf-menu" data-type="navbar">
-                <li class="active">
-                  <a href="./">HOME</a>
+                <li>
+                  <a href="#">Главная</a>
                 </li>
                 <li>
-                  <a href="index-1.html">ABOUT</a>
+                  <a href="#">Страница</a>
                 </li>
-                <li class="dropdown">
-                  <a href="index-2.html">SERVICES<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="#">Lorem ipsum</a>
-                    </li>
-                    <li>
-                      <a href="#">Dolor sit amet  </a>                      
-                    </li>
-                    <li>
-                      <a href="#">Conse ctetur </a>
-                        <ul class="dropdown-menu">
-                          <li>
-                            <a href="#">Latest</a>
-                          </li>
-                          <li>
-                            <a href="#">Archive</a>
-                          </li>                      
-                        </ul>
-                    </li>
-                  </ul>
-                </li>                
                 <li>
-                  <a href="index-3.html">PROJECTS</a>
+                  <a href="#">Страница</a>
+                </li>             
+                <li>
+                  <a href="#">Страница</a>
                 </li>
-                
                 <li>
-                  <a href="index-4.html">CONTACTS</a>
+                  <a href="#">Страница</a>
                 </li>
               </ul>                           
             </div>

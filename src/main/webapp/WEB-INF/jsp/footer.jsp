@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="windows-1251"%>
 <footer class="top-border">
 
-    <div class="map">
+    <!--<div class="map">
       <div id="google-map" class="map_model" data-zoom="11"></div>
       <ul class="map_locations">
         <li data-x="-73.9874068" data-y="40.643180" data-basic="<c:url value="/resources/images/gmap_marker.png" />" data-active="<c:url value="/resources/images/gmap_marker_active.png" />">
@@ -157,7 +157,7 @@
         </li>
       </ul>
     </div>
-
+-->
     <section class="well1">
       <div class="container"> 
             <p class="rights">

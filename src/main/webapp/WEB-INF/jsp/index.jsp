@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />" type="image/x-icon">
-    <title>HOME</title>
+    <title>${mainTitle}</title>
 
     <!-- Bootstrap -->
     <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
@@ -52,7 +52,7 @@
     <main>        
 
       <section class="well well1 well1_ins1">
-        <%@include file="slider.jsp" %>
+        <!--<%@include file="slider.jsp" %>-->
 
         <div class="container center991">
           <div class="row">

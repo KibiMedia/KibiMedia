@@ -8,9 +8,9 @@
 <section class="well well2">
         <div class="container">
         <h2>
-          our
+          наш
           <small>
-            SERVICES
+            Сервис
           </small>
         </h2>
           <div class="row offs1">
@@ -18,25 +18,25 @@
               <ul class="link-list wow fadeInLeft" data-wow-duration='3s'>
                 <li>
 
-                  <a href="#">Excepteur sint occaecat cupidatat non</a>
+                  <a href="#">Произвольный текст</a>
 
                   <a href="#" class="btn-link l-h1 fa-angle-right"></a>
                 </li>
                 <li>
 
-                  <a href="#">Lorem ipsum dolor sit amet</a>
+                  <a href="#">Произвольный текст</a>
 
                   <a href="#" class="btn-link l-h1 fa-angle-right"></a>
                 </li>
                 <li>
 
-                  <a href="#">Conse ctetur adipisicing elit sed do</a>
+                  <a href="#">Произвольный текст</a>
 
                   <a href="#" class="btn-link l-h1 fa-angle-right"></a>
                 </li>
                 <li>
 
-                  <a href="#">Eiusmod tempor incididunt</a>
+                  <a href="#">Произвольный текст</a>
 
                   <a href="#" class="btn-link l-h1 fa-angle-right"></a>
                 </li>

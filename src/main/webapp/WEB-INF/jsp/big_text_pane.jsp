@@ -10,14 +10,14 @@
         <div class="container">
           <div class="wrap text-center">
             <strong>
-              SAVE TIME,<br />
-              SAVE MONEY,
+              ОГРОМНОЕ<br />
+              ОБЪЯВЛЕНИЕ
               <small>
-                GROW & SUCCEED
+                ПО ЦЕНТРУ
               </small>
             </strong>
             <p>
-              Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+                Произвольный текст произвольный текст произвольный текст произвольный текст произвольный текст произвольный текст произвольный текст 
             </p>
             <a href="#" class="btn btn-primary">read more <span class="fa-angle-right"></span></a>
           </div>  

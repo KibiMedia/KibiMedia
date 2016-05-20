@@ -20,9 +20,11 @@ public class IndexController {
     
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String viewHome(Model model) {
+        model.addAttribute("mainTitle", "КИБИ Медиа Центр ЮФУ");
+        model.addAttribute("sfeduLogo", Settings.projectName + "/resources/images/sfedu_logo.png");
         model.addAttribute("imgUrl", Settings.projectName + "/resources/images/page-1_img4.jpg");
-        model.addAttribute("description", "Some text some text some text some text some text some text some text ");
-        model.addAttribute("title", "AllRight!!!");
+        model.addAttribute("description", "Произвольный текст произвольный текст произвольный текст произвольный текст произвольный текст");
+        model.addAttribute("title", "Заголовок");
         return "index";
     }
     
