@@ -5,8 +5,8 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
-import ru.sfedu.kibimedia.dao.NewsDao;
-import ru.sfedu.kibimedia.tables.News;
+import ru.sfedu.kibimedia.dao.ComentsDao;
+import ru.sfedu.kibimedia.tables.Coments;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +18,15 @@ import ru.sfedu.kibimedia.utils.HibernateUtils;
  *
  * @author Mishas
  */
-public class NewsDaoImpl implements NewsDao {
+public class ComentsDaoImpl implements ComentsDao {
 
     @Override
-    public void addNews(News news) throws SQLException {
+    public void addComents(Coments coments) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(news);
+            session.save(coments);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,12 +37,12 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     @Override
-    public void deleteNews(News news) throws SQLException {
+    public void deleteComents(Coments coments) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(news);
+            session.delete(coments);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,12 +53,12 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     @Override
-    public void deleteNews(int id) throws SQLException {
+    public void deleteComents(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getNews(id));
+            session.delete(getComents(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,13 +69,13 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     @Override
-    public News getNews(int id) throws SQLException {
-        News news = null;
+    public Coments getComents(int id) throws SQLException {
+        Coments coments = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            news = (News) session.load(News.class, id);
+            coments = (Coments) session.load(Coments.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -83,18 +83,18 @@ public class NewsDaoImpl implements NewsDao {
                 session.close();
         }
         
-        return news;
+        return coments;
     }
 
     @Override
-    public ArrayList<News> getAllNews() throws SQLException {
-        ArrayList<News> allNews = null;
+    public ArrayList<Coments> getAllComents() throws SQLException {
+        ArrayList<Coments> allComents = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            allNews = (ArrayList<News>) session.createCriteria(News.class)
-                    .addOrder(Order.asc("newsNumber")).list();
+            allComents = (ArrayList<Coments>) session.createCriteria(Coments.class)
+                    .addOrder(Order.asc("comentsNumber")).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -102,7 +102,7 @@ public class NewsDaoImpl implements NewsDao {
                 session.close();
         }
         
-        return allNews;
+        return allComents;
     }
     
     

@@ -6,7 +6,6 @@
 package ru.sfedu.kibimedia.tables;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +17,8 @@ import javax.persistence.Table;
  * @author Mishas
  */
 @Entity
-@Table(name = "news")
-public class News implements Serializable{
+@Table(name = "coments")
+public class Coments implements Serializable{
     
     private static final long serialVersionUID = -5527566248002296042L;
     public static long getSerialVersionUID() {
@@ -31,50 +30,20 @@ public class News implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "id_news")
-    private Integer idNews;
-    
-    @Column(name = "title")
-    private String title;
-    
-    @Column(name = "main_idea")
-    private String mainIdea;
-
-    @Column(name = "text")
-    private String text;
+    @Column(name = "id_coment")
+    private Integer idComent;
     
     @Column(name = "id_writer")
     private Integer idWriter;
     
-    @Column(name = "data")
-    private Date data; 
-
-    public Integer getIdNews() {
-        return idNews;
-    }
+    @Column(name = "id_news")
+    private Integer idNews; 
     
-    public String getTitle() {
-        return title;
-    }
+    @Column(name = "text")
+    private String text;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getMainIdea() {
-        return mainIdea;
-    }
-
-    public void setMainIdea(String mainIdea) {
-        this.mainIdea = mainIdea;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+    public Integer getIdComent() {
+        return idComent;
     }
     
     public Integer getIdWriter() {
@@ -85,17 +54,20 @@ public class News implements Serializable{
         this.idWriter = idWriter;
     }
     
-    @Override
-    public String toString() {
-        return this.title;
+    public Integer getIdNews() {
+        return idNews;
     }
 
-    public Date getDate() {
-        return data;
+    public void setIdNews(Integer idNews) {
+        this.idNews = idNews;
     }
-
-    public void setDate(Date data) {
-        this.data = data;
-    }
-}
     
+    public String getText() {
+        return text;
+    }
+
+    public void setTitle(String text) {
+        this.text = text;
+    }
+
+}

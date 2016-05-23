@@ -16,8 +16,8 @@ import java.util.List;
  */
 public interface NewsDao {
     
-    public void addNews(News task) throws SQLException;
-    public void deleteNews(News task) throws SQLException;
+    public void addNews(News news) throws SQLException;
+    public void deleteNews(News news) throws SQLException;
     public void deleteNews(int id) throws SQLException;
     public News getNews(int id) throws SQLException;
     public ArrayList<News> getAllNews() throws SQLException;

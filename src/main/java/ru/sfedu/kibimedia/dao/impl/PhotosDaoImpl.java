@@ -5,8 +5,8 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
-import ru.sfedu.kibimedia.dao.NewsDao;
-import ru.sfedu.kibimedia.tables.News;
+import ru.sfedu.kibimedia.dao.PhotosDao;
+import ru.sfedu.kibimedia.tables.Photos;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +18,15 @@ import ru.sfedu.kibimedia.utils.HibernateUtils;
  *
  * @author Mishas
  */
-public class NewsDaoImpl implements NewsDao {
+public class PhotosDaoImpl implements PhotosDao {
 
     @Override
-    public void addNews(News news) throws SQLException {
+    public void addPhotos(Photos photos) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(news);
+            session.save(photos);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,12 +37,12 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     @Override
-    public void deleteNews(News news) throws SQLException {
+    public void deletePhotos(Photos photos) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(news);
+            session.delete(photos);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,12 +53,12 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     @Override
-    public void deleteNews(int id) throws SQLException {
+    public void deletePhotos(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getNews(id));
+            session.delete(getPhotos(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,13 +69,13 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     @Override
-    public News getNews(int id) throws SQLException {
-        News news = null;
+    public Photos getPhotos(int id) throws SQLException {
+        Photos photos = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            news = (News) session.load(News.class, id);
+            photos = (Photos) session.load(Photos.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -83,18 +83,18 @@ public class NewsDaoImpl implements NewsDao {
                 session.close();
         }
         
-        return news;
+        return photos;
     }
 
     @Override
-    public ArrayList<News> getAllNews() throws SQLException {
-        ArrayList<News> allNews = null;
+    public ArrayList<Photos> getAllPhotos() throws SQLException {
+        ArrayList<Photos> allPhotos = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            allNews = (ArrayList<News>) session.createCriteria(News.class)
-                    .addOrder(Order.asc("newsNumber")).list();
+            allPhotos = (ArrayList<Photos>) session.createCriteria(Photos.class)
+                    .addOrder(Order.asc("photoNumber")).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -102,7 +102,7 @@ public class NewsDaoImpl implements NewsDao {
                 session.close();
         }
         
-        return allNews;
+        return allPhotos;
     }
     
     
