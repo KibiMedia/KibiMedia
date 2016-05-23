@@ -21,4 +21,6 @@ public interface NewsDao {
     public void deleteNews(int id) throws SQLException;
     public News getNews(int id) throws SQLException;
     public ArrayList<News> getAllNews() throws SQLException;
+    public ArrayList<News> getLastSixNews() throws SQLException;
+    
 }

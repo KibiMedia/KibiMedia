@@ -94,7 +94,30 @@ public class NewsDaoImpl implements NewsDao {
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             allNews = (ArrayList<News>) session.createCriteria(News.class)
+<<<<<<< HEAD
                     .addOrder(Order.asc("newsNumber")).list();
+=======
+                    .addOrder(Order.desc("data")).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+        
+        return allNews;
+    }
+    
+    @Override
+    public ArrayList<News> getLastSixNews() throws SQLException {
+        ArrayList<News> allNews = null;
+        
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            allNews = (ArrayList<News>) session.createCriteria(News.class)
+                    .addOrder(Order.desc("data")).setMaxResults(6).list();
+>>>>>>> MainNews
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
