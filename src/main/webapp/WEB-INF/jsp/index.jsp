@@ -1,4 +1,5 @@
-﻿<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,18 +51,18 @@
   =========================================================-->
 
     <main>        
-
       <section class="well well1 well1_ins1">
         <!--<%@include file="slider.jsp" %>-->
 
         <div class="container center991">
-          <div class="row">
-            <%@include file="main_news.jsp" %>
-            <%@include file="main_news.jsp" %>
-            <%@include file="main_news.jsp" %>
-          </div>
+            <div class="row">
+                <%for (int i = 0; i < 3; i++) { %>
+                    <%@include file="main_news.jsp" %>
+                <% } %>
+            </div>
 
-          <div class="row wow fadeIn" data-wow-duration='2s'>
+          <!--<div class="row wow fadeIn" data-wow-duration='2s'>-->
+          <div class="row">
             <%@include file="main_news.jsp" %>
             <%@include file="main_news.jsp" %>
             <%@include file="main_news.jsp" %>

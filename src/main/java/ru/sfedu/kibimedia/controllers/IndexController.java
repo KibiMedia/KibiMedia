@@ -6,10 +6,12 @@
 package ru.sfedu.kibimedia.controllers;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ru.sfedu.kibimedia.beans.NewsBean;
 import ru.sfedu.kibimedia.dao.NewsDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.News;
@@ -26,18 +28,24 @@ public class IndexController {
     public String viewHome(Model model) {
         Factory factory = Factory.getInstance();
         NewsDao newsDao = factory.getNewsDao();
-        News news = null;
+        ArrayList<News> sixNews = null;
         try {
-            news = newsDao.getNews(1); 
+            sixNews = newsDao.getLastSixNews(); 
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
         
+        NewsBean newsBean = factory.getNewsBean();
+        newsBean.setAllNews(sixNews);
+        
         model.addAttribute("mainTitle", "КИБИ Медиа Центр ЮФУ");
         model.addAttribute("sfeduLogo", Settings.projectName + "/resources/images/sfedu_logo.png");
         model.addAttribute("imgUrl", Settings.projectName + "/resources/images/page-1_img4.jpg");
-        model.addAttribute("description", news.getMainIdea());
-        model.addAttribute("title", news.getTitle());
+        model.addAttribute("news", sixNews);
+        model.addAttribute("key", 0);
+        //model.addAttribute("description", news.getMainIdea());
+        //model.addAttribute("title", "Title");
+
         return "index";
     }
     /*
