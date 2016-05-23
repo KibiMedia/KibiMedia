@@ -94,9 +94,6 @@ public class NewsDaoImpl implements NewsDao {
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             allNews = (ArrayList<News>) session.createCriteria(News.class)
-<<<<<<< HEAD
-                    .addOrder(Order.asc("newsNumber")).list();
-=======
                     .addOrder(Order.desc("data")).list();
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,7 +114,6 @@ public class NewsDaoImpl implements NewsDao {
             session = HibernateUtils.getSessionFactory().openSession();
             allNews = (ArrayList<News>) session.createCriteria(News.class)
                     .addOrder(Order.desc("data")).setMaxResults(6).list();
->>>>>>> MainNews
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
