@@ -22,15 +22,13 @@ import javax.persistence.Table;
 public class News implements Serializable{
     
     private static final long serialVersionUID = -5527566248002296042L;
+    
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
     
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    
     @Column(name = "id_news")
     private Integer idNews;
     
@@ -48,7 +46,7 @@ public class News implements Serializable{
     
     @Column(name = "data")
     private Date data; 
-
+   
     public Integer getIdNews() {
         return idNews;
     }
