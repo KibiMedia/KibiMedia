@@ -38,9 +38,9 @@ public class IndexController {
         NewsBean newsBean = factory.getNewsBean();
         newsBean.setAllNews(sixNews);
         
-        model.addAttribute("mainTitle", "КИБИ Медиа Центр ЮФУ");
-        model.addAttribute("sfeduLogo", Settings.projectName + "/resources/images/sfedu_logo.png");
-        model.addAttribute("imgUrl", Settings.projectName + "/resources/images/page-1_img4.jpg");
+        model.addAttribute("mainTitle", "КИБИ МЕДИА ЦЕНТР ЮФУ");
+        model.addAttribute("sfeduLogo", "resources/images/sfedu_logo.png");
+        model.addAttribute("imgUrl", "resources/images/page-1_img4.jpg");
         model.addAttribute("news", sixNews);
         model.addAttribute("key", 0);
         //model.addAttribute("description", news.getMainIdea());
