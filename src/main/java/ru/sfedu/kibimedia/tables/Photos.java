@@ -26,29 +26,21 @@ public class Photos implements Serializable{
     }
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /*
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    */
     
     @Column(name = "id_img")
     private Integer idImg;
-    
-    @Column(name = "id_news")
-    private Integer idNews;
     
     @Column(name = "href_img")
     private String hrefImg;
 
     public Integer getIdImg() {
         return idImg;
-    }
-    
-    public Integer getIdNews() {
-        return idNews;
-    }
-
-    public void setIdNews(Integer idNews) {
-        this.idNews = idNews;
     }
     
     public String getHrefImg() {

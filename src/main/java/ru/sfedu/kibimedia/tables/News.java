@@ -46,6 +46,9 @@ public class News implements Serializable{
     
     @Column(name = "data")
     private Date data; 
+    
+    @Column(name = "id_img")
+    private Integer idImg;
    
     public Integer getIdNews() {
         return idNews;
@@ -94,6 +97,14 @@ public class News implements Serializable{
 
     public void setDate(Date data) {
         this.data = data;
+    }
+
+    public Integer getIdImg() {
+        return idImg;
+    }
+
+    public void setIdImg(Integer idImg) {
+        this.idImg = idImg;
     }
 }
     

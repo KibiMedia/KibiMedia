@@ -6,6 +6,7 @@
 package ru.sfedu.kibimedia.tables;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,35 +18,52 @@ import javax.persistence.Table;
  * @author Mishas
  */
 @Entity
-@Table(name = "pages")
-public class Pages implements Serializable{
+@Table(name = "announcement")
+public class Announcements implements Serializable{
     
     private static final long serialVersionUID = -5527566248002296042L;
+    
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    /*
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    */
-    
-    @Column(name = "id_page")
-    private Integer idPage;
+    @Column(name = "id_announcement")
+    private Integer idAnnoncement;
     
     @Column(name = "title")
     private String title;
     
-    @Column(name = "href")
-    private String href;
-
-    public Integer getIdPage() {
-        return idPage;
-    }
+    @Column(name = "description")
+    private String description;
     
+    @Column(name = "id_img")
+    private Integer idImg;
+    
+    @Column(name = "data")
+    private Date data; 
+
+    public Integer getIdAnnoncement() {
+        return idAnnoncement;
+    }
+
+    public Integer getIdImg() {
+        return idImg;
+    }
+
+    public void setIdImg(Integer idImg) {
+        this.idImg = idImg;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -53,13 +71,12 @@ public class Pages implements Serializable{
     public void setTitle(String title) {
         this.title = title;
     }
-    
-    public String getHref() {
-        return href;
+
+    public String getDescription() {
+        return description;
     }
 
-    public void setHrefImg(String href) {
-        this.href = href;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
 }
