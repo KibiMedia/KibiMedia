@@ -1,5 +1,5 @@
 function include(scriptUrl) {
-    document.write('<script src="' + scriptUrl + '"></script>');
+    document.write('<script src="resources/' + scriptUrl + '/"></script>');
 }
 
 function isIE() {
@@ -72,7 +72,7 @@ include('js/jquery.easing.1.3.js');
 ;
 (function ($) {
     function include(url) {
-	document.write('<script src="js/' + url + '"></script>');
+	document.write('<script src="resources/js/' + url + '"></script>');
 	return false;
 }
 	include('superfish.js');
@@ -405,8 +405,8 @@ var o = $('#camera');
 (function ($) {
     var o = $('#contact-form');
     if (o.length > 0) {
-        include('js/modal.js');
-        include('js/TMForm.js'); 
+        include('resources/js/modal.js');
+        include('resources/js/TMForm.js'); 
 
         if($('#contact-form .recaptcha').length > 0){
             include('//www.google.com/recaptcha/api/js/recaptcha_ajax.js');
@@ -472,9 +472,9 @@ o
 ;(function ($) {
     var o = $('.thumb');
     if (o.length > 0) {
-        include('js/jquery.fancybox.js');
-        include('js/jquery.fancybox-media.js');
-        include('js/jquery.fancybox-buttons.js');
+        include('resources/js/jquery.fancybox.js');
+        include('resources/js/jquery.fancybox-media.js');
+        include('resources/js/jquery.fancybox-buttons.js');
         $(document).ready(function () {
             o.fancybox();
         });

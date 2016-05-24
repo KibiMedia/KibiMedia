@@ -12,7 +12,7 @@
 
     <!-- Bootstrap -->
     <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
-    
+  
 
     <!-- Links -->
     <link href="<c:url value="/resources/css/camera.css" />" rel="stylesheet">
@@ -52,9 +52,10 @@
 
     <main>        
       <section class="well well1 well1_ins1">
-        <!--<%@include file="slider.jsp" %>-->
+        
 
         <div class="container center991">
+            <%@include file="slider.jsp" %>
             <div class="row">
                 <%for (int i = 0; i < 3; i++) { %>
                     <%@include file="main_news.jsp" %>
@@ -88,9 +89,12 @@
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->         
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="<c:url value="http://code.jquery.com/jquery-latest.min.js" />"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-    <script src="<c:url value="/resources/js/tm-scripts.js" />"></script>    
+    <script src="<c:url value="/resources/js/tm-scripts.js" />"></script>   
+    
   <!-- </script> -->
 
 
