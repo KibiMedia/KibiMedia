@@ -9,10 +9,8 @@ import ru.sfedu.kibimedia.dao.AnnouncementsDao;
 import ru.sfedu.kibimedia.tables.Announcements;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
 /**
  *
@@ -93,15 +91,14 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            allAnnouncements = (ArrayList<Announcements>) session.createCriteria(Announcements.class)
-                    .addOrder(Order.asc("announcementNumber")).list();
+            allAnnouncements = (ArrayList<Announcements>) session.createCriteria(Announcements.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if ((session != null) && (session.isOpen()))
                 session.close();
         }
-        
+        //System.out.println(allAnnouncements.isEmpty());
         return allAnnouncements;
     }
     

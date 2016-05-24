@@ -5,8 +5,9 @@
  */
 package ru.sfedu.kibimedia.main;
 
-import ru.sfedu.kibimedia.beans.NewsBean;
+import ru.sfedu.kibimedia.dao.AnnouncementsDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
+import ru.sfedu.kibimedia.dao.impl.AnnouncementsDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.NewsDaoImpl;
 
 /**
@@ -18,8 +19,7 @@ public class Factory {
     public static final Factory instance = new Factory();
     
     private NewsDao newsDao;
-    
-    private NewsBean newsBean;
+    private AnnouncementsDao announcementsDao;
     
     private Factory() { }
     
@@ -33,9 +33,10 @@ public class Factory {
         return newsDao;
     }
     
-    public NewsBean getNewsBean() {
-        if (newsBean == null) 
-            newsBean = new NewsBean();
-        return newsBean;
+    public AnnouncementsDao getAnnouncementsDao() {
+        if (announcementsDao == null) 
+            announcementsDao = new AnnouncementsDaoImpl();
+        return announcementsDao;
     }
+    
 }

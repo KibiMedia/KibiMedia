@@ -18,8 +18,8 @@
 			<div class="item active">
 				<img src="resources/images/page-1_slide1.jpg" alt="">
 				<div class="carousel-caption">
-					<h3>Первый слайд</h3>
-					<p>Описание первого слайда</p>
+					<h3>${preview.get(0).getTitle()}</h3>
+					<p>${preview.get(0).getDescription()}</p>
 				</div>
 			</div>
 			<div class="item">

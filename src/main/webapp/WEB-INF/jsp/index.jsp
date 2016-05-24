@@ -57,17 +57,21 @@
         <div class="container center991">
             <%@include file="slider.jsp" %>
             <div class="row">
-                <%for (int i = 0; i < 3; i++) { %>
-                    <%@include file="main_news.jsp" %>
-                <% } %>
+                <c:forEach begin="0" end="2" varStatus="loop">
+                    <jsp:include page="main_news.jsp" >
+                        <jsp:param name="index" value="${loop.index}" />
+                    </jsp:include>
+                </c:forEach>
             </div>
 
           <!--<div class="row wow fadeIn" data-wow-duration='2s'>-->
-          <div class="row">
-            <%@include file="main_news.jsp" %>
-            <%@include file="main_news.jsp" %>
-            <%@include file="main_news.jsp" %>
-          </div>
+            <div class="row">
+                <c:forEach begin="3" end="5" varStatus="loop">
+                    <jsp:include page="main_news.jsp" >
+                        <jsp:param name="index" value="${loop.index}" />
+                    </jsp:include>
+                </c:forEach>
+            </div>
         </div>        
       </section>
       

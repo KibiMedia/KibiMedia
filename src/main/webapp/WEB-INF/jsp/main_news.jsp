@@ -9,11 +9,11 @@
   <img src="${imgUrl}" alt="">
   <div class="caption bg2"> <!--bg-primary  bg3-->
     <h3>
-        ${news.get(i).getTitle()}
+        ${news.get(param.index).getTitle()}
     </h3>
     <div class="wrap">
       <p>
-        ${news.get(i).getMainIdea()}        
+        ${news.get(param.index).getMainIdea()}        
       </p>
       <a href="#" class="btn-link fa-angle-right"></a>
     </div>  
