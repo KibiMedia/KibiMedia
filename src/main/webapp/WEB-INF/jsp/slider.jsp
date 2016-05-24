@@ -5,52 +5,47 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<div class="camera_container">
-          <div id="camera" class="camera_wrap">
-            <div data-src="<c:url value="/resources/images/page-1_slide1.jpg" />">
-              <div class="camera_caption fadeIn">
-                <div class="jumbotron jumbotron1">
-                  <em>
-                    SUCCESS
-                  </em>
-                  <div class="wrap">
-                    <p>
-                      Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do<span> eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</span>.
-                    </p>
-                    <a href="#" class="btn-link fa-angle-right"></a>
-                  </div>  
-                </div>
-              </div>
-            </div>
-            <div data-src="<c:url value="/resources/images/page-1_slide2.jpg" />">
-              <div class="camera_caption fadeIn">
-                <div class="jumbotron jumbotron2">
-                  <em>
-                    quality
-                  </em>
-                  <div class="wrap">
-                    <p>
-                      Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do<span> eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</span>.
-                    </p>
-                    <a href="#" class="btn-link hov_prime fa-angle-right"></a>
-                  </div>  
-                </div>
-              </div>
-            </div>
-            <div data-src="<c:url value="/resources/images/page-1_slide3.jpg" />">
-              <div class="camera_caption fadeIn">
-                <div class="jumbotron">
-                  <em>
-                    SOLUTIONS
-                  </em>
-                  <div class="wrap">
-                    <p>
-                      Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do<span> eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</span>.
-                    </p>
-                    <a href="#" class="btn-link fa-angle-right"></a>
-                  </div>  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<div id="carousel" class="carousel slide">
+		<!--Индикаторы слайдов-->
+		<ol class="carousel-indicators">
+			<li class="active" data-target="#carousel" data-slide-to="0"></li>
+			<li data-target="#carousel" data-slide-to="1"></li>
+			<li data-target="#carousel" data-slide-to="2"></li>
+		</ol>
+
+		<!--Слайды-->
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="resources/images/page-1_slide1.jpg" alt="">
+				<div class="carousel-caption">
+					<h3>Первый слайд</h3>
+					<p>Описание первого слайда</p>
+				</div>
+			</div>
+			<div class="item">
+				<img src="resources/images/page-1_slide2.jpg" alt="">
+				<div class="carousel-caption">
+					<h3>Второй слайд</h3>
+					<p>Описание второго слайда</p>
+			</div>
+			</div>
+			<div class="item">
+				<img src="resources/images/page-1_slide3.jpg" alt="">
+				<div class="carousel-caption">
+					<h3>Третий слайд</h3>
+					<p>Описание третьего слайда</p>
+				</div>
+			</div>
+
+			<!--Стрелки переключения слайдов-->
+			<a href="#carousel" class="left carousel-control" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a href="#carousel" class="right carousel-control" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+	</div>
+   
+    
+    
