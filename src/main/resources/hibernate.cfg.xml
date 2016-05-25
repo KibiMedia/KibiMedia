@@ -29,19 +29,14 @@
     
     <!-- Mapping files -->
     <mapping class="ru.sfedu.kibimedia.tables.News" />
-<<<<<<< HEAD
     <mapping class="ru.sfedu.kibimedia.tables.Admins" />
     <mapping class="ru.sfedu.kibimedia.tables.Announcements" />
     <mapping class="ru.sfedu.kibimedia.tables.Coments" />
     <mapping class="ru.sfedu.kibimedia.tables.EventReg" />
-    <mapping class="ru.sfedu.kibimedia.tables.Organization" />
+    <mapping class="ru.sfedu.kibimedia.tables.Organizations" />
     <mapping class="ru.sfedu.kibimedia.tables.Pages" />
     <mapping class="ru.sfedu.kibimedia.tables.Photos" />
     <mapping class="ru.sfedu.kibimedia.tables.Users" />
-=======
-    <mapping class="ru.sfedu.kibimedia.tables.Announcements" />
-    <mapping class="ru.sfedu.kibimedia.tables.Photos" />
 
->>>>>>> slider
   </session-factory>
 </hibernate-configuration>

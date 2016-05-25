@@ -27,12 +27,6 @@ public class Pages implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    /*
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    */
-    
     @Column(name = "id_page")
     private Integer idPage;
     
@@ -41,6 +35,9 @@ public class Pages implements Serializable{
     
     @Column(name = "href")
     private String href;
+    
+    @Column(name = "type")
+    private Integer type;
 
     public Integer getIdPage() {
         return idPage;
@@ -60,6 +57,14 @@ public class Pages implements Serializable{
 
     public void setHref(String href) {
         this.href = href;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
 }

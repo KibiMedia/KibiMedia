@@ -50,7 +50,7 @@ public class IndexController {
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }       
-        model.addAttribute("mainTitle", "РљР�Р‘Р� РњР•Р”Р�Рђ Р¦Р•РќРўР  Р®Р¤РЈ");
+        model.addAttribute("mainTitle", "КИБИ МЕДИА ЦЕНТР ЮФУ");
         model.addAttribute("sfeduLogo", "resources/images/sfedu_logo.png");
         model.addAttribute("imgUrl", "resources/images/page-1_img4.jpg");
         model.addAttribute("news", sixNews);
