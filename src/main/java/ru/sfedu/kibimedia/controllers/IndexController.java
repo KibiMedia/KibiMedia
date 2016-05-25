@@ -29,9 +29,11 @@ public class IndexController {
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String viewHome(Model model) {
         Factory factory = Factory.getInstance();
+        
         NewsDao newsDao = factory.getNewsDao();
         AnnouncementsDao announcementsDao = factory.getAnnouncementsDao();
         PhotosDao photosDao = factory.getPhotosDao();
+        
         ArrayList<News> sixNews = null;
         ArrayList<Announcements> threeNews = null;
         ArrayList<Photos> newsPhotos = new ArrayList<>();
