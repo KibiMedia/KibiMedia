@@ -26,21 +26,11 @@
 
             <div class="">  
               <ul class="nav navbar-nav sf-menu" data-type="navbar">
-                <li>
-                  <a href="#">Главная</a>
-                </li>
-                <li>
-                  <a href="#">Страница</a>
-                </li>
-                <li>
-                  <a href="#">Страница</a>
-                </li>             
-                <li>
-                  <a href="#">Страница</a>
-                </li>
-                <li>
-                  <a href="#">Страница</a>
-                </li>
+                <c:forEach begin="0" end="${mainPagesCount}" varStatus="loop">
+                    <li>
+                      <a href="<c:url value="${mainPages.get(loop.index).getHref()}" />">${mainPages.get(loop.index).getTitle()}</a>
+                    </li>
+                </c:forEach>
               </ul>                           
             </div>
         </nav>   

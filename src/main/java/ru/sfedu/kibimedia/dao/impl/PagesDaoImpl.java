@@ -104,5 +104,25 @@ public class PagesDaoImpl implements PagesDao {
         return pages;
     }
     
+    @Override
+    public ArrayList<Pages> getPagesByType(int type) throws SQLException {
+        ArrayList<Pages> pages = null;
+        
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            pages = (ArrayList<Pages>) session.createCriteria(Pages.class)
+                    .add(Restrictions.eq("type", new Integer(type)))
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+        
+        return pages;
+    }
+    
     
 }

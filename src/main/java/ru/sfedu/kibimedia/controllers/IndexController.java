@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.sfedu.kibimedia.dao.AnnouncementsDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
+import ru.sfedu.kibimedia.dao.PagesDao;
 import ru.sfedu.kibimedia.dao.PhotosDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.Announcements;
 import ru.sfedu.kibimedia.tables.News;
+import ru.sfedu.kibimedia.tables.Pages;
 import ru.sfedu.kibimedia.tables.Photos;
 
 /**
@@ -33,9 +35,11 @@ public class IndexController {
         NewsDao newsDao = factory.getNewsDao();
         AnnouncementsDao announcementsDao = factory.getAnnouncementsDao();
         PhotosDao photosDao = factory.getPhotosDao();
+        PagesDao pagesDao = factory.getPagesDao();
         
         ArrayList<News> sixNews = null;
         ArrayList<Announcements> previews = null;
+        ArrayList<Pages> mainPages = null;
         ArrayList<Photos> newsPhotos = new ArrayList<>();
         ArrayList<Photos> previewPhotos = new ArrayList<>();
         try {
@@ -47,6 +51,7 @@ public class IndexController {
             for (int i = 0; i < previews.size(); ++i) {
                 previewPhotos.add(photosDao.getPhoto(previews.get(i).getIdImg()));
             }
+            mainPages = pagesDao.getPagesByType(0);
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }       
@@ -58,6 +63,8 @@ public class IndexController {
         model.addAttribute("preview", previews);
         model.addAttribute("previewCount", previews.size() - 1);
         model.addAttribute("previewPhotos", previewPhotos);
+        model.addAttribute("mainPages", mainPages);
+        model.addAttribute("mainPagesCount", mainPages.size() - 1);
         return "index";
     }
     /*

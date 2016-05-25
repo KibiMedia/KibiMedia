@@ -21,4 +21,6 @@ public interface PagesDao {
     public void deletePage(int id) throws SQLException;
     public Pages getPage(int id) throws SQLException;
     public ArrayList<Pages> getPages() throws SQLException;
+    public ArrayList<Pages> getPagesByType(int type) throws SQLException;
+    
 }
