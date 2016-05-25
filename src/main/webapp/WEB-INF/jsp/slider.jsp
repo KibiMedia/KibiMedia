@@ -17,7 +17,7 @@
     <!--Слайды-->
     <div class="carousel-inner">
         <div class="item active">
-            <img src="resources/images/page-1_slide1.jpg" alt="">
+            <img src="resources/images${previewPhotos.get(0).getHrefImg()}" alt="">
             <div class="carousel-caption">
                 <h3>${preview.get(0).getTitle()}</h3>
                 <p>${preview.get(0).getDescription()}</p>

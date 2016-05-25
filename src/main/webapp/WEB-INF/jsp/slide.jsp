@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="item">
-    <img src="resources/images/page-1_slide2.jpg" alt="">
+    <img src="resources/images${previewPhotos.get(param.index).getHrefImg()}" alt="">
     <div class="carousel-caption">
         <h3>${preview.get(param.index).getTitle()}</h3>
         <p>${preview.get(param.index).getDescription()}</p>

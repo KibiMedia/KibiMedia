@@ -35,19 +35,20 @@ public class IndexController {
         ArrayList<News> sixNews = null;
         ArrayList<Announcements> threeNews = null;
         ArrayList<Photos> newsPhotos = new ArrayList<>();
-        ArrayList<Photos> previewPhotos = null;
+        ArrayList<Photos> previewPhotos = new ArrayList<>();
         try {
             sixNews = newsDao.getLastSixNews(); 
             for (int i = 0; i < 6; ++i) {
                 newsPhotos.add(photosDao.getPhotos(sixNews.get(i).getIdImg()));
             }
             threeNews = announcementsDao.getAllAnnouncements();
-            //for (int i = 0; i < threeNews.size(); ++i) {
-                //previewPhotos.add(photosDao.getPhotos(threeNews.get(i).getIdImg()));
-            //}
+            for (int i = 0; i < threeNews.size(); ++i) {
+                previewPhotos.add(photosDao.getPhotos(threeNews.get(i).getIdImg()));
+            }
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }       
+        System.out.println("resources/images"+previewPhotos.get(0).getHrefImg());
         model.addAttribute("mainTitle", "КИБИ МЕДИА ЦЕНТР ЮФУ");
         model.addAttribute("sfeduLogo", "resources/images/sfedu_logo.png");
         model.addAttribute("imgUrl", "resources/images/page-1_img4.jpg");
@@ -55,6 +56,7 @@ public class IndexController {
         model.addAttribute("newsPhotos", newsPhotos);
         model.addAttribute("preview", threeNews);
         model.addAttribute("previewCount", threeNews.size() - 1);
+        model.addAttribute("previewPhotos", previewPhotos);
         return "index";
     }
     /*
