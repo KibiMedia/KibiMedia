@@ -35,7 +35,7 @@ public class IndexController {
         PhotosDao photosDao = factory.getPhotosDao();
         
         ArrayList<News> sixNews = null;
-        ArrayList<Announcements> threeNews = null;
+        ArrayList<Announcements> previews = null;
         ArrayList<Photos> newsPhotos = new ArrayList<>();
         ArrayList<Photos> previewPhotos = new ArrayList<>();
         try {
@@ -43,9 +43,9 @@ public class IndexController {
             for (int i = 0; i < 6; ++i) {
                 newsPhotos.add(photosDao.getPhotos(sixNews.get(i).getIdImg()));
             }
-            threeNews = announcementsDao.getAllAnnouncements();
-            for (int i = 0; i < threeNews.size(); ++i) {
-                previewPhotos.add(photosDao.getPhotos(threeNews.get(i).getIdImg()));
+            previews = announcementsDao.getAllAnnouncements();
+            for (int i = 0; i < previews.size(); ++i) {
+                previewPhotos.add(photosDao.getPhotos(previews.get(i).getIdImg()));
             }
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
