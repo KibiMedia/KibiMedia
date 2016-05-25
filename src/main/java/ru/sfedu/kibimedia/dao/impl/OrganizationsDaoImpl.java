@@ -5,8 +5,8 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
-import ru.sfedu.kibimedia.dao.OrganizationDao;
-import ru.sfedu.kibimedia.tables.Organization;
+import ru.sfedu.kibimedia.dao.OrganizationsDao;
+import ru.sfedu.kibimedia.tables.Organizations;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +18,10 @@ import ru.sfedu.kibimedia.utils.HibernateUtils;
  *
  * @author Mishas
  */
-public class OrganizationDaoImpl implements OrganizationDao {
+public class OrganizationsDaoImpl implements OrganizationsDao {
 
     @Override
-    public void addOrganization(Organization organization) throws SQLException {
+    public void addOrganization(Organizations organization) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -37,7 +37,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
     }
 
     @Override
-    public void deleteOrganization(Organization organization) throws SQLException {
+    public void deleteOrganization(Organizations organization) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -69,13 +69,13 @@ public class OrganizationDaoImpl implements OrganizationDao {
     }
 
     @Override
-    public Organization getOrganization(int id) throws SQLException {
-        Organization organization = null;
+    public Organizations getOrganization(int id) throws SQLException {
+        Organizations organization = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            organization = (Organization) session.load(Organization.class, id);
+            organization = (Organizations) session.load(Organizations.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -87,14 +87,13 @@ public class OrganizationDaoImpl implements OrganizationDao {
     }
 
     @Override
-    public ArrayList<Organization> getAllOrganization() throws SQLException {
-        ArrayList<Organization> allOrganization = null;
+    public ArrayList<Organizations> getOrganizations() throws SQLException {
+        ArrayList<Organizations> organizations = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            allOrganization = (ArrayList<Organization>) session.createCriteria(Organization.class)
-                    .addOrder(Order.asc("organizationNumber")).list();
+            organizations = (ArrayList<Organizations>) session.createCriteria(Organizations.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -102,7 +101,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
                 session.close();
         }
         
-        return allOrganization;
+        return organizations;
     }
 
     

@@ -16,9 +16,9 @@ import java.util.List;
  */
 public interface PhotosDao {
     
-    public void addPhotos(Photos photos) throws SQLException;
-    public void deletePhotos(Photos photos) throws SQLException;
-    public void deletePhotos(int id) throws SQLException;
-    public Photos getPhotos(int id) throws SQLException;
-    public ArrayList<Photos> getAllPhotos() throws SQLException;
+    public void addPhoto(Photos photo) throws SQLException;
+    public void deletePhoto(Photos photo) throws SQLException;
+    public void deletePhoto(int id) throws SQLException;
+    public Photos getPhoto(int id) throws SQLException;
+    public ArrayList<Photos> getPhotos() throws SQLException;
 }

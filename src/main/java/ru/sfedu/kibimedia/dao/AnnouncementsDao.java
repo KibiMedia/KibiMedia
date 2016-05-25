@@ -16,10 +16,10 @@ import java.util.List;
  */
 public interface AnnouncementsDao {
     
-    public void addAnnouncements(Announcements announcements) throws SQLException;
-    public void deleteAnnouncements(Announcements announcements) throws SQLException;
-    public void deleteAnnouncements(int id) throws SQLException;
-    public Announcements getAnnouncements(int id) throws SQLException;
-    public ArrayList<Announcements> getAllAnnouncements() throws SQLException;
+    public void addAnnouncement(Announcements announcement) throws SQLException;
+    public void deleteAnnouncement(Announcements announcement) throws SQLException;
+    public void deleteAnnouncement(int id) throws SQLException;
+    public Announcements getAnnouncement(int id) throws SQLException;
+    public ArrayList<Announcements> getAnnouncements() throws SQLException;
     
 }

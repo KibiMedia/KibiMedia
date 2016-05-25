@@ -8,7 +8,6 @@ package ru.sfedu.kibimedia.dao;
 import ru.sfedu.kibimedia.tables.Admins;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -16,9 +15,9 @@ import java.util.List;
  */
 public interface AdminsDao {
     
-    public void addAdmins(Admins admins) throws SQLException;
-    public void deleteAdmins(Admins admins) throws SQLException;
-    public void deleteAdmins(int id) throws SQLException;
-    public Admins getAdmins(int id) throws SQLException;
-    public ArrayList<Admins> getAllAdmins() throws SQLException;
+    public void addAdmin(Admins admin) throws SQLException;
+    public void deleteAdmin(Admins admin) throws SQLException;
+    public void deleteAdmin(int id) throws SQLException;
+    public Admins getAdminById(int id) throws SQLException;
+    public ArrayList<Admins> getAdmins() throws SQLException;
 }

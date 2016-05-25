@@ -21,12 +21,12 @@ import ru.sfedu.kibimedia.utils.HibernateUtils;
 public class PagesDaoImpl implements PagesDao {
 
     @Override
-    public void addPages(Pages pages) throws SQLException {
+    public void addPage(Pages page) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(pages);
+            session.save(page);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,12 +37,12 @@ public class PagesDaoImpl implements PagesDao {
     }
 
     @Override
-    public void deletePages(Pages pages) throws SQLException {
+    public void deletePage(Pages page) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(pages);
+            session.delete(page);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,12 +53,12 @@ public class PagesDaoImpl implements PagesDao {
     }
 
     @Override
-    public void deletePages(int id) throws SQLException {
+    public void deletePage(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getPages(id));
+            session.delete(getPage(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,13 +69,31 @@ public class PagesDaoImpl implements PagesDao {
     }
 
     @Override
-    public Pages getPages(int id) throws SQLException {
-        Pages pages = null;
+    public Pages getPage(int id) throws SQLException {
+        Pages page = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            pages = (Pages) session.load(Pages.class, id);
+            page = (Pages) session.load(Pages.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+        
+        return page;
+    }
+
+    @Override
+    public ArrayList<Pages> getPages() throws SQLException {
+        ArrayList<Pages> pages = null;
+        
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            pages = (ArrayList<Pages>) session.createCriteria(Pages.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -84,25 +102,6 @@ public class PagesDaoImpl implements PagesDao {
         }
         
         return pages;
-    }
-
-    @Override
-    public ArrayList<Pages> getAllPages() throws SQLException {
-        ArrayList<Pages> allPages = null;
-        
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            allPages = (ArrayList<Pages>) session.createCriteria(Pages.class)
-                    .addOrder(Order.asc("pageNumber")).list();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-        
-        return allPages;
     }
     
     

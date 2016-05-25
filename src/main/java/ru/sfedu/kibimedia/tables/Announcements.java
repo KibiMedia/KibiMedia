@@ -41,8 +41,8 @@ public class Announcements implements Serializable{
     @Column(name = "id_img")
     private Integer idImg;
     
-    @Column(name = "data")
-    private Date data; 
+    @Column(name = "event_date")
+    private Date eventDate; 
 
     public Integer getIdAnnoncement() {
         return idAnnoncement;
@@ -57,11 +57,11 @@ public class Announcements implements Serializable{
     }
 
     public Date getData() {
-        return data;
+        return eventDate;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setData(Date eventDate) {
+        this.eventDate = eventDate;
     }
 
     public String getTitle() {

@@ -21,12 +21,12 @@ import ru.sfedu.kibimedia.utils.HibernateUtils;
 public class EventRegDaoImpl implements EventRegDao {
 
     @Override
-    public void addEventReg(EventReg eventReg) throws SQLException {
+    public void addEvent(EventReg event) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(eventReg);
+            session.save(event);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,12 +37,12 @@ public class EventRegDaoImpl implements EventRegDao {
     }
 
     @Override
-    public void deleteEventReg(EventReg eventReg) throws SQLException {
+    public void deleteEvent(EventReg event) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(eventReg);
+            session.delete(event);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,12 +53,12 @@ public class EventRegDaoImpl implements EventRegDao {
     }
 
     @Override
-    public void deleteEventReg(int id) throws SQLException {
+    public void deleteEvent(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getEventReg(id));
+            session.delete(getEvent(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,13 +69,13 @@ public class EventRegDaoImpl implements EventRegDao {
     }
 
     @Override
-    public EventReg getEventReg(int id) throws SQLException {
-        EventReg eventReg = null;
+    public EventReg getEvent(int id) throws SQLException {
+        EventReg event = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            eventReg = (EventReg) session.load(EventReg.class, id);
+            event = (EventReg) session.load(EventReg.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -83,18 +83,18 @@ public class EventRegDaoImpl implements EventRegDao {
                 session.close();
         }
         
-        return eventReg;
+        return event;
     }
 
     @Override
-    public ArrayList<EventReg> getAllEventReg() throws SQLException {
-        ArrayList<EventReg> allEventReg = null;
+    public ArrayList<EventReg> getEvents() throws SQLException {
+        ArrayList<EventReg> events = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            allEventReg = (ArrayList<EventReg>) session.createCriteria(EventReg.class)
-                    .addOrder(Order.asc("eventRegNumber")).list();
+            events = (ArrayList<EventReg>) session.createCriteria(EventReg.class)
+                    .addOrder(Order.asc("idLeader")).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -102,7 +102,7 @@ public class EventRegDaoImpl implements EventRegDao {
                 session.close();
         }
         
-        return allEventReg;
+        return events;
     }
 
     

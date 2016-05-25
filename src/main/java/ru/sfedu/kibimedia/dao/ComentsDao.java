@@ -16,9 +16,9 @@ import java.util.List;
  */
 public interface ComentsDao {
     
-    public void addComents(Coments coments) throws SQLException;
-    public void deleteComents(Coments coments) throws SQLException;
-    public void deleteComents(int id) throws SQLException;
-    public Coments getComents(int id) throws SQLException;
-    public ArrayList<Coments> getAllComents() throws SQLException;
+    public void addComent(Coments coment) throws SQLException;
+    public void deleteComent(Coments coment) throws SQLException;
+    public void deleteComentById(int id) throws SQLException;
+    public Coments getComent(int id) throws SQLException;
+    public ArrayList<Coments> getComents() throws SQLException;
 }

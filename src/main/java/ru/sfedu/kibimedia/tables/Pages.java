@@ -58,7 +58,7 @@ public class Pages implements Serializable{
         return href;
     }
 
-    public void setHrefImg(String href) {
+    public void setHref(String href) {
         this.href = href;
     }
 

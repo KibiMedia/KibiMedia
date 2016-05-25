@@ -21,12 +21,12 @@ import ru.sfedu.kibimedia.utils.HibernateUtils;
 public class PhotosDaoImpl implements PhotosDao {
 
     @Override
-    public void addPhotos(Photos photos) throws SQLException {
+    public void addPhoto(Photos photo) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(photos);
+            session.save(photo);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,12 +37,12 @@ public class PhotosDaoImpl implements PhotosDao {
     }
 
     @Override
-    public void deletePhotos(Photos photos) throws SQLException {
+    public void deletePhoto(Photos photo) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(photos);
+            session.delete(photo);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,12 +53,12 @@ public class PhotosDaoImpl implements PhotosDao {
     }
 
     @Override
-    public void deletePhotos(int id) throws SQLException {
+    public void deletePhoto(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getPhotos(id));
+            session.delete(getPhoto(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,13 +69,31 @@ public class PhotosDaoImpl implements PhotosDao {
     }
 
     @Override
-    public Photos getPhotos(int id) throws SQLException {
-        Photos photos = null;
+    public Photos getPhoto(int id) throws SQLException {
+        Photos photo = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            photos = (Photos) session.load(Photos.class, id);
+            photo = (Photos) session.load(Photos.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+        
+        return photo;
+    }
+
+    @Override
+    public ArrayList<Photos> getPhotos() throws SQLException {
+        ArrayList<Photos> photos = null;
+        
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            photos = (ArrayList<Photos>) session.createCriteria(Photos.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -84,25 +102,6 @@ public class PhotosDaoImpl implements PhotosDao {
         }
         
         return photos;
-    }
-
-    @Override
-    public ArrayList<Photos> getAllPhotos() throws SQLException {
-        ArrayList<Photos> allPhotos = null;
-        
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            allPhotos = (ArrayList<Photos>) session.createCriteria(Photos.class)
-                    .addOrder(Order.asc("photoNumber")).list();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-        
-        return allPhotos;
     }
     
     

@@ -16,9 +16,9 @@ import java.util.List;
  */
 public interface EventRegDao {
     
-    public void addEventReg(EventReg eventReg) throws SQLException;
-    public void deleteEventReg(EventReg eventReg) throws SQLException;
-    public void deleteEventReg(int id) throws SQLException;
-    public EventReg getEventReg(int id) throws SQLException;
-    public ArrayList<EventReg> getAllEventReg() throws SQLException;
+    public void addEvent(EventReg event) throws SQLException;
+    public void deleteEvent(EventReg event) throws SQLException;
+    public void deleteEvent(int id) throws SQLException;
+    public EventReg getEvent(int id) throws SQLException;
+    public ArrayList<EventReg> getEvents() throws SQLException;
 }

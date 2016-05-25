@@ -16,9 +16,9 @@ import java.util.List;
  */
 public interface PagesDao {
     
-    public void addPages(Pages pages) throws SQLException;
-    public void deletePages(Pages pages) throws SQLException;
-    public void deletePages(int id) throws SQLException;
-    public Pages getPages(int id) throws SQLException;
-    public ArrayList<Pages> getAllPages() throws SQLException;
+    public void addPage(Pages page) throws SQLException;
+    public void deletePage(Pages page) throws SQLException;
+    public void deletePage(int id) throws SQLException;
+    public Pages getPage(int id) throws SQLException;
+    public ArrayList<Pages> getPages() throws SQLException;
 }

@@ -21,12 +21,12 @@ import ru.sfedu.kibimedia.utils.HibernateUtils;
 public class AdminsDaoImpl implements AdminsDao {
 
     @Override
-    public void addAdmins(Admins admins) throws SQLException {
+    public void addAdmin(Admins admin) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(admins);
+            session.save(admin);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,12 +37,12 @@ public class AdminsDaoImpl implements AdminsDao {
     }
 
     @Override
-    public void deleteAdmins(Admins admins) throws SQLException {
+    public void deleteAdmin(Admins admin) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(admins);
+            session.delete(admin);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,12 +53,12 @@ public class AdminsDaoImpl implements AdminsDao {
     }
 
     @Override
-    public void deleteAdmins(int id) throws SQLException {
+    public void deleteAdmin(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getAdmins(id));
+            session.delete(getAdminById(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,13 +69,31 @@ public class AdminsDaoImpl implements AdminsDao {
     }
 
     @Override
-    public Admins getAdmins(int id) throws SQLException {
-        Admins admins = null;
+    public Admins getAdminById(int id) throws SQLException {
+        Admins admin = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            admins = (Admins) session.load(Admins.class, id);
+            admin = (Admins) session.load(Admins.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+        
+        return admin;
+    }
+
+    @Override
+    public ArrayList<Admins> getAdmins() throws SQLException {
+        ArrayList<Admins> admins = null;
+        
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            admins = (ArrayList<Admins>) session.createCriteria(Admins.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -84,25 +102,6 @@ public class AdminsDaoImpl implements AdminsDao {
         }
         
         return admins;
-    }
-
-    @Override
-    public ArrayList<Admins> getAllAdmins() throws SQLException {
-        ArrayList<Admins> allAdmins = null;
-        
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            allAdmins = (ArrayList<Admins>) session.createCriteria(Admins.class)
-                    .addOrder(Order.asc("adminNumber")).list();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-        
-        return allAdmins;
     }
     
 }

@@ -21,12 +21,12 @@ import ru.sfedu.kibimedia.utils.HibernateUtils;
 public class UsersDaoImpl implements UsersDao {
 
     @Override
-    public void addUsers(Users users) throws SQLException {
+    public void addUser(Users user) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(users);
+            session.save(user);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,12 +37,12 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Override
-    public void deleteUsers(Users users) throws SQLException {
+    public void deleteUser(Users user) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(users);
+            session.delete(user);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,12 +53,12 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Override
-    public void deleteUsers(int id) throws SQLException {
+    public void deleteUser(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getUsers(id));
+            session.delete(getUserById(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,13 +69,31 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Override
-    public Users getUsers(int id) throws SQLException {
-        Users users = null;
+    public Users getUserById(int id) throws SQLException {
+        Users user = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            users = (Users) session.load(Users.class, id);
+            user = (Users) session.load(Users.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+        
+        return user;
+    }
+
+    @Override
+    public ArrayList<Users> getUsers() throws SQLException {
+        ArrayList<Users> users = null;
+        
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            users = (ArrayList<Users>) session.createCriteria(Users.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -87,14 +105,12 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Override
-    public ArrayList<Users> getAllUsers() throws SQLException {
-        ArrayList<Users> allUsers = null;
-        
+    public Users getUserByLoginAndPassword(String login, String pass) throws SQLException {
+        ArrayList<Users> users = null;
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            allUsers = (ArrayList<Users>) session.createCriteria(Users.class)
-                    .addOrder(Order.asc("userNumber")).list();
+            users = (ArrayList<Users>) session.createCriteria(Users.class).add(Restrictions.eq("login", login)).add(Restrictions.eq("password", pass)).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -102,8 +118,13 @@ public class UsersDaoImpl implements UsersDao {
                 session.close();
         }
         
-        return allUsers;
+        if (users == null)
+            return null;
+        
+        if (users.isEmpty())
+            return null; 
+        
+        return users.get(0);
     }
-    
     
 }

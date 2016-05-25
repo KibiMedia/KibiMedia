@@ -21,7 +21,7 @@ import ru.sfedu.kibimedia.utils.HibernateUtils;
 public class AnnouncementsDaoImpl implements AnnouncementsDao {
 
     @Override
-    public void addAnnouncements(Announcements announcement) throws SQLException {
+    public void addAnnouncement(Announcements announcement) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -37,7 +37,7 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
     }
 
     @Override
-    public void deleteAnnouncements(Announcements announcement) throws SQLException {
+    public void deleteAnnouncement(Announcements announcement) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -53,12 +53,12 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
     }
 
     @Override
-    public void deleteAnnouncements(int id) throws SQLException {
+    public void deleteAnnouncement(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getAnnouncements(id));
+            session.delete(getAnnouncement(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,7 +69,7 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
     }
 
     @Override
-    public Announcements getAnnouncements(int id) throws SQLException {
+    public Announcements getAnnouncement(int id) throws SQLException {
         Announcements announcement = null;
         
         Session session = null;
@@ -87,14 +87,14 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
     }
 
     @Override
-    public ArrayList<Announcements> getAllAnnouncements() throws SQLException {
-        ArrayList<Announcements> allAnnouncements = null;
+    public ArrayList<Announcements> getAnnouncements() throws SQLException {
+        ArrayList<Announcements> announcements = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            allAnnouncements = (ArrayList<Announcements>) session.createCriteria(Announcements.class)
-                    .addOrder(Order.asc("announcementNumber")).list();
+            announcements = (ArrayList<Announcements>) session.createCriteria(Announcements.class)
+                    .addOrder(Order.asc("eventDate")).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -102,7 +102,7 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
                 session.close();
         }
         
-        return allAnnouncements;
+        return announcements;
     }
     
     
