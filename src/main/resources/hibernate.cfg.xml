@@ -29,6 +29,8 @@
     
     <!-- Mapping files -->
     <mapping class="ru.sfedu.kibimedia.tables.News" />
+    <mapping class="ru.sfedu.kibimedia.tables.Announcements" />
+    <mapping class="ru.sfedu.kibimedia.tables.Photos" />
 
   </session-factory>
 </hibernate-configuration>

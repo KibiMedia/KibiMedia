@@ -35,8 +35,8 @@ public class News implements Serializable{
     @Column(name = "title")
     private String title;
     
-    @Column(name = "main_idea")
-    private String mainIdea;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "text")
     private String text;
@@ -44,8 +44,8 @@ public class News implements Serializable{
     @Column(name = "id_writer")
     private Integer idWriter;
     
-    @Column(name = "data")
-    private Date data; 
+    @Column(name = "event_date")
+    private Date eventDate; 
     
     @Column(name = "id_img")
     private Integer idImg;
@@ -62,12 +62,12 @@ public class News implements Serializable{
         this.title = title;
     }
 
-    public String getMainIdea() {
-        return mainIdea;
+    public String getDescription() {
+        return description;
     }
 
-    public void setMainIdea(String mainIdea) {
-        this.mainIdea = mainIdea;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getText() {
@@ -91,12 +91,12 @@ public class News implements Serializable{
         return this.title;
     }
 
-    public Date getDate() {
-        return data;
+    public Date getEventDate() {
+        return eventDate;
     }
 
-    public void setDate(Date data) {
-        this.data = data;
+    public void setEventDate(Date eventDate) {
+        this.eventDate = eventDate;
     }
 
     public Integer getIdImg() {

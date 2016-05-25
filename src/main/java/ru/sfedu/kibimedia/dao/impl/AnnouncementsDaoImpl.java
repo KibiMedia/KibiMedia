@@ -98,7 +98,7 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
             if ((session != null) && (session.isOpen()))
                 session.close();
         }
-        //System.out.println(allAnnouncements.isEmpty());
+        System.out.println(allAnnouncements == null);
         return allAnnouncements;
     }
     

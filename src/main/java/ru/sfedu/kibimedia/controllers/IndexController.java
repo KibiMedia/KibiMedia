@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.sfedu.kibimedia.dao.AnnouncementsDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
+import ru.sfedu.kibimedia.dao.PhotosDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.Announcements;
 import ru.sfedu.kibimedia.tables.News;
+import ru.sfedu.kibimedia.tables.Photos;
 
 /**
  *
@@ -29,11 +31,20 @@ public class IndexController {
         Factory factory = Factory.getInstance();
         NewsDao newsDao = factory.getNewsDao();
         AnnouncementsDao announcementsDao = factory.getAnnouncementsDao();
+        PhotosDao photosDao = factory.getPhotosDao();
         ArrayList<News> sixNews = null;
         ArrayList<Announcements> threeNews = null;
+        ArrayList<Photos> newsPhotos = new ArrayList<>();
+        ArrayList<Photos> previewPhotos = null;
         try {
             sixNews = newsDao.getLastSixNews(); 
-            threeNews = announcementsDao.getAllAnnouncements();         
+            for (int i = 0; i < 6; ++i) {
+                newsPhotos.add(photosDao.getPhotos(sixNews.get(i).getIdImg()));
+            }
+            threeNews = announcementsDao.getAllAnnouncements();
+            //for (int i = 0; i < threeNews.size(); ++i) {
+                //previewPhotos.add(photosDao.getPhotos(threeNews.get(i).getIdImg()));
+            //}
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }       
@@ -41,9 +52,9 @@ public class IndexController {
         model.addAttribute("sfeduLogo", "resources/images/sfedu_logo.png");
         model.addAttribute("imgUrl", "resources/images/page-1_img4.jpg");
         model.addAttribute("news", sixNews);
+        model.addAttribute("newsPhotos", newsPhotos);
         model.addAttribute("preview", threeNews);
-        //model.addAttribute("previewCount", threeNews.size());
-        //System.out.println("My dick is length: " + threeNews.size());
+        model.addAttribute("previewCount", threeNews.size() - 1);
         return "index";
     }
     /*

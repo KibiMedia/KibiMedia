@@ -7,8 +7,10 @@ package ru.sfedu.kibimedia.main;
 
 import ru.sfedu.kibimedia.dao.AnnouncementsDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
+import ru.sfedu.kibimedia.dao.PhotosDao;
 import ru.sfedu.kibimedia.dao.impl.AnnouncementsDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.NewsDaoImpl;
+import ru.sfedu.kibimedia.dao.impl.PhotosDaoImpl;
 
 /**
  *
@@ -20,6 +22,7 @@ public class Factory {
     
     private NewsDao newsDao;
     private AnnouncementsDao announcementsDao;
+    private PhotosDao photosDao;
     
     private Factory() { }
     
@@ -37,6 +40,12 @@ public class Factory {
         if (announcementsDao == null) 
             announcementsDao = new AnnouncementsDaoImpl();
         return announcementsDao;
+    }
+    
+    public PhotosDao getPhotosDao() {
+        if (photosDao == null) 
+            photosDao = new PhotosDaoImpl();
+        return photosDao;
     }
     
 }

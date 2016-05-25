@@ -27,12 +27,6 @@ public class Photos implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    /*
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    */
-    
     @Column(name = "id_img")
     private Integer idImg;
     
