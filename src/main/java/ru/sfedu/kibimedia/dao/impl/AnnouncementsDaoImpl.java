@@ -9,10 +9,8 @@ import ru.sfedu.kibimedia.dao.AnnouncementsDao;
 import ru.sfedu.kibimedia.tables.Announcements;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
 /**
  *
@@ -100,8 +98,7 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
         } finally {
             if ((session != null) && (session.isOpen()))
                 session.close();
-        }
-        
+        }        
         return announcements;
     }
     

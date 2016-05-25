@@ -1,0 +1,10 @@
+diff a/src/main/java/ru/sfedu/kibimedia/controllers/IndexController.java b/src/main/java/ru/sfedu/kibimedia/controllers/IndexController.java	(rejected hunks)
+@@ -35,7 +35,7 @@
+         PhotosDao photosDao = factory.getPhotosDao();
+         
+         ArrayList<News> sixNews = null;
+-        ArrayList<Announcements> threeNews = null;
++        ArrayList<Announcements> previews = null;
+         ArrayList<Photos> newsPhotos = new ArrayList<>();
+         ArrayList<Photos> previewPhotos = new ArrayList<>();
+         try {

@@ -133,9 +133,13 @@ include('js/jquery.easing.1.3.js');
 ;
 (function ($) {
     var o = document.getElementById("google-map");
+    function include(url) {
+	document.write('<script src="' + url + '"></script>');
+	return false;
+}
     if (o) {
-        include('//maps.google.com/maps/api/js?sensor=false');
-        include('js/jquery.rd-google-map.js');
+        include('http://maps.google.com/maps/api/js?sensor=false');
+        include('resources/js/jquery.rd-google-map.js');
 
         $(document).ready(function () {
             var o = $('#google-map');

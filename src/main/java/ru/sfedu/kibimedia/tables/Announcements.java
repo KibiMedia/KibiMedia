@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * @author Mishas
  */
 @Entity
-@Table(name = "announcement")
+@Table(name = "announcements")
 public class Announcements implements Serializable{
     
     private static final long serialVersionUID = -5527566248002296042L;
@@ -38,11 +38,11 @@ public class Announcements implements Serializable{
     @Column(name = "description")
     private String description;
     
-    @Column(name = "id_img")
-    private Integer idImg;
-    
     @Column(name = "event_date")
-    private Date eventDate; 
+    private Date eventDate;
+    
+    @Column(name = "id_img")
+    private Integer idImg; 
 
     public Integer getIdAnnoncement() {
         return idAnnoncement;
@@ -56,11 +56,11 @@ public class Announcements implements Serializable{
         this.idImg = idImg;
     }
 
-    public Date getData() {
+    public Date getEventDate() {
         return eventDate;
     }
 
-    public void setData(Date eventDate) {
+    public void setEventDate(Date eventDate) {
         this.eventDate = eventDate;
     }
 

@@ -91,11 +91,11 @@ public class News implements Serializable{
         return this.title;
     }
 
-    public Date getDate() {
+    public Date getEventDate() {
         return eventDate;
     }
 
-    public void setDate(Date data) {
+    public void setEventDate(Date eventDate) {
         this.eventDate = eventDate;
     }
 
