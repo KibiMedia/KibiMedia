@@ -1,16 +1,16 @@
 <%-- 
     Document   : footer
     Created on : 19.05.2016, 15:43:04
-    Author     : �������
+    Author     : Натусик
 --%>
 
-<%@page contentType="text/html" pageEncoding="windows-1251"%>
+<%@page contentType="text/html" pageEncoding="utf-8"%>
 <footer class="top-border">
-
-    <!--<div class="map">
+<!--
+    <div class="map">
       <div id="google-map" class="map_model" data-zoom="11"></div>
       <ul class="map_locations">
-        <li data-x="-73.9874068" data-y="40.643180" data-basic="<c:url value="/resources/images/gmap_marker.png" />" data-active="<c:url value="/resources/images/gmap_marker_active.png" />">
+        <li data-x="47.224120" data-y="39.628663" data-basic="<c:url value="/resources/images/gmap_marker.png" />" data-active="<c:url value="/resources/images/gmap_marker_active.png" />">
           <div class="location">
             <h3 class="txt-clr1">
               BUSINESS
@@ -39,132 +39,14 @@
             
           </div>
         </li>
-        <li data-x="-74.100000" data-y="40.643180" data-basic="images/gmap_marker2.png" data-active="images/gmap_marker2_active.png">
-          <div class="location">
-            <h3 class="txt-clr1">
-              flooring
-              <small>
-                RETAILER
-              </small>
-            </h3>
-              <address>
-                <dl>
-                  <dt>Free phone: </dt>
-                  <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
-                </dl>
-                <dl>
-                  <dt>Address: </dt>
-                  <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
-                </dl>
-                <dl>
-                  <dt>Hours: </dt>
-                  <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
-                </dl>
-                <dl>
-                  <dt> E-mail: </dt>
-                  <dd><a href="mailto:#">info@demolink.org</a></dd>
-                </dl>
-              </address>
-            
-          </div>
-        </li>
-        <li data-x="-73.8854068" data-y="40.693180" data-basic="images/gmap_marker3.png" data-active="images/gmap_marker3_active.png">
-          <div class="location">
-            <h3 class="txt-clr1">
-              flooring
-              <small>
-                RETAILER
-              </small>
-            </h3>
-              <address>
-                <dl>
-                  <dt>Free phone: </dt>
-                  <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
-                </dl>
-                <dl>
-                  <dt>Address: </dt>
-                  <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
-                </dl>
-                <dl>
-                  <dt>Hours: </dt>
-                  <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
-                </dl>
-                <dl>
-                  <dt> E-mail: </dt>
-                  <dd><a href="mailto:#">info@demolink.org</a></dd>
-                </dl>
-              </address>
-            
-          </div>
-        </li>
-        <li data-x="-73.7874068" data-y="40.613180" data-basic="images/gmap_marker4.png" data-active="images/gmap_marker4_active.png">
-          <div class="location">
-            <h3 class="txt-clr1">
-              flooring
-              <small>
-                RETAILER
-              </small>
-            </h3>
-              <address>
-                <dl>
-                  <dt>Free phone: </dt>
-                  <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
-                </dl>
-                <dl>
-                  <dt>Address: </dt>
-                  <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
-                </dl>
-                <dl>
-                  <dt>Hours: </dt>
-                  <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
-                </dl>
-                <dl>
-                  <dt> E-mail: </dt>
-                  <dd><a href="mailto:#">info@demolink.org</a></dd>
-                </dl>
-              </address>
-            
-          </div>
-        </li>
-        <li data-x="-74.200000" data-y="40.683180" data-basic="images/gmap_marker5.png" data-active="images/gmap_marker5_active.png">
-          <div class="location">
-            <h3 class="txt-clr1">
-              flooring
-              <small>
-                RETAILER
-              </small>
-            </h3>
-              <address>
-                <dl>
-                  <dt>Free phone: </dt>
-                  <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
-                </dl>
-                <dl>
-                  <dt>Address: </dt>
-                  <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
-                </dl>
-                <dl>
-                  <dt>Hours: </dt>
-                  <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
-                </dl>
-                <dl>
-                  <dt> E-mail: </dt>
-                  <dd><a href="mailto:#">info@demolink.org</a></dd>
-                </dl>
-              </address>
-            
-          </div>
-        </li>
       </ul>
     </div>
 -->
     <section class="well1">
       <div class="container"> 
             <p class="rights">
-              Business Company  &#169; <span id="copyright-year"></span>
-              <a href="index-5.html">Privacy Policy</a>
-              More Business Website Templates at <a rel="nofollow" href="http://www.templatemonster.com/category/business-web-templates/" target="_blank">TemplateMonster.com</a>
-            </p>          
+              КИБИ Медиа центр ЮФУ &#169; <span id="copyright-year"></span>   
+              </p>          
       </div> 
     </section>    
   </footer>
