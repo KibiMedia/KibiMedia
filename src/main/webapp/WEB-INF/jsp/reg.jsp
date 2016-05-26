@@ -16,10 +16,10 @@
             <div class="col-lg-6">
                 <h4 class="text-center">Регистрация</h4>
                 <form>
-                    <div class="form-group" id="firstName">
-                        <label>Введите логин:</label>
+                    <div class="form-group" id="login">
+                        <label>Ваше имя на сайте:</label>
                         <input class="form-control" placeholder="Введите имя">
-                        <label class="label label-danger" id="firstNameLabel" style="display: none">Логин должно содержать
+                        <label class="label label-danger" id="loginLabel" style="display: none">Логин должно содержать
                             только русские или латинские символы.</label>
                     </div>
                     <div class="form-group" id="e-mail">

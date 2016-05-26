@@ -16,24 +16,22 @@
                     <a href="#"><i class="fa fa-instagram fa-3x" aria-hidden="true"></i> </a>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="content">
-                    <c:forEach begin="0" end="${footerPagesCount}" varStatus="loop">
-                    <ul>
-                        <a href="<c:url value="${footerPages.get(loop.index).getHref()}" />">${footerPages.get(loop.index).getTitle()}</a>
-                    </ul>
-                    </c:forEach>
+            <div class="col-lg-2 col-lg-offset-1">
+                    <div class="content">
+                        <c:forEach begin="0" end="${footerPagesCount}" varStatus="loop">
+                        <ul>
+                            <a href="<c:url value="${footerPages.get(loop.index).getHref()}" />">${footerPages.get(loop.index).getTitle()}</a>
+                        </ul>
+                        </c:forEach>
+                    </div>
                 </div>
-                </div>
-            <div class="col-lg-4">
+            <div class="col-lg-2 col-lg-offset-3">
                 <div class="content">
-                    <h7>Электронная почта <small>exampl@mail.ru</small></h7><br>
-                    <h7>Телефон <small>+7(???)???-??-??</small></h7>
+                    <h7><i class="fa fa-envelope" aria-hidden="true"></i> <small>kibimedia@mail.ru</small></h7><br>
+                    <h7><i class="fa fa-phone" aria-hidden="true"></i> <small>+7 (863) 218-4000</small></h7>
+                    <p class="copyright"> © 2016 КИБИ Медиа центр ЮФУ </p>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <p class="copyright"> © 2016 КИБИ Медиа центр ЮФУ </p>
         </div>
     </div>
 </footer>
