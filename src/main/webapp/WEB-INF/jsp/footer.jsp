@@ -5,48 +5,33 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="utf-8"%>
-<footer class="top-border">
-<!--
-    <div class="map">
-      <div id="google-map" class="map_model" data-zoom="11"></div>
-      <ul class="map_locations">
-        <li data-x="47.224120" data-y="39.628663" data-basic="<c:url value="/resources/images/gmap_marker.png" />" data-active="<c:url value="/resources/images/gmap_marker_active.png" />">
-          <div class="location">
-            <h3 class="txt-clr1">
-              BUSINESS
-              <small>
-                COMPANY
-              </small>
-            </h3>  
-              <address>
-                <dl>
-                  <dt>Free phone: </dt>
-                  <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
-                </dl>
-                <dl>
-                  <dt>Address: </dt>
-                  <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
-                </dl>
-                <dl>
-                  <dt>Hours: </dt>
-                  <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
-                </dl>
-                <dl>
-                  <dt> E-mail: </dt>
-                  <dd><a href="mailto:#">info@demolink.org</a></dd>
-                </dl>
-              </address>
-            
-          </div>
-        </li>
-      </ul>
+<footer class="content-info" role="contentinfo" style="display: block;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="content">
+                    <a href="#"><i class="fa fa-vk fa-3x" aria-hidden="true"></i> </a>
+                    <a href="#"><i class="fa fa-twitter-square fa-3x"></i> </a>
+                    <a href="#"><i class="fa fa-facebook-official fa-3x"></i> </a>
+                    <a href="#"><i class="fa fa-instagram fa-3x" aria-hidden="true"></i> </a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h6>Правовые документы</h6>
+                <div class="content">
+                    <ul>
+                        <a href="#">Ссылка на документ 1</a>
+                    </ul>
+                </div>
+                </div>
+            <div class="col-lg-4">
+                <div class="content">
+                    <h5>Электронная почта <small>exampl@mail.ru</small></h5>
+                    <h5>Телефон <small>exampl@mail.ru</small></h5>
+                </div>
+
+                <p class="copyright"> © 2016 КИБИ Медиа центр ЮФУ </p>
+            </div>
+         </div>
     </div>
--->
-    <section class="well1">
-      <div class="container"> 
-            <p class="rights">
-              КИБИ Медиа центр ЮФУ &#169; <span id="copyright-year"></span>   
-              </p>          
-      </div> 
-    </section>    
-  </footer>
+</footer>
