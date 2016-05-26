@@ -11,15 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ru.sfedu.kibimedia.dao.AnnouncementsDao;
-import ru.sfedu.kibimedia.dao.NewsDao;
 import ru.sfedu.kibimedia.dao.PagesDao;
-import ru.sfedu.kibimedia.dao.PhotosDao;
 import ru.sfedu.kibimedia.main.Factory;
-import ru.sfedu.kibimedia.tables.Announcements;
-import ru.sfedu.kibimedia.tables.News;
 import ru.sfedu.kibimedia.tables.Pages;
-import ru.sfedu.kibimedia.tables.Photos;
 
 /**
  *

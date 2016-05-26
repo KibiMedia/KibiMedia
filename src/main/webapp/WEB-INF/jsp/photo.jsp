@@ -9,4 +9,12 @@
 
 <%@include file="header.jsp" %>
 
+<div class="row">
+    <c:forEach begin="0" end="5" varStatus="loop">
+        <jsp:include page="main_news.jsp" >
+            <jsp:param name="index" value="${loop.index}" />
+        </jsp:include>
+    </c:forEach>
+</div>
+
 <%@include file="footer.jsp" %>

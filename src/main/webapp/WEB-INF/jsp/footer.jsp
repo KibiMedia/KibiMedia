@@ -11,20 +11,20 @@
             <div class="col-lg-4">
                 <div class="content">
                     <a href="#"><i class="fa fa-vk fa-3x" aria-hidden="true"></i> </a>
-                    <a href="#"><i class="fa fa-twitter-square fa-3x"></i> </a>
-                    <a href="#"><i class="fa fa-facebook-official fa-3x"></i> </a>
-                    <a href="#"><i class="fa fa-instagram fa-3x" aria-hidden="true"></i> </a>
+                    <a href="#"><i class="fa fa-twitter fa-3x"></i> </a>
+                    <a href="#"><i class="fa fa-facebook fa-3x"></i> </a>
+                    <a href="#"><i class="fa fa-instagram fa-3x"></i> </a>
                 </div>
             </div>
             <div class="col-lg-2 col-lg-offset-1">
-                    <div class="content">
-                        <c:forEach begin="0" end="${footerPagesCount}" varStatus="loop">
-                        <ul>
-                            <a href="<c:url value="${footerPages.get(loop.index).getHref()}" />">${footerPages.get(loop.index).getTitle()}</a>
-                        </ul>
-                        </c:forEach>
-                    </div>
+                <div class="content">
+                    <c:forEach begin="0" end="${footerPagesCount}" varStatus="loop">
+                    <ul>
+                        <a href="<c:url value="${footerPages.get(loop.index).getHref()}" />">${footerPages.get(loop.index).getTitle()}</a>
+                    </ul>
+                    </c:forEach>
                 </div>
+            </div>
             <div class="col-lg-2 col-lg-offset-3">
                 <div class="content">
                     <h7><i class="fa fa-envelope" aria-hidden="true"></i> <small>kibimedia@mail.ru</small></h7><br>
