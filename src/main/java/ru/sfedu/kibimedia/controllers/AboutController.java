@@ -23,60 +23,33 @@ import ru.sfedu.kibimedia.tables.Photos;
 
 /**
  *
- * @author DPosadsky
+ * @author Сергей
  */
 @Controller
-public class IndexController {
-    
-    @RequestMapping(value="/", method = RequestMethod.GET)
-    public String viewHome(Model model) {
+public class AboutController {
+    @RequestMapping(value="/about", method = RequestMethod.GET)
+    public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
-        
-        NewsDao newsDao = factory.getNewsDao();
-        AnnouncementsDao announcementsDao = factory.getAnnouncementsDao();
-        PhotosDao photosDao = factory.getPhotosDao();
         PagesDao pagesDao = factory.getPagesDao();
         
-        ArrayList<News> sixNews = null;
-        ArrayList<Announcements> previews = null;
         ArrayList<Pages> mainPages = null;
         ArrayList<Pages> footerPages = null;
-        ArrayList<Photos> newsPhotos = new ArrayList<>();
-        ArrayList<Photos> previewPhotos = new ArrayList<>();
+
         try {
-            sixNews = newsDao.getLastSixNews(); 
-            for (int i = 0; i < 6; ++i) {
-                newsPhotos.add(photosDao.getPhoto(sixNews.get(i).getIdImg()));
-            }
-            previews = announcementsDao.getAnnouncements();
-            for (int i = 0; i < previews.size(); ++i) {
-                previewPhotos.add(photosDao.getPhoto(previews.get(i).getIdImg()));
-            }
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
-        }       
+        }
+        
         model.addAttribute("mainTitle", "КИБИ МЕДИА ЦЕНТР ЮФУ");
         model.addAttribute("sfeduLogo", "resources/images/sfedu_logo.png");
-        model.addAttribute("imgUrl", "resources/images/page-1_img4.jpg");
-        model.addAttribute("news", sixNews);
-        model.addAttribute("newsPhotos", newsPhotos);
-        model.addAttribute("preview", previews);
-        model.addAttribute("previewCount", previews.size() - 1);
-        model.addAttribute("previewPhotos", previewPhotos);
         model.addAttribute("mainPages", mainPages);
         model.addAttribute("mainPagesCount", mainPages.size() - 1);
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
-        return "index";
+        
+        return "about";
     }
-    /*
-    @RequestMapping(value="/home", method = RequestMethod.GET, params = "newPar")
-    public String viewHomeWithParams() {
-        System.out.println("newPar");
-        return "home";
-    }
-    */
     
 }

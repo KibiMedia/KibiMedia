@@ -15,14 +15,13 @@ import ru.sfedu.kibimedia.dao.PagesDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.Pages;
 
-
 /**
  *
- * @author 1
+ * @author Сергей
  */
 @Controller
-public class RegistrationController {
-    @RequestMapping(value="/reg", method = RequestMethod.GET)
+public class VideoController {
+    @RequestMapping(value="/video", method = RequestMethod.GET)
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
@@ -44,7 +43,7 @@ public class RegistrationController {
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
         
-        return "reg";
+        return "video";
     }
-    
+        
 }
