@@ -10,7 +10,37 @@
   <!--========================================================
                             CONTENT
   =========================================================-->
-        
+  
+<section class="well well4 bg1 wow fadeIn" data-wow-duration='3s'>
+        <div class="container">
+        <h2>
+          Наша
+          <small>
+            Команда
+          </small>
+        </h2>
+          <div class="row offs3 center767">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="thumbnail1">
+                <img class="" src="resources/images/page-2_img2.jpg" alt="">
+                <div class="caption">
+                  <h4>
+                    <a href="#">
+                      Человек
+                    </a>
+                  </h4>
+                  <p>
+                      Кто этот человек!?
+                  </p>
+                </div>  
+             </div>
+            </div>
+            
+
+          </div>
+        </div>
+      </section>    
+  
 <div class="container">
     <div class="row">
         <div class="col-lg-6 center-block">

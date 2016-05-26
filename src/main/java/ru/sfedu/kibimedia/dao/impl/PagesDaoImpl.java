@@ -113,6 +113,7 @@ public class PagesDaoImpl implements PagesDao {
             session = HibernateUtils.getSessionFactory().openSession();
             pages = (ArrayList<Pages>) session.createCriteria(Pages.class)
                     .add(Restrictions.eq("type", new Integer(type)))
+                    .addOrder(Order.asc("idPage"))
                     .list();
         } catch (Exception e) {
             e.printStackTrace();

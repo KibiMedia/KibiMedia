@@ -10,14 +10,20 @@
 <%@include file="header.jsp" %>
 
 <div class="container">
-    <h2 class="text-center">Новости</h2>
-    <div class="row">
-        <c:forEach begin="0" end="${newsCount}" varStatus="loop">
-            <jsp:include page="main_news.jsp" >
-                <jsp:param name="index" value="${loop.index}" />
-            </jsp:include>
-        </c:forEach>
-    </div>
+    <h2 class="text-center">
+      Новости             
+    </h2>
+    <c:forEach begin="0" end="${newsCount}" varStatus="loop">
+        <c:if test="${(loop.index % 3) == 0}">
+            <div class="row">
+        </c:if>
+        <jsp:include page="block_news.jsp" >
+            <jsp:param name="index" value="${loop.index}" />
+        </jsp:include>
+        <c:if test="${(loop.index % 3) == 2}">
+            </div>
+        </c:if>
+    </c:forEach>
 </div>
 
 <%@include file="footer.jsp" %>
