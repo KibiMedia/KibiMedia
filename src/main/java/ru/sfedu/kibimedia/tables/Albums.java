@@ -36,6 +36,9 @@ public class Albums implements Serializable{
     @Column(name = "title")
     private String title;
 
+    @Column(name = "main_photo")
+    private String mainPhoto;
+    
     public Integer getIdAlbum() {
         return idAlbum;
     }
@@ -50,6 +53,14 @@ public class Albums implements Serializable{
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getMainPhoto() {
+        return mainPhoto;
+    }
+
+    public void setMainPhoto(String mainPhoto) {
+        this.mainPhoto = mainPhoto;
     }
    
 }

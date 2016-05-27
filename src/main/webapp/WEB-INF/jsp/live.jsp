@@ -17,8 +17,8 @@
         </div>
         </div>
         <div class="row">
-            <div>              
-            <iframe width="1200" height="650" src="https://www.youtube.com/embed/_om0q0S5p9o?list=PL8fVUTBmJhHJMA7GOW2Sm5RwOyRdbkZo2" frameborder="0" allowfullscreen></iframe>
+            <div>
+                <iframe width="1200" height="650" src="https://www.youtube.com/embed/MpwgNxvoHBw" frameborder="0" allowfullscreen></iframe>            
             </div>
         </div>   
     </div>

@@ -41,6 +41,7 @@ public class IndexController {
         ArrayList<Announcements> previews = null;
         ArrayList<Pages> mainPages = null;
         ArrayList<Pages> footerPages = null;
+        ArrayList<Pages> topPages = null;
         ArrayList<Photos> newsPhotos = new ArrayList<>();
         ArrayList<Photos> previewPhotos = new ArrayList<>();
         try {
@@ -54,6 +55,7 @@ public class IndexController {
             }
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);
+            topPages = pagesDao.getPagesByType(1);
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }       
@@ -69,6 +71,8 @@ public class IndexController {
         model.addAttribute("mainPagesCount", mainPages.size() - 1);
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
+        model.addAttribute("topPages", topPages);
+        model.addAttribute("topPagesCount", topPages.size() - 1);
         return "index";
     }
     /*
