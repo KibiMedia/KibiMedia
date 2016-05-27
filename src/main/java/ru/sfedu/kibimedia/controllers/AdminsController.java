@@ -7,10 +7,12 @@ package ru.sfedu.kibimedia.controllers;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.sfedu.kibimedia.dao.AnnouncementsDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
 import ru.sfedu.kibimedia.main.Factory;
@@ -54,15 +56,91 @@ public class AdminsController {
         NewsDao newsDao = factory.getNewsDao();
         
         ArrayList<News> allNews = null;
+        //News newNews = null;
         
         try {
             allNews = newsDao.getAllNews();
+            newsDao.addNews(newsDao.getNews(5));
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }   
         model.addAttribute("allNews", allNews);
         model.addAttribute("newsCount", allNews.size() - 1);
         return "news_table";
+    }
+    
+    @RequestMapping(value="/admin/news/add", method = RequestMethod.POST, 
+            params = {"id_news", "title", "description", "text", "id_writer", "event_date", "id_img"})
+    public void addNews(Model model, 
+                        @RequestParam(value = "id_news") int idNews,
+                        @RequestParam(value = "title") String title,
+                        @RequestParam(value = "description") String description,
+                        @RequestParam(value = "text") String text,
+                        @RequestParam(value = "id_writer") int idWriter,
+                        @RequestParam(value = "event_date") Date eventDate,
+                        @RequestParam(value = "id_img") int idImg){
+        
+        News news = null;
+        Factory factory = Factory.getInstance();
+        NewsDao newsDao = factory.getNewsDao();
+        
+        news.setIdImg(idImg);
+        news.setTitle(title);
+        news.setDescription(description);
+        news.setText(text);
+        news.setIdWriter(idWriter);
+        news.setEventDate(eventDate);
+        news.setIdImg(idImg);
+
+        try {
+            newsDao.addNews(news);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+    }
+    
+    @RequestMapping(value="/admin/news/chng", method = RequestMethod.POST, 
+            params = {"id_news", "title", "description", "text", "id_writer", "event_date", "id_img"})
+    public void changeNews(Model model, 
+                        @RequestParam(value = "id_news") int idNews,
+                        @RequestParam(value = "title") String title,
+                        @RequestParam(value = "description") String description,
+                        @RequestParam(value = "text") String text,
+                        @RequestParam(value = "id_writer") int idWriter,
+                        @RequestParam(value = "event_date") Date eventDate,
+                        @RequestParam(value = "id_img") int idImg){
+        
+        News news = null;
+        Factory factory = Factory.getInstance();
+        NewsDao newsDao = factory.getNewsDao();
+        
+        news.setIdImg(idImg);
+        news.setTitle(title);
+        news.setDescription(description);
+        news.setText(text);
+        news.setIdWriter(idWriter);
+        news.setEventDate(eventDate);
+        news.setIdImg(idImg);
+
+        try {
+            newsDao.addNews(news);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+    }
+    
+    @RequestMapping(value="/admin/news/del", method = RequestMethod.POST, params = "idNews")
+    public void deleteNews(Model model, @RequestParam(value = "idNews") int id) {
+        
+        Factory factory = Factory.getInstance();
+        NewsDao newsDao = factory.getNewsDao();
+                
+
+        try {
+            newsDao.deleteNews(id);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
     }
     
     @RequestMapping(value="/admin/photo")
@@ -73,5 +151,10 @@ public class AdminsController {
     @RequestMapping(value="/admin/video")
     public String viewVideo() {  
         return "change_video";
+    }
+    
+    @RequestMapping(value="/admin/signup")
+    public String viewSigUp() {  
+        return "sign_up_table";
     }
 }

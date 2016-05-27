@@ -1,8 +1,9 @@
 <%-- 
-    Document   : news_table
-    Created on : 26.05.2016, 13:45:32
+    Document   : sign_up_table
+    Created on : 27.05.2016, 14:53:41
     Author     : 1
 --%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

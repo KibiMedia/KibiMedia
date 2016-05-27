@@ -43,7 +43,11 @@
                         <li>
                           <a href="/KibiMedia/admin/video">Видео</a>
                         </li>
-                    
+                        
+                        <li>
+                          <a href="/KibiMedia/admin/sign_up">Записавшиеся</a>
+                        </li>
+                        
                 </ul>                           
             </div>
         </nav>   
@@ -70,7 +74,11 @@
                         <li>
                           <a href="/KibiMedia/admin/video">Видео</a>
                         </li>
-                    
+                        
+                        <li>
+                          <a href="/KibiMedia/admin/signup">Записавшиеся</a>
+                        </li>
+                        
                 </ul>                           
             </div>
         </nav>   

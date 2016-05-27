@@ -39,6 +39,14 @@
                 <td>
                     ${announcements.get(loop.index).getIdImg()}
                 </td>
+                <td>
+                    <form action="/admin/news">
+                    <button type="submit">Изменить новость</button>
+                    </form>
+                    <form action="/admin/news">
+                    <button type="submit">Удалить новость</button>
+                    </form>
+                </td>
                 </tr>
             </c:forEach>
             </tr>
