@@ -6,10 +6,12 @@
 package ru.sfedu.kibimedia.main;
 
 import ru.sfedu.kibimedia.dao.AnnouncementsDao;
+import ru.sfedu.kibimedia.dao.EventRegDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
 import ru.sfedu.kibimedia.dao.PagesDao;
 import ru.sfedu.kibimedia.dao.PhotosDao;
 import ru.sfedu.kibimedia.dao.impl.AnnouncementsDaoImpl;
+import ru.sfedu.kibimedia.dao.impl.EventRegDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.NewsDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.PagesDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.PhotosDaoImpl;
@@ -26,6 +28,7 @@ public class Factory {
     private AnnouncementsDao announcementsDao;
     private PhotosDao photosDao;
     private PagesDao pagesDao;
+    private EventRegDao eventRegDao;
     
     private Factory() { }
     
@@ -37,6 +40,12 @@ public class Factory {
         if (newsDao == null) 
             newsDao = new NewsDaoImpl();
         return newsDao;
+    }
+    
+    public EventRegDao getEventRegDao() {
+        if (eventRegDao== null) 
+            eventRegDao = new EventRegDaoImpl() ;
+        return eventRegDao;
     }
     
     public AnnouncementsDao getAnnouncementsDao() {
