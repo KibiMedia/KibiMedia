@@ -9,10 +9,15 @@
 
 <%@include file="header.jsp" %>
 
-<h2>${news.getTitle()}</h2>
-
-<p>
-    ${news.getText()}
-</p>
-
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title text-center">${news.getTitle()}</h2>
+            </div>
+            <div class="panel-body">
+                <p>${news.getText()}</p>
+            </div>
+        </div>
+    </div>
+      
 <%@include file="footer.jsp" %>

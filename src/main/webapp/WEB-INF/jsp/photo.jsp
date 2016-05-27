@@ -10,7 +10,7 @@
 <%@include file="header.jsp" %>
 
 <div class="row">
-    <c:forEach begin="0" end="5" varStatus="loop">
+    <c:forEach begin="0" end="${albumsCount}" varStatus="loop">
         <jsp:include page="main_news.jsp" >
             <jsp:param name="index" value="${loop.index}" />
         </jsp:include>

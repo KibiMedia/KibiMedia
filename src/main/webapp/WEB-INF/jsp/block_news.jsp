@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <div class="col-md-4 col-sm-12 col-xs-12">
-    <a class="thumb" data-fancybox-group='1' href="resources/images${newsPhotos.get(param.index).getHrefImg()}">              
+    <a class="thumb" data-fancybox-group='1' href="news?id=${news.get(param.index).getIdNews()}">              
       <img class="" src="resources/images${newsPhotos.get(param.index).getHrefImg()}" alt="">
       <span class='thumb_overlay'></span>
     </a>
