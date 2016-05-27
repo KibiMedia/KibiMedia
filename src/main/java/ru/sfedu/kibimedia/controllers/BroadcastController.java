@@ -42,7 +42,7 @@ public class BroadcastController {
         model.addAttribute("mainPagesCount", mainPages.size() - 1);
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);        
-        return "broadcast";
+        return "life";
     }
     
 }
