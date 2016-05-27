@@ -3,13 +3,12 @@
     Created on : 26.05.2016, 13:45:32
     Author     : 1
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Admin News</title>
     </head>
     <body>
             <table border="1" cellspacing="0" cellpadding="10">
@@ -24,17 +23,31 @@
             </tr>
             <tr>
             <c:forEach begin="0" end="${newsCount}" varStatus="loop">
+                <tr>
                 <td>
-                ${allNews.get(loop.index).getIdNews()}
+                    ${allNews.get(loop.index).getIdNews()}
                 </td>
+                <td>
+                    ${allNews.get(loop.index).getTitle()}
+                </td>
+                <td>
+                    ${allNews.get(loop.index).getDescription()}
+                </td>
+                <td>
+                    ${allNews.get(loop.index).getText()}
+                </td>
+                <td>
+                    ${allNews.get(loop.index).getIdWriter()}
+                </td>
+                <td>
+                    ${allNews.get(loop.index).getEventDate()}
+                </td>
+                <td>
+                    ${allNews.get(loop.index).getIdImg()}
+                </td>
+                </tr>
             </c:forEach>
             </tr>
-            <tr>
-            <td>Текст</td>
-            <td>Текст</td>
-            <td>Текст</td>
-            </tr>
             </table>-->
-            ${allNews.get(0).getText()}
     </body>
 </html>

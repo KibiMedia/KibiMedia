@@ -4,6 +4,7 @@
     Author     : 1
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,14 +22,25 @@
             <th>Id фотографии</th>
             </tr>
             <tr>
-            <td>Текст</td>
-            <td>Текст</td>
-            <td>Текст</td>
-            </tr>
-            <tr>
-            <td>Текст</td>
-            <td>Текст</td>
-            <td>Текст</td>
+            <c:forEach begin="0" end="${announCount}" varStatus="loop">
+                <tr>
+                <td>
+                    ${announcements.get(loop.index).getIdAnnoncement()}
+                </td>
+                <td>
+                    ${announcements.get(loop.index).getTitle()}
+                </td>
+                <td>
+                    ${announcements.get(loop.index).getDescription()}
+                </td>
+                <td>
+                    ${announcements.get(loop.index).getEventDate()}
+                </td>
+                <td>
+                    ${announcements.get(loop.index).getIdImg()}
+                </td>
+                </tr>
+            </c:forEach>
             </tr>
         </table>
     </body>

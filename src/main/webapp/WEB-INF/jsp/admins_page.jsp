@@ -29,19 +29,19 @@
                 <ul class="nav navbar-nav sf-menu sf-js-enabled sf-arrows" data-type="navbar">
                     
                         <li>
-                          <a href="/KibiMedia/admins/news">Новости</a>
+                          <a href="/KibiMedia/admin/news">Новости</a>
                         </li>
                     
                         <li>
-                          <a href="/KibiMedia/admins/ann">Анонсы</a>
+                          <a href="/KibiMedia/admin/ann">Анонсы</a>
                         </li>
                     
                         <li>
-                          <a href="/KibiMedia/admins/photo">Фото</a>
+                          <a href="/KibiMedia/admin/photo">Фото</a>
                         </li>
                     
                         <li>
-                          <a href="/KibiMedia/admins/video">Видео</a>
+                          <a href="/KibiMedia/admin/video">Видео</a>
                         </li>
                     
                 </ul>                           
@@ -56,19 +56,19 @@
                 <ul class="nav navbar-nav sf-menu sf-js-enabled sf-arrows" data-type="navbar">
                     
                         <li>
-                          <a href="/KibiMedia/admins/news">Новости</a>
+                          <a href="/KibiMedia/admin/news">Новости</a>
                         </li>
                     
                         <li>
-                          <a href="/KibiMedia/admins/ann">Анонсы</a>
+                          <a href="/KibiMedia/admin/ann">Анонсы</a>
                         </li>
                     
                         <li>
-                          <a href="/KibiMedia/admins/photo">Фото</a>
+                          <a href="/KibiMedia/admin/photo">Фото</a>
                         </li>
                     
                         <li>
-                          <a href="/KibiMedia/admins/video">Видео</a>
+                          <a href="/KibiMedia/admin/video">Видео</a>
                         </li>
                     
                 </ul>                           
