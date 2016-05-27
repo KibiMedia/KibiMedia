@@ -21,7 +21,7 @@ import ru.sfedu.kibimedia.tables.Pages;
  */
 @Controller
 public class BroadcastController {
-    @RequestMapping(value="/life", method = RequestMethod.GET)
+    @RequestMapping(value="/live", method = RequestMethod.GET)
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
@@ -42,7 +42,7 @@ public class BroadcastController {
         model.addAttribute("mainPagesCount", mainPages.size() - 1);
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);        
-        return "broadcast";
+        return "live";
     }
     
 }
