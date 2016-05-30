@@ -23,6 +23,8 @@
     <link href="<c:url value="/resources/css/camera.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/css/search.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/css/google-map.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/js/fancybox/source/jquery.fancybox.css" />" rel="stylesheet">
+
 
 
 

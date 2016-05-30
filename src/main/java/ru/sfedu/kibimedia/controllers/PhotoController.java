@@ -64,15 +64,20 @@ public class PhotoController {
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
         AlbumsPhotoDao albumsPhotoDao = factory.getAlbumsPhotoDao();
+        AlbumsDao albumsDao = factory.getAlbumsDao();
         
         ArrayList<AlbumsPhoto> albumsPhoto = null;
         ArrayList<Pages> mainPages = null;
         ArrayList<Pages> footerPages = null;
+        
+        String albumName = "";
 
         try {
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);
             albumsPhoto = albumsPhotoDao.getPhotosByAlbum(id);
+            albumName = albumsDao.getAlbumById(id).getTitle();
+            
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
@@ -84,6 +89,9 @@ public class PhotoController {
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
         model.addAttribute("albumsPhoto", albumsPhoto);
+        model.addAttribute("albumsPhotoCount", albumsPhoto.size() - 1);
+        model.addAttribute("albumName", albumName);
+        
         return "one_albums_photo";
     }
      

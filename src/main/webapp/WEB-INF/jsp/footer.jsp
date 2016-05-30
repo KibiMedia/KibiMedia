@@ -45,6 +45,31 @@
     <script src="<c:url value="http://code.jquery.com/jquery-latest.min.js" />"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
     <script src="<c:url value="/resources/js/tm-scripts.js" />"></script>   
+    <script src="<c:url value="/resources/js/fancybox/source/jquery.fancybox.js" />"></script> 
+    <script src="<c:url value="/resources/js/fancybox/source/helpers/jquery.fancybox-media.js" />"></script>
+	
+	<script>
+		$(document).ready(function(){
+		$(".fancybox-media").fancybox({
+			openEffect  : 'none',
+			closeEffect : 'none',
+			nextClick : false,
+
+			helpers : {
+				media : {}
+			}
+		});
+		});
+	</script>
+
+	<script>
+		$(document).ready(function() {
+			$(".fancybox").fancybox({
+				openEffect	: 'none',
+				closeEffect	: 'none'
+			});
+		});
+	</script>
     
   <!-- </script> -->
 

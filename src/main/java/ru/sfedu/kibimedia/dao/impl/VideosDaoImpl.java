@@ -5,78 +5,77 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
+import ru.sfedu.kibimedia.dao.VideosDao;
+import ru.sfedu.kibimedia.tables.Videos;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-import ru.sfedu.kibimedia.tables.AlbumsPhoto;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
-import ru.sfedu.kibimedia.dao.AlbumsPhotoDao;
-
 /**
  *
- * @author Сергей
+ * @author 1
  */
-public class AlbumsPhotoDaoImpl implements AlbumsPhotoDao {
-
-    @Override
-    public void addAlbumsPhoto(AlbumsPhoto albumsPhoto) throws SQLException {
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.save(albumsPhoto);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-    }
-
-    @Override
-    public void deleteAlbumsPhoto(AlbumsPhoto albumsPhoto) throws SQLException {
-
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.delete(albumsPhoto);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-    }
-
-    @Override
-    public void deleteAlbumsPhoto(int id) throws SQLException {
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.delete(getPhotoById(id));
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-    }
+public class VideosDaoImpl implements VideosDao{
     
     @Override
-    public AlbumsPhoto getPhotoById(int id) throws SQLException {
-        AlbumsPhoto albumsPhoto = null;
-
+    public void addVideo(Videos video) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            albumsPhoto = (AlbumsPhoto) session.load(AlbumsPhoto.class, id);
+            session.beginTransaction();
+            session.save(video);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+    }
 
+    @Override
+    public void deleteVideo(Videos video) throws SQLException {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(video);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+    }
+
+    @Override
+    public void deleteVideoById(int id) throws SQLException {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(getVideo(id));
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+    }
+
+    @Override
+    public Videos getVideo(int id) throws SQLException {
+        Videos video = null;
+        
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            video = (Videos) session.load(Videos.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -84,44 +83,25 @@ public class AlbumsPhotoDaoImpl implements AlbumsPhotoDao {
                 session.close();
         }
         
-        return albumsPhoto;
+        return video;
+    }
+
+    @Override
+    public ArrayList<Videos> getVideos() throws SQLException {
+        ArrayList<Videos> videos = null;
+        
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            videos = (ArrayList<Videos>) session.createCriteria(Videos.class).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+        
+        return videos;
     }
     
-    @Override
-    public ArrayList<AlbumsPhoto> getPhotosByAlbum(int album) throws SQLException {
-        ArrayList<AlbumsPhoto> albumsPhotos = null;
-
-        
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            albumsPhotos = (ArrayList<AlbumsPhoto>) session.createCriteria(AlbumsPhoto.class)
-                    .add(Restrictions.eq("idAlbum", new Integer(album))).list();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-        
-        return albumsPhotos;
-    }
-
-    @Override
-    public ArrayList<AlbumsPhoto> getAllAlbumsPhoto() throws SQLException {
-        ArrayList<AlbumsPhoto> albumsPhotos = null;
-
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            albumsPhotos = (ArrayList<AlbumsPhoto>) session.createCriteria(AlbumsPhoto.class).list();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-        
-        return albumsPhotos;
-    }  
 }

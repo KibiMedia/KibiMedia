@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<form action="/examples/jsp/forms/process.jsp" method=post>
+<form action="/examples/jsp/forms/process.jsp" method="get">
 
     <head>
         <title>Change News</title>
