@@ -8,7 +8,6 @@ package ru.sfedu.kibimedia.dao;
 import ru.sfedu.kibimedia.tables.Coments;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
