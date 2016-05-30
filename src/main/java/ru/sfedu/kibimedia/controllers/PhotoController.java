@@ -50,7 +50,7 @@ public class PhotoController {
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
         
-        model.addAttribute("news", albums);
+        model.addAttribute("albums", albums);
         model.addAttribute("albumsCount", albums.size() - 1);
         
         return "photo";

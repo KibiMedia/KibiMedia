@@ -17,8 +17,8 @@ import javax.persistence.Table;
  * @author Сергей
  */
 @Entity
-@Table(name = "album_photos")
-public class AlbumPhotos implements Serializable{
+@Table(name = "albums_photo")
+public class AlbumsPhoto implements Serializable{
     
     private static final long serialVersionUID = -1L;
     

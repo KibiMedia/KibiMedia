@@ -39,6 +39,9 @@ public class Albums implements Serializable{
     @Column(name = "main_photo")
     private String mainPhoto;
     
+    @Column(name = "id_news")
+    private Integer idNews;
+    
     public Integer getIdAlbum() {
         return idAlbum;
     }
@@ -61,6 +64,14 @@ public class Albums implements Serializable{
 
     public void setMainPhoto(String mainPhoto) {
         this.mainPhoto = mainPhoto;
+    }
+
+    public Integer getIdNews() {
+        return idNews;
+    }
+
+    public void setIdNews(Integer idNews) {
+        this.idNews = idNews;
     }
    
 }
