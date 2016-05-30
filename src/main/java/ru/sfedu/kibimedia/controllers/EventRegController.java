@@ -73,7 +73,7 @@ public class EventRegController {
             event.setOrganization(orgEvent);
             event.setName(nameEvent);
             event.setPhone(phoneEevent);
-            event.setLeader(liderEvent);
+            event.setNameOfLeader(liderEvent);
             
                 System.out.println("========================================"+orgEvent);
 

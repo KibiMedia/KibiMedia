@@ -8,13 +8,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@include file="header.jsp" %>
-
-<div class="row">
-    <c:forEach begin="0" end="${albumsCount}" varStatus="loop">
-        <jsp:include page="main_news.jsp" >
-            <jsp:param name="index" value="${loop.index}" />
-        </jsp:include>
-    </c:forEach>
+<div class="container center991">
+    <h2 class="text-center">
+        Фотоальбомы             
+    </h2>
+    <div class="row">
+        <c:forEach begin="0" end="${albumsCount}" varStatus="loop">
+            <jsp:include page="photo_block.jsp" >
+                <jsp:param name="index" value="${loop.index}" />
+            </jsp:include>
+        </c:forEach>
+    </div>
 </div>
 
 <%@include file="footer.jsp" %>

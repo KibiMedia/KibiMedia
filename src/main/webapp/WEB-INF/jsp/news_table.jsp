@@ -55,11 +55,7 @@
                 
             </c:forEach>
             <tr>
-                <td></td><td></td>
-                <td></td><td></td>
-                <td></td><td></td>
-                <td></td>
-                <td>
+                <td align=center colspan=8>
                     <form action="/admin/news/add">
                         <button type="submit">Добавить новость</button>
                     </form>

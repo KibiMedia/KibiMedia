@@ -19,7 +19,7 @@
         <div class="item active">
             <img src="resources/images${previewPhotos.get(0).getHrefImg()}" alt="">
             <div class="carousel-caption">
-                <h3>${preview.get(0).getTitle()}</h3>
+                <h3><a href="previews?id=${preview.get(0).getIdAnnoncement()}">${preview.get(0).getTitle()}</a></h3>
                 <p>${preview.get(0).getDescription()}</p>
             </div>
         </div>

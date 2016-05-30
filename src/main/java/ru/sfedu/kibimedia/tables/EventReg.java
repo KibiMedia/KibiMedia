@@ -39,7 +39,7 @@ public class EventReg implements Serializable{
     @Column(name = "name")
     private String name;
     
-    @Column(name = "Name_of_lider")
+    @Column(name = "name_of_lider")
     private String leader;
     
     @Column(name = "organization")
@@ -63,11 +63,11 @@ public class EventReg implements Serializable{
         this.name = name;
     }
 
-    public String getLeader() {
+    public String getNameOfLeader() {
         return leader;
     }
 
-    public void setLeader(String Leader) {
+    public void setNameOfLeader(String Leader) {
         this.leader = Leader;
     }
     

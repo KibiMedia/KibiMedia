@@ -101,7 +101,7 @@ public class AdminsController {
         }
     }
     
-    @RequestMapping(value="/admin/news/chng", method = RequestMethod.POST, 
+    /*@RequestMapping(value="/admin/news/chng", method = RequestMethod.POST, 
             params = {"id_news", "title", "description", "text", "id_writer", "event_date", "id_img"})
     public void changeNews(Model model, 
                         @RequestParam(value = "id_news") int idNews,
@@ -129,9 +129,9 @@ public class AdminsController {
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
-    }
+    }*/
     
-    @RequestMapping(value="/admin/news/chng", method = RequestMethod.POST, 
+    @RequestMapping(value="/admin/news/chng", method = RequestMethod.GET, 
             params = "id")
     public String changeNews(Model model, 
                         @RequestParam(value = "id") int id){

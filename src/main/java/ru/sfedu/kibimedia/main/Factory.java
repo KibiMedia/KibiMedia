@@ -6,12 +6,14 @@
 package ru.sfedu.kibimedia.main;
 
 import ru.sfedu.kibimedia.dao.AlbumsDao;
+import ru.sfedu.kibimedia.dao.AlbumsPhotoDao;
 import ru.sfedu.kibimedia.dao.AnnouncementsDao;
 import ru.sfedu.kibimedia.dao.EventRegDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
 import ru.sfedu.kibimedia.dao.PagesDao;
 import ru.sfedu.kibimedia.dao.PhotosDao;
 import ru.sfedu.kibimedia.dao.impl.AlbumsDaoImpl;
+import ru.sfedu.kibimedia.dao.impl.AlbumsPhotoDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.AnnouncementsDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.EventRegDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.NewsDaoImpl;
@@ -32,6 +34,7 @@ public class Factory {
     private PagesDao pagesDao;
     private EventRegDao eventRegDao;
     private AlbumsDao albumsDao;
+    private AlbumsPhotoDao albumsPhotoDao;
 
     
     private Factory() { }
@@ -74,6 +77,12 @@ public class Factory {
         if (albumsDao == null) 
             albumsDao = new AlbumsDaoImpl();
         return albumsDao;
+    }
+    
+    public AlbumsPhotoDao getAlbumsPhotoDao() {
+        if (albumsPhotoDao == null) 
+            albumsPhotoDao = new AlbumsPhotoDaoImpl();
+        return albumsPhotoDao;
     }
     
 }
