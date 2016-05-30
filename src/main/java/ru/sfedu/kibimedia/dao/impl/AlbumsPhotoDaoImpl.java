@@ -9,23 +9,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import ru.sfedu.kibimedia.dao.AlbumPhotosDao;
-import ru.sfedu.kibimedia.tables.AlbumPhotos;
+import ru.sfedu.kibimedia.dao.AlbumsPhotoDao;
+import ru.sfedu.kibimedia.tables.AlbumsPhoto;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
 
 /**
  *
  * @author Сергей
  */
-public class AlbumPhotosDaoImpl implements AlbumPhotosDao {
+public class AlbumsPhotoDaoImpl implements AlbumsPhotoDao {
 
     @Override
-    public void addAlbumPhotos(AlbumPhotos admin) throws SQLException {
+    public void addAlbumsPhoto(AlbumsPhoto albumsPhoto) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(admin);
+            session.save(albumsPhoto);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,12 +36,12 @@ public class AlbumPhotosDaoImpl implements AlbumPhotosDao {
     }
 
     @Override
-    public void deleteAlbumPhotos(AlbumPhotos admin) throws SQLException {
+    public void deleteAlbumsPhoto(AlbumsPhoto albumsPhoto) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(admin);
+            session.delete(albumsPhoto);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class AlbumPhotosDaoImpl implements AlbumPhotosDao {
     }
 
     @Override
-    public void deleteAlbumPhotos(int id) throws SQLException {
+    public void deleteAlbumsPhoto(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -68,13 +68,13 @@ public class AlbumPhotosDaoImpl implements AlbumPhotosDao {
     }
     
     @Override
-    public AlbumPhotos getPhotoById(int id) throws SQLException {
-        AlbumPhotos albumPhotos = null;
+    public AlbumsPhoto getPhotoById(int id) throws SQLException {
+        AlbumsPhoto albumsPhoto = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            albumPhotos = (AlbumPhotos) session.load(AlbumPhotos.class, id);
+            albumsPhoto = (AlbumsPhoto) session.load(AlbumsPhoto.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -82,17 +82,17 @@ public class AlbumPhotosDaoImpl implements AlbumPhotosDao {
                 session.close();
         }
         
-        return albumPhotos;
+        return albumsPhoto;
     }
     
     @Override
-    public ArrayList<AlbumPhotos> getPhotosByAlbum(int album) throws SQLException {
-        ArrayList<AlbumPhotos> albumPhotoses = null;
+    public ArrayList<AlbumsPhoto> getPhotosByAlbum(int album) throws SQLException {
+        ArrayList<AlbumsPhoto> albumsPhotos = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            albumPhotoses = (ArrayList<AlbumPhotos>) session.createCriteria(AlbumPhotos.class)
+            albumsPhotos = (ArrayList<AlbumsPhoto>) session.createCriteria(AlbumsPhoto.class)
                     .add(Restrictions.eq("idAlbum", new Integer(album))).list();
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,17 +101,17 @@ public class AlbumPhotosDaoImpl implements AlbumPhotosDao {
                 session.close();
         }
         
-        return albumPhotoses;
+        return albumsPhotos;
     }
 
     @Override
-    public ArrayList<AlbumPhotos> getAllAlbumPhotos() throws SQLException {
-        ArrayList<AlbumPhotos> albumPhotoses = null;
+    public ArrayList<AlbumsPhoto> getAllAlbumsPhoto() throws SQLException {
+        ArrayList<AlbumsPhoto> albumsPhotos = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            albumPhotoses = (ArrayList<AlbumPhotos>) session.createCriteria(AlbumPhotos.class).list();
+            albumsPhotos = (ArrayList<AlbumsPhoto>) session.createCriteria(AlbumsPhoto.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -119,6 +119,6 @@ public class AlbumPhotosDaoImpl implements AlbumPhotosDao {
                 session.close();
         }
         
-        return albumPhotoses;
+        return albumsPhotos;
     }  
 }

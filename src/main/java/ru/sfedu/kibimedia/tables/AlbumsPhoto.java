@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "album_photos")
-public class AlbumPhotos implements Serializable{
+public class AlbumsPhoto implements Serializable{
     
     private static final long serialVersionUID = -1L;
     
