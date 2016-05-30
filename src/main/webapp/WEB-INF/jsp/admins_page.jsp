@@ -76,7 +76,7 @@
                         </li>
                         
                         <li>
-                          <a href="/KibiMedia/admin/signup">Записавшиеся</a>
+                          <a href="/KibiMedia/admin/sign_up">Записавшиеся</a>
                         </li>
                         
                 </ul>                           

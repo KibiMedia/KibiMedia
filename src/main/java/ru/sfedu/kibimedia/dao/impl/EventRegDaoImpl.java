@@ -94,7 +94,7 @@ public class EventRegDaoImpl implements EventRegDao {
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             events = (ArrayList<EventReg>) session.createCriteria(EventReg.class)
-                    .addOrder(Order.asc("idLeader")).list();
+                    .addOrder(Order.asc("idEvent")).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.sfedu.kibimedia.dao.AnnouncementsDao;
+import ru.sfedu.kibimedia.dao.EventRegDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.Announcements;
+import ru.sfedu.kibimedia.tables.EventReg;
 import ru.sfedu.kibimedia.tables.News;
 
 /**
@@ -60,7 +62,7 @@ public class AdminsController {
         
         try {
             allNews = newsDao.getAllNews();
-            newsDao.addNews(newsDao.getNews(5));
+            //newsDao.addNews(newsDao.getNews(5));
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }   
@@ -135,7 +137,6 @@ public class AdminsController {
         Factory factory = Factory.getInstance();
         NewsDao newsDao = factory.getNewsDao();
                 
-
         try {
             newsDao.deleteNews(id);
         } catch (SQLException ex) {
@@ -153,8 +154,22 @@ public class AdminsController {
         return "change_video";
     }
     
-    @RequestMapping(value="/admin/signup")
-    public String viewSigUp() {  
+    @RequestMapping(value="/admin/sign_up", method = RequestMethod.GET)
+    public String viewSignUp(Model model) {
+        
+        Factory factory = Factory.getInstance();
+        EventRegDao eventRegDao = factory.getEventRegDao();
+        
+        ArrayList<EventReg> events = null; 
+        
+        try {
+            events = eventRegDao.getEvents();
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }   
+        model.addAttribute("events", events);
+        model.addAttribute("eventsCount", events.size() - 1);
+        
         return "sign_up_table";
     }
 }

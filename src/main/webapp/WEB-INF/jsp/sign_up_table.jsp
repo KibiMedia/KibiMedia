@@ -9,62 +9,59 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Admin News</title>
+        <title>Sign Up</title>
     </head>
     <body>
             <table border="1" cellspacing="0" cellpadding="10">
             <tr>
-            <th>Id</th>
-            <th>Заголовок</th>
+            <th>Id События</th>
+            <th>Название события</th>
+            <th>ФИО ответственного</th>
+            <th>Название организации</th>
+            <th>Телефон</th>
             <th>Описание</th>
-            <th>Полный текст</th>
-            <th>Id автора</th>
-            <th>Дата события</th>
-            <th>Id фотографии</th>
             </tr>
-            <tr>
-            <c:forEach begin="0" end="${newsCount}" varStatus="loop">
+            <tr>    
+            <c:forEach begin="0" end="${eventsCount}" varStatus="loop">
                 <tr>
                 <td>
-                    ${allNews.get(loop.index).getIdNews()}
+                    ${events.get(loop.index).getIdEvent()}
                 </td>
                 <td>
-                    ${allNews.get(loop.index).getTitle()}
+                    ${events.get(loop.index).getName()}
                 </td>
                 <td>
-                    ${allNews.get(loop.index).getDescription()}
+                    ${events.get(loop.index).getLeader()}
                 </td>
                 <td>
-                    ${allNews.get(loop.index).getText()}
+                    ${events.get(loop.index).getOrganization()}
                 </td>
                 <td>
-                    ${allNews.get(loop.index).getIdWriter()}
+                    ${events.get(loop.index).getPhone()}
                 </td>
                 <td>
-                    ${allNews.get(loop.index).getEventDate()}
+                    ${events.get(loop.index).getDescription()}
                 </td>
                 <td>
-                    ${allNews.get(loop.index).getIdImg()}
-                </td>
-                <td>
-                    <form action="/admin/news/chng">
-                        <button type="submit">Изменить новость</button>
+                    <form action="/admin/sign_up/chng">
+                        <button type="submit">Изменить событие</button>
                     </form>
-                    <form action="/admin/news/del">
-                        <button type="submit">Удалить новость</button>
+                    <form action="/admin/sign_up/del">
+                        <button type="submit">Удалить событие</button>
                     </form>
                 </td>
                 </tr>
                 
             </c:forEach>
+                
+            </tr>
             <tr>
                 <td></td><td></td>
                 <td></td><td></td>
                 <td></td><td></td>
-                <td></td>
                 <td>
-                    <form action="/admin/news/add">
-                        <button type="submit">Добавить новость</button>
+                    <form action="/admin/sign_up/add">
+                        <button type="submit">Добавить событие</button>
                     </form>
                 </td>
                 </tr>
