@@ -8,7 +8,7 @@
 <div class="item">
     <img src="resources/images${previewPhotos.get(param.index).getHrefImg()}" alt="">
     <div class="carousel-caption">
-        <h3>${preview.get(param.index).getTitle()}</h3>
+        <h3><a href="previews?id=${preview.get(param.index).getIdAnnoncement()}">${preview.get(param.index).getTitle()}</a></h3>
         <p>${preview.get(param.index).getDescription()}</p>
     </div>
 </div>
