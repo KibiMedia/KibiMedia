@@ -9,15 +9,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import ru.sfedu.kibimedia.dao.AlbumPhotosDao;
 import ru.sfedu.kibimedia.tables.AlbumsPhoto;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
+import ru.sfedu.kibimedia.dao.AlbumsPhotoDao;
 
 /**
  *
  * @author Сергей
  */
-public class AlbumPhotosDaoImpl implements AlbumPhotosDao {
+public class AlbumsPhotoDaoImpl implements AlbumsPhotoDao {
 
     @Override
     public void addAlbumPhotos(AlbumsPhoto admin) throws SQLException {

@@ -13,7 +13,7 @@ import ru.sfedu.kibimedia.tables.AlbumsPhoto;
  *
  * @author Сергей
  */
-public interface AlbumPhotosDao {
+public interface AlbumsPhotoDao {
     
     public void addAlbumPhotos(AlbumsPhoto albumPhotos) throws SQLException;
     public void deleteAlbumPhotos(AlbumsPhoto albumPhotos) throws SQLException;
