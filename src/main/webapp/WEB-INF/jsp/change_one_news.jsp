@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<form action="/examples/jsp/forms/process.jsp" method="get">
+<form action="chng" method="get">
 
     <head>
         <title>Change News</title>
@@ -16,7 +16,6 @@
     
 <table border="1" cellspacing="0" cellpadding="10">
             <tr>
-            <th>Id</th>
             <th>Заголовок</th>
             <th>Описание</th>
             <th>Полный текст</th>
@@ -26,11 +25,7 @@
             </tr>
 
 <tr>
-    
-    <td valign=top>
-    ID новости*
-    <input type="text" name="idNews" value="" size=3 maxlength=5>
-    </td>
+   
     
     <td  valign=top>
     Заголовок*
@@ -48,23 +43,23 @@
     
     <td  valign=top>
     ID автора*
-    <input type="text" name="idWriter" value="" size=3  maxlength=5>
+    <input type="text" name="id_writer" value="" size=3  maxlength=5>
     </td>
     
     <td  valign=top>
     Дата события*
-    <input type="text" name="eventData" value="" size=15  maxlength=15>
+    <input type="text" name="event_date" value="" size=15  maxlength=15>
     </td>
     
     <td  valign=top>
     ID фото*
-    <input type="text" name="idPhoto" value="" size=3  maxlength=5>
+    <input type="text" name="id_img" value="" size=3  maxlength=5>
     </td>
     
 </tr>
 
 <tr>
-    <td  align=center colspan=7>
+    <td  align=center colspan=6>
         <input type="submit" value="Submit"> <input type="reset"
         value="Reset">
     </td>

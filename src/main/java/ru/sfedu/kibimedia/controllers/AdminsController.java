@@ -101,10 +101,9 @@ public class AdminsController {
         }
     }
     
-    /*@RequestMapping(value="/admin/news/chng", method = RequestMethod.POST, 
-            params = {"id_news", "title", "description", "text", "id_writer", "event_date", "id_img"})
-    public void changeNews(Model model, 
-                        @RequestParam(value = "id_news") int idNews,
+    @RequestMapping(value="/admin/news/chng", method = RequestMethod.GET, 
+            params = {"title", "description", "text", "id_writer", "event_date", "id_img"})
+    public String changeNews(Model model, 
                         @RequestParam(value = "title") String title,
                         @RequestParam(value = "description") String description,
                         @RequestParam(value = "text") String text,
@@ -116,7 +115,8 @@ public class AdminsController {
         Factory factory = Factory.getInstance();
         NewsDao newsDao = factory.getNewsDao();
         
-        news.setIdImg(idImg);
+        System.out.println(title + " " + description + " " + text  + " " + idWriter + " " + eventDate + " " + idImg);
+        
         news.setTitle(title);
         news.setDescription(description);
         news.setText(text);
@@ -129,7 +129,9 @@ public class AdminsController {
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
-    }*/
+        
+        return "news_table";
+    }
     
     @RequestMapping(value="/admin/news/chng", method = RequestMethod.GET, 
             params = "id")

@@ -54,6 +54,10 @@ public class News implements Serializable{
         return idNews;
     }
     
+    public void seIdNews(Integer idNews) {
+        this.idNews = idNews;
+    }
+    
     public String getTitle() {
         return title;
     }
