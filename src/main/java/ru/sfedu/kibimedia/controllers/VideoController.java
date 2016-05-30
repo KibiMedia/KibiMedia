@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.sfedu.kibimedia.dao.PagesDao;
+import ru.sfedu.kibimedia.dao.VideosDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.Pages;
+import ru.sfedu.kibimedia.tables.Videos;
 
 /**
  *
@@ -25,13 +27,15 @@ public class VideoController {
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
-        
+        VideosDao videosDao = factory.getVideosDao();        
         ArrayList<Pages> mainPages = null;
         ArrayList<Pages> footerPages = null;
+        ArrayList<Videos> videos = null;  
 
         try {
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);
+            videos = videosDao.getVideos();
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
@@ -42,6 +46,8 @@ public class VideoController {
         model.addAttribute("mainPagesCount", mainPages.size() - 1);
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
+        model.addAttribute("video", videos);
+        model.addAttribute("videoCount", videos.size() - 1);
         
         return "video";
     }
