@@ -33,6 +33,9 @@ public class Albums implements Serializable{
     @Column(name = "id_album")
     private Integer idAlbum;
     
+    @Column(name = "id_news")
+    private Integer idNews;
+    
     @Column(name = "title")
     private String title;
 
@@ -43,6 +46,14 @@ public class Albums implements Serializable{
         return idAlbum;
     }
 
+    public Integer getIdNews() {
+        return idNews;
+    }
+
+    public void setIdNews(Integer idNews) {
+        this.idNews = idNews;
+    }
+    
     public void setIdAlbum(Integer idAlbum) {
         this.idAlbum = idAlbum;
     }

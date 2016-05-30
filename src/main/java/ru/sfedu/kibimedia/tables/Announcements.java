@@ -38,6 +38,9 @@ public class Announcements implements Serializable{
     @Column(name = "description")
     private String description;
     
+    @Column(name = "text")
+    private String text;
+    
     @Column(name = "event_date")
     private Date eventDate;
     
@@ -78,5 +81,13 @@ public class Announcements implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }
