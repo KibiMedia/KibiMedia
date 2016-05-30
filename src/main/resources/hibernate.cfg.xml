@@ -39,6 +39,7 @@
     <mapping class="ru.sfedu.kibimedia.tables.Users" />
     <mapping class="ru.sfedu.kibimedia.tables.Albums" />
     <mapping class="ru.sfedu.kibimedia.tables.AlbumPhotos" />
+    <mapping class="ru.sfedu.kibimedia.tables.Awards" />
 
   </session-factory>
 </hibernate-configuration>
