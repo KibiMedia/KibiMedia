@@ -27,23 +27,14 @@ public class EventReg implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    /*
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    */
-    
     @Column(name = "id_event")
     private Integer idEvent;
     
-    @Column(name = "name")
-    private String name;
-    
-    @Column(name = "name_of_lider")
-    private String leader;
-    
-    @Column(name = "organization")
-    private String Organization;
+    @Column(name = "event_name")
+    private String eventName;
+   
+    @Column(name = "org_name")
+    private String orgName;
     
     @Column(name = "phone")
     private String phone;
@@ -51,34 +42,33 @@ public class EventReg implements Serializable{
     @Column(name = "description")
     private String description;
     
+    @Column(name = "full_name")
+    private String fullName;
+
     public Integer getIdEvent() {
         return idEvent;
     }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
+
+    public void setIdEvent(Integer idEvent) {
+        this.idEvent = idEvent;
     }
 
-    public String getNameOfLeader() {
-        return leader;
+    public String getEventName() {
+        return eventName;
     }
 
-    public void setNameOfLeader(String Leader) {
-        this.leader = Leader;
-    }
-    
-    public String getOrganization() {
-        return Organization;
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
-    public void setOrganization(String Organization) {
-        this.Organization = Organization;
+    public String getOrgName() {
+        return orgName;
     }
-    
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -86,7 +76,7 @@ public class EventReg implements Serializable{
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -94,5 +84,14 @@ public class EventReg implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+    
     
 }

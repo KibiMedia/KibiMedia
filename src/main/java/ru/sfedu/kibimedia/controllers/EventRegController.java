@@ -52,13 +52,13 @@ public class EventRegController {
     }
     
     @RequestMapping(value="/event_reg", method = RequestMethod.GET, params = 
-            {"org_event", "name_event", "description_event", "phone_event", "lider_event" })
+            {"org_name", "event_name", "description", "phone", "full_name" })
     public String viewHomeWithId(Model model, 
-            @RequestParam(value = "org_event") String orgEvent, 
-            @RequestParam(value = "name_event") String nameEvent, 
-            @RequestParam(value = "description_event") String descriptionEvent,
-            @RequestParam(value = "phone_event") String phoneEevent,
-            @RequestParam(value = "lider_event") String liderEvent)
+            @RequestParam(value = "org_name") String orgName, 
+            @RequestParam(value = "event_name") String eventName, 
+            @RequestParam(value = "description") String description,
+            @RequestParam(value = "phone") String phone,
+            @RequestParam(value = "full_name") String fullName)
             {
         Factory factory = Factory.getInstance();    
         PagesDao pagesDao = factory.getPagesDao();
@@ -69,14 +69,13 @@ public class EventRegController {
         ArrayList<Pages> footerPages = null;
         
         EventReg event = new EventReg();            
-            event.setDescription(descriptionEvent);
-            event.setOrganization(orgEvent);
-            event.setName(nameEvent);
-            event.setPhone(phoneEevent);
-            event.setNameOfLeader(liderEvent);
-            
-                System.out.println("========================================"+orgEvent);
-
+        
+        event.setOrgName(orgName);
+        event.setEventName(eventName);
+        event.setDescription(description);
+        event.setPhone(phone);
+        event.setFullName(fullName);
+       
         try {
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);       

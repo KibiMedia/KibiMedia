@@ -14,18 +14,18 @@
 
     <div class="container">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-6 col-lg-offset-3">
             <h4 class="text-center">Регистрация мероприятия</h4>
-            <form action="params.jspx">
+            <form action="event_reg" method="get">
               <div class="form-group">
-                <label>Название организации:</label>
-                <input class="form-control" placeholder="организация" type="text" name="org" value="">
+                <label>Название организации (структурного подразделения):</label>
+                <input class="form-control" placeholder="организация" type="text" name="org_name" value="">
                 <label class="label label-danger" id="loginLabel" style="display: none">Название организации должно содержать
                   только русские или латинские символы.</label>
               </div>
               <div class="form-group">
                 <label>Название мероприятия:</label>
-                <input  name="fevent" class="form-control" placeholder="мероприятие" type="text" name="event" value="">
+                <input class="form-control" placeholder="мероприятие" type="text" name="event_name" value="">
                 <label class="label label-danger" style="display: none">Название мероприятия должно содержать
                   только русские или латинские символы.</label>
               </div>
@@ -42,22 +42,18 @@
               </div>
               <div class="form-group">
                 <label>ФИО ответственного мероприятия:</label>
-                <input class="form-control" placeholder="введите ФИО" type="text" name="fullname" value="">
+                <input class="form-control" placeholder="введите ФИО" type="text" name="full_name" value="">
                 <label class="label label-danger" style="display: none">Поле должно содержать
                   только русские или латинские символы</label>
               </div>
-                
-              <div class="form-group" id="submitReg">
-                  
-                  <a type="submit" class="btn btn-success" id="submitRegBtn" 
-                     href="event_reg?org_event=${param.org}&param.name_event=name&param.description=description_event&param.phone=phone_event&param.fullname=lider_event"
-                   >Зарегестрировать</a>
-                <a type="submit" class="btn btn-warning" id="cancelRegBtn">Отменить</a>
+              <div class="form-group" id="submitReg"> 
+                <input class="btn btn-info" type="submit" value="Зарегистировать"> <input class="btn btn-warning" type="reset" value="Отменить">
                 <br>
                 <label class="label label-success" style="display: none">Вы успешно зарегистрированы!</label>
                 <br>
                 <label class="label label-danger" style="display: none">Заполните все поля!</label>
-              </div>
+              </div>  
+          
 
             </form>
 

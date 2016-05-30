@@ -28,13 +28,13 @@
                     ${events.get(loop.index).getIdEvent()}
                 </td>
                 <td>
-                    ${events.get(loop.index).getName()}
+                    ${events.get(loop.index).getEventName()}
                 </td>
                 <td>
-                    ${events.get(loop.index).getLeader()}
+                    ${events.get(loop.index).getFullName()}
                 </td>
                 <td>
-                    ${events.get(loop.index).getOrganization()}
+                    ${events.get(loop.index).getOrgName()}
                 </td>
                 <td>
                     ${events.get(loop.index).getPhone()}
