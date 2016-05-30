@@ -46,10 +46,8 @@
                     ${allNews.get(loop.index).getIdImg()}
                 </td>
                 <td>
-                    <form action="/admin/news/chng">
-                        <button type="submit">Изменить новость</button>
-                    </form>
-                    <form action="/admin/news/del">
+                    <a href="news/chng?id=${allNews.get(loop.index).getIdNews()}">Изменить новость</a>
+                    <form action="/admin/news/del?id=${allNews.get(loop.index).getIdNews()}">
                         <button type="submit">Удалить новость</button>
                     </form>
                 </td>

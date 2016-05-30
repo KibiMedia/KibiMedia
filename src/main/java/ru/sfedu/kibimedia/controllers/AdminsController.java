@@ -131,6 +131,26 @@ public class AdminsController {
         }
     }
     
+    @RequestMapping(value="/admin/news/chng", method = RequestMethod.POST, 
+            params = "id")
+    public String changeNews(Model model, 
+                        @RequestParam(value = "id") int id){
+        
+        News news = null;
+        Factory factory = Factory.getInstance();
+        NewsDao newsDao = factory.getNewsDao();
+
+        try {
+            news = newsDao.getNews(id);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+        
+        model.addAttribute("news", news);
+        
+        return "change_one_news";
+    }
+    
     @RequestMapping(value="/admin/news/del", method = RequestMethod.POST, params = "idNews")
     public void deleteNews(Model model, @RequestParam(value = "idNews") int id) {
         
