@@ -40,7 +40,9 @@
                     <img class="" src="resources/images/employee/gord.jpg" alt="">
                     <div class="caption">
                         <h4>
+                            <a>
                            Гордынская Наталья Генадьевна
+                            </a>
                         </h4>
                         <p>
                         Заместитель директора
