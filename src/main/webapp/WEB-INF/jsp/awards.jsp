@@ -16,7 +16,8 @@
            Награды
           </small>
   </h2>
-  <img src="resources/images/awards.jpg">   
+ 
+  <img src="<c:url value="resources/images/awards.jpg" />">   
         <div class="container">
             <c:forEach begin="0" end="${awardsCount}" varStatus="loop">
                 <div class="row">

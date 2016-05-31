@@ -11,12 +11,17 @@
 
     <div class="row">
         <div class="panel panel-default">
+            
             <div class="panel-heading">
-                <h2 class="panel-title text-center">${news.getTitle()}</h2>
+                <h2 class="panel-title text-center">${news.getTitle()}</h2>              
             </div>
-                <img style="float:left" src="resources/images${newsPhoto.getHrefImg()}" alt="">
-            <div class="panel-body">
-                <p>${news.getText()}</p>
+            <div class="container">
+                <div class="row">
+                    <img style="float:left; margin: 7px 7px 0px 0" src="resources/images${newsPhoto.getHrefImg()}" alt="">
+                    <div class="panel-body">
+                        <p>${news.getText()}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

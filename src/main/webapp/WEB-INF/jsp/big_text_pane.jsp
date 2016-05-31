@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<section class="well well3 parallax" data-url="<c:url value="/resources/images/parallax1.jpg" />" data-mobile="
+<section class="well well3 parallax" data-url="<c:url value="/resources/images/parallax3.jpg" />" data-mobile="
       true" data-speed="0.9">
         <div class="container">
           <div class="wrap text-center">

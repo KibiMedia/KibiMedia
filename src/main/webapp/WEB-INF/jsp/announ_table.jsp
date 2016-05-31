@@ -40,6 +40,7 @@
                     ${announcements.get(loop.index).getIdImg()}
                 </td>
                 <td>
+                    <!--<c:url value="/resources/images/favicon.ico" />-->
                     <form action="/admin/news">
                     <button type="submit">Изменить новость</button>
                     </form>

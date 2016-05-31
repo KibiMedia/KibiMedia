@@ -53,7 +53,7 @@
             <div class="col-lg-3">
                 <div class="navbar-header">
                     <h1 class="navbar-brand">
-                      <a data-type='rd-navbar-brand'  href="<c:url value="" />">Киби<small>Медиа</small><small>Центр</small></a>
+                      <a data-type='rd-navbar-brand'  href="<c:url value="/" />">Киби<small>Медиа</small><small>Центр</small></a>
                     </h1>
                     <a class="search-form_toggle" href="#"></a>
                 </div>
@@ -61,7 +61,7 @@
             <div class="col-lg-6">
                 <c:forEach begin="0" end="${topPagesCount}" varStatus="loop">
                     <h4 class="text-center">
-                      <a href="<c:url value="${topPages.get(loop.index).getHref()}" />">${topPages.get(loop.index).getTitle()}</a>
+                      <a class="btn" href="<c:url value="${topPages.get(loop.index).getHref()}" />">${topPages.get(loop.index).getTitle()}</a>
                     </h4>
                 </c:forEach>
             </div>
