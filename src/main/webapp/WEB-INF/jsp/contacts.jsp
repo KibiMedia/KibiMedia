@@ -57,9 +57,9 @@
         </div>
         </div>
         <div class="row">
-            <div>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2709.5954842492583!2d39.62720411491453!3d47.22449682228932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40e3b8b405014c77%3A0x4a02f18a21feb76b!2z0YPQuy4g0JfQvtGA0LPQtSwgMjEsINCg0L7RgdGC0L7Qsi3QvdCwLdCU0L7QvdGDLCDQoNC-0YHRgtC-0LLRgdC60LDRjyDQvtCx0LsuLCAzNDQxMDM!5e0!3m2!1sru!2sru!4v1464077863160" width="1797" height="599" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
+            <div>                
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d677.399401297601!2d39.629402230021846!3d47.22445532782058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xc8445b17521fb62b!2z0JLRi9GB0YLQsNCy0L7Rh9C90YvQuSDQutC-0LzQv9C70LXQutGBINCu0LbQvdC-0LPQviDRhNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0YPQvdC40LLQtdGA0YHQuNGC0LXRgtCw!5e0!3m2!1sru!2sru!4v1464679513093" width="1210" height="599" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>            
         </div>   
     </div>
 </div>
