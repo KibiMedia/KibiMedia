@@ -27,7 +27,10 @@
             </div>
             <div class="col-lg-2 col-lg-offset-3">
                 <div class="content">
-                    <h7><i class="fa fa-envelope" aria-hidden="true"></i> <small>kibimedia@mail.ru</small></h7><br>
+                    <h7>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> 
+                        <small><a href="mailto:kibimedia@mail.ru">kibimedia@mail.ru</a></small>
+                    </h7><br>
                     <h7><i class="fa fa-phone" aria-hidden="true"></i> <small>+7 (863) 218-4000</small></h7>
                     <p class="copyright"> © 2016 КИБИ Медиа центр ЮФУ </p>
                 </div>

@@ -14,6 +14,7 @@
             <div class="panel-heading">
                 <h2 class="panel-title text-center">${news.getTitle()}</h2>
             </div>
+                <img style="float:left" src="resources/images${newsPhoto.getHrefImg()}" alt="">
             <div class="panel-body">
                 <p>${news.getText()}</p>
             </div>

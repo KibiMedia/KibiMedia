@@ -41,7 +41,7 @@
 
       <%@include file="big_text_pane.jsp" %>
 
-      <%@include file="our_clients.jsp" %>
+      <!--<%@include file="our_clients.jsp" %>-->
 
     </main>
 

@@ -67,15 +67,18 @@ public class NewsController {
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
         NewsDao newsDao = factory.getNewsDao();
+        PhotosDao photosDao = factory.getPhotosDao();
         
         News news = null;
         ArrayList<Pages> mainPages = null;
         ArrayList<Pages> footerPages = null;
+        Photos newsPhoto = null;
 
         try {
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);
             news = newsDao.getNews(id);
+            newsPhoto = photosDao.getPhoto(news.getIdImg());
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
@@ -87,6 +90,7 @@ public class NewsController {
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
         model.addAttribute("news", news);
+        model.addAttribute("newsPhoto", newsPhoto);
         return "one_news";
     }
     

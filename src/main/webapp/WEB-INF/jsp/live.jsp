@@ -10,19 +10,16 @@
   <!--========================================================
                             CONTENT
   =========================================================-->
-          <div class="container">
+<div class="container">
     <div class="row">
-        <div class="col-lg-6 center-block">
-          <h3>Наши трансляции</h3>
-        </div>
-        </div>
-        <div class="row">
-
-            <div>
-                <iframe width="1200" height="650" src="https://www.youtube.com/embed/MpwgNxvoHBw" frameborder="0" allowfullscreen></iframe>            
-            </div>
-        </div>   
+        <h2 class="text-center">Трансляция</h2>
     </div>
+    <div class="row">
+        <div>
+            <iframe width="1200" height="650" src="https://www.youtube.com/embed/MpwgNxvoHBw" frameborder="0" allowfullscreen></iframe>            
+        </div>
+    </div>   
+</div>
     <!--========================================================
                             FOOTER
   =========================================================-->
