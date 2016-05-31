@@ -20,53 +20,49 @@
           </small>
         </h2>
         <div class="row offs3 center767">
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-sm-6 col-xs-12">
                 <div class="thumbnail1">
                     <img class="" src="resources/images/employee/galina.jpg" alt="">
                     <div class="caption">
                         <h4>
-                            <a>
                             Максимова Галина Петровна
-                            </a>
                         </h4>
                         <p>
                         Директор
                         </p>
-                        <p><i class="fa fa-phone" aria-hidden="true"></i>12505 </p>
+                        <p><i class="fa fa-phone" aria-hidden="true"></i>+7 (863) 218-4000 (доб. 12505) </p>
                     </div>  
                 </div>  
             </div>
             
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-sm-6 col-xs-12">
                 <div class="thumbnail1">
                     <img class="" src="resources/images/employee/gord.jpg" alt="">
                     <div class="caption">
                         <h4>
                             <a>
-                           Гордынская Наталья Геннадьевна
+                           Гордынская Наталья Генадьевна
                             </a>
                         </h4>
                         <p>
                         Заместитель директора
                         </p>
-                        <p><i class="fa fa-phone" aria-hidden="true"></i>10261 </p>
+                        <p><i class="fa fa-phone" aria-hidden="true"></i>+7 (863) 218-4000 (доб. 10261) </p>
                     </div>  
                 </div>  
             </div>
             
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-sm-6 col-xs-12">
                 <div class="thumbnail1">
                     <img class="" src="resources/images/employee/vishn.jpg" alt="">
                     <div class="caption">
                         <h4>
-                            <a>
                             Вишнивецкий Андрей Александрович
-                            </a>
                         </h4>
                         <p>
                         Ведущий специалист
                         </p>
-                        <p><i class="fa fa-phone" aria-hidden="true"></i>12519 </p>
+                        <p><i class="fa fa-phone" aria-hidden="true"></i>+7 (863) 218-4000 (доб. 12519) </p>
                     </div>  
                 </div>  
             </div>
