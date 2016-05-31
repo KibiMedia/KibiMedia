@@ -12,10 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ru.sfedu.kibimedia.dao.NewsDao;
+import ru.sfedu.kibimedia.dao.EmployeeDao;
 import ru.sfedu.kibimedia.dao.PagesDao;
 import ru.sfedu.kibimedia.main.Factory;
-import ru.sfedu.kibimedia.tables.News;
+import ru.sfedu.kibimedia.tables.Employee;
 import ru.sfedu.kibimedia.tables.Pages;
 
 /**
@@ -28,16 +28,21 @@ public class ContactsController {
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
+        EmployeeDao employeeDao = factory.getEmployeeDao();
         
         ArrayList<Pages> mainPages = null;
         ArrayList<Pages> footerPages = null;
-
+        ArrayList<Employee> employee = null;
+        //Employee employee = null;
         try {
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);
+            employee = employeeDao.getEmployee();
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
+        
+        //System.out.println(employee.getFullName());
         
         model.addAttribute("mainTitle", "КИБИ МЕДИА ЦЕНТР ЮФУ");
         model.addAttribute("sfeduLogo", "resources/images/sfedu_logo.png");
@@ -45,6 +50,8 @@ public class ContactsController {
         model.addAttribute("mainPagesCount", mainPages.size() - 1);
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
+        model.addAttribute("employee", employee);
+        //model.addAttribute("employeeCount", employee.size()-1);
         
         return "contacts";
     }

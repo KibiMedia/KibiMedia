@@ -22,18 +22,53 @@
         <div class="row offs3 center767">
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="thumbnail1">
-                    <img class="" src="resources/images/page-2_img2.jpg" alt="">
+                    <img class="" src="resources/images/employee/galina.jpg" alt="">
                     <div class="caption">
                         <h4>
-                            <a href="#">
-                            Человек
+                            <a>
+                            Максимова Галина Петровна
                             </a>
                         </h4>
                         <p>
-                        Кто этот человек!?
+                        Директор
                         </p>
+                        <p><i class="fa fa-phone" aria-hidden="true"></i>12505 </p>
                     </div>  
-                </div>
+                </div>  
+            </div>
+            
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="thumbnail1">
+                    <img class="" src="resources/images/employee/gord.jpg" alt="">
+                    <div class="caption">
+                        <h4>
+                            <a>
+                           Гордынская Наталья Генадьевна
+                            </a>
+                        </h4>
+                        <p>
+                        Заместитель директора
+                        </p>
+                        <p><i class="fa fa-phone" aria-hidden="true"></i>10261 </p>
+                    </div>  
+                </div>  
+            </div>
+            
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="thumbnail1">
+                    <img class="" src="resources/images/employee/vishn.jpg" alt="">
+                    <div class="caption">
+                        <h4>
+                            <a>
+                            Вишнивецкий Андрей Александрович
+                            </a>
+                        </h4>
+                        <p>
+                        Ведущий специалист
+                        </p>
+                        <p><i class="fa fa-phone" aria-hidden="true"></i>12519 </p>
+                    </div>  
+                </div>  
             </div>
             
         </div>
@@ -42,19 +77,23 @@
   
 <div class="container">
     <div class="row">
-        <div class="col-lg-6 center-block">
-          <h2>Наши контакты</h2>
+        <div class="col-lg-6">
+            <h2>Наши контакты</h2>
         </div>
         <div class="col-lg-6">
             <p>           
                 <i class="fa fa-phone" aria-hidden="true"></i>
-                +7 (863) 218-4000
+                +7 (863) 218-4000 
+            <p>доб. 12505 - директор, 10261 - зам. директора, 12519 - инженер  <p>
             </p> 
             <p>
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <a href="mailto:info@riot.design">kibimedia@mail.ru</a>
             </p>
-        </div>
+            <p>           
+                <i class="fa fa-university" aria-hidden="true"></i>
+                г.Ростов-на-Дону, ул. Зорге, 21
+            </p>             
         </div>
         <div class="row">
             <div>                

@@ -42,6 +42,7 @@
     <mapping class="ru.sfedu.kibimedia.tables.Creators" />
     <mapping class="ru.sfedu.kibimedia.tables.Videos" />
     <mapping class="ru.sfedu.kibimedia.tables.Awards" />
+    <mapping class="ru.sfedu.kibimedia.tables.Employee" />
 
   </session-factory>
 </hibernate-configuration>

@@ -9,6 +9,7 @@ import ru.sfedu.kibimedia.dao.AlbumsDao;
 import ru.sfedu.kibimedia.dao.AlbumsPhotoDao;
 import ru.sfedu.kibimedia.dao.AnnouncementsDao;
 import ru.sfedu.kibimedia.dao.AwardsDao;
+import ru.sfedu.kibimedia.dao.EmployeeDao;
 import ru.sfedu.kibimedia.dao.EventRegDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
 import ru.sfedu.kibimedia.dao.PagesDao;
@@ -18,6 +19,7 @@ import ru.sfedu.kibimedia.dao.impl.AlbumsDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.AlbumsPhotoDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.AnnouncementsDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.AwardsDaoImpl;
+import ru.sfedu.kibimedia.dao.impl.EmployeeDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.EventRegDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.NewsDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.PagesDaoImpl;
@@ -41,6 +43,7 @@ public class Factory {
     private AlbumsPhotoDao albumsPhotoDao;
     private AwardsDao awardsDao;
     private VideosDao videosDao;
+    private EmployeeDao employeeDao;
 
     
     private Factory() { }
@@ -101,6 +104,12 @@ public class Factory {
         if (videosDao == null) 
             videosDao = new VideosDaoImpl();
         return videosDao;
+    }
+    
+    public EmployeeDao getEmployeeDao() {
+        if (employeeDao == null) 
+            employeeDao = new EmployeeDaoImpl();
+        return employeeDao;
     }
     
 }
