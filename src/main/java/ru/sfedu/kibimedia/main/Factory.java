@@ -5,20 +5,20 @@
  */
 package ru.sfedu.kibimedia.main;
 
-import ru.sfedu.kibimedia.dao.AlbumsDao;
-import ru.sfedu.kibimedia.dao.AlbumsPhotoDao;
-import ru.sfedu.kibimedia.dao.AnnouncementsDao;
-import ru.sfedu.kibimedia.dao.AwardsDao;
+import ru.sfedu.kibimedia.dao.AlbumDao;
+import ru.sfedu.kibimedia.dao.AlbumPhotoDao;
+import ru.sfedu.kibimedia.dao.PreviewDao;
+import ru.sfedu.kibimedia.dao.AwardDao;
 import ru.sfedu.kibimedia.dao.EmployeeDao;
 import ru.sfedu.kibimedia.dao.EventRegDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
 import ru.sfedu.kibimedia.dao.PagesDao;
 import ru.sfedu.kibimedia.dao.PhotosDao;
 import ru.sfedu.kibimedia.dao.VideosDao;
-import ru.sfedu.kibimedia.dao.impl.AlbumsDaoImpl;
-import ru.sfedu.kibimedia.dao.impl.AlbumsPhotoDaoImpl;
-import ru.sfedu.kibimedia.dao.impl.AnnouncementsDaoImpl;
-import ru.sfedu.kibimedia.dao.impl.AwardsDaoImpl;
+import ru.sfedu.kibimedia.dao.impl.AlbumDaoImpl;
+import ru.sfedu.kibimedia.dao.impl.AlbumPhotoDaoImpl;
+import ru.sfedu.kibimedia.dao.impl.PreviewDaoImpl;
+import ru.sfedu.kibimedia.dao.impl.AwardDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.EmployeeDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.EventRegDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.NewsDaoImpl;
@@ -35,13 +35,13 @@ public class Factory {
     public static final Factory instance = new Factory();
     
     private NewsDao newsDao;
-    private AnnouncementsDao announcementsDao;
+    private PreviewDao previewDao;
     private PhotosDao photosDao;
     private PagesDao pagesDao;
     private EventRegDao eventRegDao;
-    private AlbumsDao albumsDao;
-    private AlbumsPhotoDao albumsPhotoDao;
-    private AwardsDao awardsDao;
+    private AlbumDao albumDao;
+    private AlbumPhotoDao albumPhotoDao;
+    private AwardDao awardDao;
     private VideosDao videosDao;
     private EmployeeDao employeeDao;
 
@@ -64,10 +64,10 @@ public class Factory {
         return eventRegDao;
     }
     
-    public AnnouncementsDao getAnnouncementsDao() {
-        if (announcementsDao == null) 
-            announcementsDao = new AnnouncementsDaoImpl();
-        return announcementsDao;
+    public PreviewDao getPreviewDao() {
+        if (previewDao == null) 
+            previewDao = new PreviewDaoImpl();
+        return previewDao;
     }
     
     public PhotosDao getPhotosDao() {
@@ -82,22 +82,22 @@ public class Factory {
         return pagesDao;
     }
     
-    public AlbumsDao getAlbumsDao() {
-        if (albumsDao == null) 
-            albumsDao = new AlbumsDaoImpl();
-        return albumsDao;
+    public AlbumDao getAlbumDao() {
+        if (albumDao == null) 
+            albumDao = new AlbumDaoImpl();
+        return albumDao;
     }
     
-    public AlbumsPhotoDao getAlbumsPhotoDao() {
-        if (albumsPhotoDao == null) 
-            albumsPhotoDao = new AlbumsPhotoDaoImpl();
-        return albumsPhotoDao;
+    public AlbumPhotoDao getAlbumPhotoDao() {
+        if (albumPhotoDao == null) 
+            albumPhotoDao = new AlbumPhotoDaoImpl();
+        return albumPhotoDao;
     }
     
-    public AwardsDao getAwardsDao() {
-        if (awardsDao == null) 
-            awardsDao = new AwardsDaoImpl();
-        return awardsDao;
+    public AwardDao getAwardDao() {
+        if (awardDao == null) 
+            awardDao = new AwardDaoImpl();
+        return awardDao;
     }
     
     public VideosDao getVideosDao() {

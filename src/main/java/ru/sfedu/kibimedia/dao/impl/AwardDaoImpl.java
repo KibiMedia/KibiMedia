@@ -8,18 +8,17 @@ package ru.sfedu.kibimedia.dao.impl;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import org.hibernate.Session;
-import ru.sfedu.kibimedia.dao.AlbumsDao;
-import ru.sfedu.kibimedia.tables.Albums;
+import ru.sfedu.kibimedia.dao.AwardDao;
+import ru.sfedu.kibimedia.tables.Award;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
-
 /**
  *
- * @author Сергей
+ * @author 1
  */
-public class AlbumsDaoImpl implements AlbumsDao {
+public class AwardDaoImpl implements AwardDao {
 
     @Override
-    public void addAlbum(Albums album) throws SQLException {
+    public void addAward(Award album) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -35,7 +34,7 @@ public class AlbumsDaoImpl implements AlbumsDao {
     }
 
     @Override
-    public void deleteAlbum(Albums album) throws SQLException {
+    public void deleteAward(Award album) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -51,12 +50,12 @@ public class AlbumsDaoImpl implements AlbumsDao {
     }
 
     @Override
-    public void deleteAlbum(int id) throws SQLException {
+    public void deleteAward(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getAlbumById(id));
+            session.delete(getAwardById(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,13 +66,13 @@ public class AlbumsDaoImpl implements AlbumsDao {
     }
 
     @Override
-    public Albums getAlbumById(int id) throws SQLException {
-        Albums album = null;
+    public Award getAwardById(int id) throws SQLException {
+        Award album = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            album = (Albums) session.load(Albums.class, id);
+            album = (Award) session.load(Award.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -85,13 +84,13 @@ public class AlbumsDaoImpl implements AlbumsDao {
     }
 
     @Override
-    public ArrayList<Albums> getAlbums() throws SQLException {
-        ArrayList<Albums> albums = null;
+    public ArrayList<Award> getAward() throws SQLException {
+        ArrayList<Award> award = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            albums = (ArrayList<Albums>) session.createCriteria(Albums.class).list();
+            award = (ArrayList<Award>) session.createCriteria(Award.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -99,6 +98,6 @@ public class AlbumsDaoImpl implements AlbumsDao {
                 session.close();
         }
         
-        return albums;
+        return award;
     }
 }

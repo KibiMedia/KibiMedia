@@ -5,18 +5,18 @@
  */
 package ru.sfedu.kibimedia.dao;
 
-import ru.sfedu.kibimedia.tables.Creators;
+import ru.sfedu.kibimedia.tables.Creator;
 import java.sql.SQLException;
 import java.util.ArrayList;
 /**
  *
  * @author 1
  */
-public interface CreatorsDao {
+public interface CreatorDao {
     
-    public void addCreator(Creators creator) throws SQLException;
-    public void deleteCreator(Creators creator) throws SQLException;
+    public void addCreator(Creator creator) throws SQLException;
+    public void deleteCreator(Creator creator) throws SQLException;
     public void deleteCreatorById(int id) throws SQLException;
-    public Creators getCreator(int id) throws SQLException;
-    public ArrayList<Creators> getCreators() throws SQLException;
+    public Creator getCreator(int id) throws SQLException;
+    public ArrayList<Creator> getCreator() throws SQLException;
 }

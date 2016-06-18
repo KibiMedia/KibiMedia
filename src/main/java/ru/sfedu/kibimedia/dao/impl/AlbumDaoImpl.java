@@ -5,26 +5,26 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
-import ru.sfedu.kibimedia.dao.AnnouncementsDao;
-import ru.sfedu.kibimedia.tables.Announcements;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import org.hibernate.Session;
-import org.hibernate.criterion.Order;
+import ru.sfedu.kibimedia.dao.AlbumDao;
+import ru.sfedu.kibimedia.tables.Album;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
+
 /**
  *
- * @author Mishas
+ * @author Сергей
  */
-public class AnnouncementsDaoImpl implements AnnouncementsDao {
+public class AlbumDaoImpl implements AlbumDao {
 
     @Override
-    public void addAnnouncement(Announcements announcement) throws SQLException {
+    public void addAlbum(Album album) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(announcement);
+            session.save(album);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,12 +35,12 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
     }
 
     @Override
-    public void deleteAnnouncement(Announcements announcement) throws SQLException {
+    public void deleteAlbum(Album album) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(announcement);
+            session.delete(album);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,12 +51,12 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
     }
 
     @Override
-    public void deleteAnnouncement(int id) throws SQLException {
+    public void deleteAlbum(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getAnnouncement(id));
+            session.delete(getAlbumById(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,13 +67,13 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
     }
 
     @Override
-    public Announcements getAnnouncement(int id) throws SQLException {
-        Announcements announcement = null;
+    public Album getAlbumById(int id) throws SQLException {
+        Album album = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            announcement = (Announcements) session.load(Announcements.class, id);
+            album = (Album) session.load(Album.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -81,26 +81,24 @@ public class AnnouncementsDaoImpl implements AnnouncementsDao {
                 session.close();
         }
         
-        return announcement;
+        return album;
     }
 
     @Override
-    public ArrayList<Announcements> getAnnouncements() throws SQLException {
-        ArrayList<Announcements> announcements = null;
+    public ArrayList<Album> getAlbum() throws SQLException {
+        ArrayList<Album> album = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            announcements = (ArrayList<Announcements>) session.createCriteria(Announcements.class)
-                    .addOrder(Order.asc("eventDate")).list();
+            album = (ArrayList<Album>) session.createCriteria(Album.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if ((session != null) && (session.isOpen()))
                 session.close();
-        }        
-        return announcements;
+        }
+        
+        return album;
     }
-    
-    
 }

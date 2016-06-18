@@ -35,6 +35,22 @@ public class NewsDaoImpl implements NewsDao {
                 session.close();
         }
     }
+    
+    @Override
+    public void updateNews(News news) throws SQLException {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.update(news);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+    }
 
     @Override
     public void deleteNews(News news) throws SQLException {

@@ -6,7 +6,6 @@
 package ru.sfedu.kibimedia.tables;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,11 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 /**
  *
- * @author 1
+ * @author Сергей
  */
 @Entity
-@Table(name = "awards")
-public class Awards implements Serializable{
+@Table(name = "album_photo")
+public class AlbumPhoto implements Serializable{
     
     private static final long serialVersionUID = -1L;
     
@@ -29,21 +28,37 @@ public class Awards implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_award")
-    private Integer idAward;
+    @Column(name = "id_photo")
+    private Integer idPhoto;
     
-    @Column(name = "text")
-    private String text;
+    @Column(name = "id_album")
+    private Integer idAlbum;
+    
+    @Column(name = "href")
+    private String href;
 
-    public Integer getIdAward() {
-        return idAward;
+    public Integer getIdPhoto() {
+        return idPhoto;
     }
 
-    public String getText() {
-        return text;
+    public void setIdPhoto(Integer idPhoto) {
+        this.idPhoto = idPhoto;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public Integer getIdAlbum() {
+        return idAlbum;
     }
+
+    public void setIdAlbum(Integer idAlbum) {
+        this.idAlbum = idAlbum;
+    }
+
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href;
+    }
+   
 }

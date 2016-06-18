@@ -13,7 +13,7 @@
         Фотоальбомы             
     </h2>
     <div class="row">
-        <c:forEach begin="0" end="${albumsCount}" varStatus="loop">
+        <c:forEach begin="0" end="${albumCount}" varStatus="loop">
             <jsp:include page="photo_block.jsp" >
                 <jsp:param name="index" value="${loop.index}" />
             </jsp:include>

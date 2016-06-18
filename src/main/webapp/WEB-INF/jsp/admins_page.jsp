@@ -1,5 +1,5 @@
 <%-- 
-    Document   : admins_page
+    Document   : aAdmin_page
     Created on : 26.05.2016, 11:51:40
     Author     : 1
 --%>
@@ -20,9 +20,7 @@
                 </h1>
             </div>
         </div>
-    
 
-    
         <div id="stuck_container" class="stuck_container">
             <div class="container">   
             <nav class="navbar navbar-default navbar-static-top pull-left">            
@@ -34,7 +32,7 @@
                             </li>
 
                             <li>
-                              <a href="<c:url value="admin/ann" />">Анонсы</a>
+                              <a href="<c:url value="admin/preview" />">Анонсы</a>
                             </li>
 
                             <li>

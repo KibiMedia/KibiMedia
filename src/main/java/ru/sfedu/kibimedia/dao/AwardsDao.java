@@ -7,16 +7,16 @@ package ru.sfedu.kibimedia.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import ru.sfedu.kibimedia.tables.Awards;
+import ru.sfedu.kibimedia.tables.Award;
 /**
  *
  * @author 1
  */
-public interface AwardsDao {
-    public void addAward(Awards award) throws SQLException;
-    public void deleteAward(Awards award) throws SQLException;
+public interface AwardDao {
+    public void addAward(Award award) throws SQLException;
+    public void deleteAward(Award award) throws SQLException;
     public void deleteAward(int id) throws SQLException;
-    public Awards getAwardById(int id) throws SQLException;
-    public ArrayList<Awards> getAwards() throws SQLException;
+    public Award getAwardById(int id) throws SQLException;
+    public ArrayList<Award> getAward() throws SQLException;
     
 }

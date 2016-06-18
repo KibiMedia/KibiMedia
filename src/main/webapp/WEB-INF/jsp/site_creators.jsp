@@ -1,5 +1,5 @@
 <%-- 
-    Document   : site_creators
+    Document   : site_creator
     Created on : 27.05.2016, 14:22:59
     Author     : Сергей
 --%>
@@ -17,7 +17,7 @@
         <div class="row offs3 center767">
             <div class="col-lg-4 col-sm-6 col-xs-12">
                 <div class="thumbnail1">
-                    <img class="" src="resources/images/creators/posadsk.jpg" alt="">
+                    <img class="" src="resources/images/creator/posadsk.jpg" alt="">
                     <div class="caption">
                         <h4>
                             <a>
@@ -33,7 +33,7 @@
             
             <div class="col-lg-4 col-sm-6 col-xs-12">
                 <div class="thumbnail1">
-                    <img class="" src="resources/images/creators/lisenko.jpg" alt="">
+                    <img class="" src="resources/images/creator/lisenko.jpg" alt="">
                     <div class="caption">
                         <h4>
                             <a>
@@ -48,7 +48,7 @@
             
             <div class="col-lg-4 col-sm-6 col-xs-12">
                 <div class="thumbnail1">
-                    <img class="" src="resources/images/creators/chebot.jpg" alt="">
+                    <img class="" src="resources/images/creator/chebot.jpg" alt="">
                     <div class="caption">
                         <h4>
                             <a>

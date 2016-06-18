@@ -11,10 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ru.sfedu.kibimedia.dao.AwardsDao;
+import ru.sfedu.kibimedia.dao.AwardDao;
 import ru.sfedu.kibimedia.dao.PagesDao;
 import ru.sfedu.kibimedia.main.Factory;
-import ru.sfedu.kibimedia.tables.Awards;
+import ru.sfedu.kibimedia.tables.Award;
 import ru.sfedu.kibimedia.tables.Pages;
 
 /**
@@ -22,14 +22,14 @@ import ru.sfedu.kibimedia.tables.Pages;
  * @author Сергей
  */
 @Controller
-public class AwardsController {
-    @RequestMapping(value="/awards", method = RequestMethod.GET)
+public class AwardController {
+    @RequestMapping(value="/award", method = RequestMethod.GET)
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
-        AwardsDao awardsDao = factory.getAwardsDao();
+        AwardDao awardDao = factory.getAwardDao();
         
-        ArrayList<Awards> awards = null;
+        ArrayList<Award> award = null;
         ArrayList<Pages> mainPages = null;
         ArrayList<Pages> footerPages = null;
 
@@ -37,7 +37,7 @@ public class AwardsController {
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);
             
-            awards = awardsDao.getAwards();
+            award = awardDao.getAward();
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
@@ -48,8 +48,8 @@ public class AwardsController {
         model.addAttribute("mainPagesCount", mainPages.size() - 1);
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
-        model.addAttribute("awards", awards);
-        model.addAttribute("awardsCount", awards.size() - 1);
-        return "awards";
+        model.addAttribute("award", award);
+        model.addAttribute("awardCount", award.size() - 1);
+        return "award";
     }
 }

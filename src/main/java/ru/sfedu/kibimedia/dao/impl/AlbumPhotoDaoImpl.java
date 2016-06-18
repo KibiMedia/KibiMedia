@@ -8,22 +8,24 @@ package ru.sfedu.kibimedia.dao.impl;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import org.hibernate.Session;
-import ru.sfedu.kibimedia.dao.AwardsDao;
-import ru.sfedu.kibimedia.tables.Awards;
+import org.hibernate.criterion.Restrictions;
+import ru.sfedu.kibimedia.tables.AlbumPhoto;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
+import ru.sfedu.kibimedia.dao.AlbumPhotoDao;
+
 /**
  *
- * @author 1
+ * @author Сергей
  */
-public class AwardsDaoImpl implements AwardsDao {
+public class AlbumPhotoDaoImpl implements AlbumPhotoDao {
 
     @Override
-    public void addAward(Awards album) throws SQLException {
+    public void addAlbumPhoto(AlbumPhoto albumPhoto) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(album);
+            session.save(albumPhoto);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -34,12 +36,13 @@ public class AwardsDaoImpl implements AwardsDao {
     }
 
     @Override
-    public void deleteAward(Awards album) throws SQLException {
+    public void deleteAlbumPhoto(AlbumPhoto albumPhoto) throws SQLException {
+
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(album);
+            session.delete(albumPhoto);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,12 +53,12 @@ public class AwardsDaoImpl implements AwardsDao {
     }
 
     @Override
-    public void deleteAward(int id) throws SQLException {
+    public void deleteAlbumPhoto(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getAwardById(id));
+            session.delete(getPhotoById(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,15 +67,16 @@ public class AwardsDaoImpl implements AwardsDao {
                 session.close();
         }
     }
-
+    
     @Override
-    public Awards getAwardById(int id) throws SQLException {
-        Awards album = null;
-        
+    public AlbumPhoto getPhotoById(int id) throws SQLException {
+        AlbumPhoto albumPhoto = null;
+
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            album = (Awards) session.load(Awards.class, id);
+            albumPhoto = (AlbumPhoto) session.load(AlbumPhoto.class, id);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -80,17 +84,19 @@ public class AwardsDaoImpl implements AwardsDao {
                 session.close();
         }
         
-        return album;
+        return albumPhoto;
     }
-
+    
     @Override
-    public ArrayList<Awards> getAwards() throws SQLException {
-        ArrayList<Awards> awards = null;
+    public ArrayList<AlbumPhoto> getPhotosByAlbum(int album) throws SQLException {
+        ArrayList<AlbumPhoto> albumPhotos = null;
+
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            awards = (ArrayList<Awards>) session.createCriteria(Awards.class).list();
+            albumPhotos = (ArrayList<AlbumPhoto>) session.createCriteria(AlbumPhoto.class)
+                    .add(Restrictions.eq("idAlbum", new Integer(album))).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -98,6 +104,24 @@ public class AwardsDaoImpl implements AwardsDao {
                 session.close();
         }
         
-        return awards;
+        return albumPhotos;
     }
+
+    @Override
+    public ArrayList<AlbumPhoto> getAllAlbumPhoto() throws SQLException {
+        ArrayList<AlbumPhoto> albumPhotos = null;
+
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            albumPhotos = (ArrayList<AlbumPhoto>) session.createCriteria(AlbumPhoto.class).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+        
+        return albumPhotos;
+    }  
 }

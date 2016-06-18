@@ -5,8 +5,8 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
-import ru.sfedu.kibimedia.dao.ComentsDao;
-import ru.sfedu.kibimedia.tables.Coments;
+import ru.sfedu.kibimedia.dao.CreatorDao;
+import ru.sfedu.kibimedia.tables.Creator;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,17 +16,17 @@ import org.hibernate.criterion.Restrictions;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
 /**
  *
- * @author Mishas
+ * @author 1
  */
-public class ComentsDaoImpl implements ComentsDao {
-
+public class CreatorDaoImpl implements CreatorDao{
+    
     @Override
-    public void addComent(Coments coment) throws SQLException {
+    public void addCreator(Creator creator) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(coment);
+            session.save(creator);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,12 +37,12 @@ public class ComentsDaoImpl implements ComentsDao {
     }
 
     @Override
-    public void deleteComent(Coments coment) throws SQLException {
+    public void deleteCreator(Creator creator) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(coment);
+            session.delete(creator);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,12 +53,12 @@ public class ComentsDaoImpl implements ComentsDao {
     }
 
     @Override
-    public void deleteComentById(int id) throws SQLException {
+    public void deleteCreatorById(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getComent(id));
+            session.delete(getCreator(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,13 +69,13 @@ public class ComentsDaoImpl implements ComentsDao {
     }
 
     @Override
-    public Coments getComent(int id) throws SQLException {
-        Coments coment = null;
+    public Creator getCreator(int id) throws SQLException {
+        Creator creator = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            coment = (Coments) session.load(Coments.class, id);
+            creator = (Creator) session.load(Creator.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -83,18 +83,18 @@ public class ComentsDaoImpl implements ComentsDao {
                 session.close();
         }
         
-        return coment;
+        return creator;
     }
 
     @Override
-    public ArrayList<Coments> getComents() throws SQLException {
-        ArrayList<Coments> coments = null;
+    public ArrayList<Creator> getCreator() throws SQLException {
+        ArrayList<Creator> creator = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            coments = (ArrayList<Coments>) session.createCriteria(Coments.class)
-                    .addOrder(Order.asc("idNews")).list();
+            creator = (ArrayList<Creator>) session.createCriteria(Creator.class)
+                    .addOrder(Order.asc("idCreator")).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -102,7 +102,7 @@ public class ComentsDaoImpl implements ComentsDao {
                 session.close();
         }
         
-        return coments;
+        return creator;
     }
     
     

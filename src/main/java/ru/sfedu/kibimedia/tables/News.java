@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 /**
  *
  * @author Mishas
@@ -41,10 +43,8 @@ public class News implements Serializable{
     @Column(name = "text")
     private String text;
     
-    @Column(name = "id_writer")
-    private Integer idWriter;
-    
     @Column(name = "event_date")
+    @Temporal(value=TemporalType.DATE)
     private Date eventDate; 
     
     @Column(name = "id_img")
@@ -82,14 +82,6 @@ public class News implements Serializable{
         this.text = text;
     }
     
-    public Integer getIdWriter() {
-        return idWriter;
-    }
-
-    public void setIdWriter(Integer idWriter) {
-        this.idWriter = idWriter;
-    }
-    
     @Override
     public String toString() {
         return this.title;
@@ -109,6 +101,10 @@ public class News implements Serializable{
 
     public void setIdImg(Integer idImg) {
         this.idImg = idImg;
+    }
+
+    public void setIdNews(Integer idNews) {
+        this.idNews = idNews;
     }
 }
     

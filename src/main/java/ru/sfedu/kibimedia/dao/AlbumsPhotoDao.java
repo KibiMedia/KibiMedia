@@ -7,19 +7,19 @@ package ru.sfedu.kibimedia.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import ru.sfedu.kibimedia.tables.AlbumsPhoto;
+import ru.sfedu.kibimedia.tables.AlbumPhoto;
 
 /**
  *
  * @author Сергей
  */
-public interface AlbumsPhotoDao {
+public interface AlbumPhotoDao {
     
-    public void addAlbumsPhoto(AlbumsPhoto albumsPhoto) throws SQLException;
-    public void deleteAlbumsPhoto(AlbumsPhoto albumsPhoto) throws SQLException;
-    public void deleteAlbumsPhoto(int id) throws SQLException;
-    public AlbumsPhoto getPhotoById(int id) throws SQLException;
-    public ArrayList<AlbumsPhoto> getPhotosByAlbum(int album) throws SQLException;
-    public ArrayList<AlbumsPhoto> getAllAlbumsPhoto() throws SQLException;
+    public void addAlbumPhoto(AlbumPhoto albumPhoto) throws SQLException;
+    public void deleteAlbumPhoto(AlbumPhoto albumPhoto) throws SQLException;
+    public void deleteAlbumPhoto(int id) throws SQLException;
+    public AlbumPhoto getPhotoById(int id) throws SQLException;
+    public ArrayList<AlbumPhoto> getPhotosByAlbum(int album) throws SQLException;
+    public ArrayList<AlbumPhoto> getAllAlbumPhoto() throws SQLException;
     
 }

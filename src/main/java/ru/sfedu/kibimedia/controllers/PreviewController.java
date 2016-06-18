@@ -12,13 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.sfedu.kibimedia.dao.AnnouncementsDao;
-import ru.sfedu.kibimedia.dao.NewsDao;
+import ru.sfedu.kibimedia.dao.PreviewDao;
 import ru.sfedu.kibimedia.dao.PagesDao;
 import ru.sfedu.kibimedia.dao.PhotosDao;
 import ru.sfedu.kibimedia.main.Factory;
-import ru.sfedu.kibimedia.tables.Announcements;
-import ru.sfedu.kibimedia.tables.News;
+import ru.sfedu.kibimedia.tables.Preview;
 import ru.sfedu.kibimedia.tables.Pages;
 import ru.sfedu.kibimedia.tables.Photos;
 
@@ -32,11 +30,11 @@ public class PreviewController {
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
-        AnnouncementsDao announcementsDao = factory.getAnnouncementsDao();
+        PreviewDao previewDao = factory.getPreviewDao();
         PhotosDao photosDao = factory.getPhotosDao();
         
-        ArrayList<Announcements> announcementses = null;
-        ArrayList<Photos> announcementsPhotos = new ArrayList<>();
+        ArrayList<Preview> previewes = null;
+        ArrayList<Photos> previewPhotos = new ArrayList<>();
         ArrayList<Pages> mainPages = null;
         ArrayList<Pages> footerPages = null;
 
@@ -44,9 +42,9 @@ public class PreviewController {
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);
             
-            announcementses = announcementsDao.getAnnouncements();
-            for (int i = 0; i < announcementses.size(); ++i) 
-                announcementsPhotos.add(photosDao.getPhoto(announcementses.get(i).getIdImg()));
+            previewes = previewDao.getPreviews();
+            for (int i = 0; i < previewes.size(); ++i) 
+                previewPhotos.add(photosDao.getPhoto(previewes.get(i).getIdImg()));
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
@@ -57,9 +55,9 @@ public class PreviewController {
         model.addAttribute("mainPagesCount", mainPages.size() - 1);
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
-        model.addAttribute("previews", announcementses);
-        model.addAttribute("previewsCount", announcementses.size() - 1);
-        model.addAttribute("previewsPhotos", announcementsPhotos);
+        model.addAttribute("previews", previewes);
+        model.addAttribute("previewsCount", previewes.size() - 1);
+        model.addAttribute("previewsPhotos", previewPhotos);
         
         return "previews";
     } 
@@ -68,16 +66,16 @@ public class PreviewController {
     public String viewHomeWithId(Model model, @RequestParam(value = "id") int id) {
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
-        AnnouncementsDao announcementsDao = factory.getAnnouncementsDao();
+        PreviewDao previewDao = factory.getPreviewDao();
         
-        Announcements announcements = null;
+        Preview preview = null;
         ArrayList<Pages> mainPages = null;
         ArrayList<Pages> footerPages = null;
 
         try {
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);
-            announcements = announcementsDao.getAnnouncement(id);
+            preview = previewDao.getPreview(id);
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
@@ -88,7 +86,7 @@ public class PreviewController {
         model.addAttribute("mainPagesCount", mainPages.size() - 1);
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
-        model.addAttribute("preview", announcements);
+        model.addAttribute("preview", preview);
         return "one_preview";
     }
        

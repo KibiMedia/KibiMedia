@@ -6,6 +6,7 @@
 package ru.sfedu.kibimedia.tables;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,41 +15,35 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 /**
  *
- * @author Mishas
+ * @author 1
  */
 @Entity
-@Table(name = "admins")
-public class Admins implements Serializable{
+@Table(name = "award")
+public class Award implements Serializable{
     
-    private static final long serialVersionUID = -5527566248002296042L;
+    private static final long serialVersionUID = -1L;
+    
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    /*
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    */
+    @Column(name = "id_award")
+    private Integer idAward;
     
-    @Column(name = "id_admin")
-    private Integer idAdmin;
-    
-    @Column(name = "id_user")
-    private Integer idUser;
+    @Column(name = "text")
+    private String text;
 
-    public Integer getIdAdmin() {
-        return idAdmin;
-    }
-    
-    public Integer getUser() {
-        return idUser;
+    public Integer getIdAward() {
+        return idAward;
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+    public String getText() {
+        return text;
     }
-    
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }

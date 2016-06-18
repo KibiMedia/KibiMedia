@@ -1,20 +1,20 @@
 <%-- 
-    Document   : news_table
-    Created on : 26.05.2016, 13:45:32
-    Author     : 1
+    Document   : preview_table
+    Created on : 18.06.2016, 23:19:36
+    Author     : DPosadsky
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Admin News</title>
+        <title>Admin Preview</title>
     </head>
     <body>
         <p align="center">
-            <a align="center" href="news/add">Добавить новость</a>
+            <a align="center" href="preview/add">Добавить анонс</a>
         </p>
-        <h2 align="center"> Новости </h2>
+        <h2 align="center"> Анонсы </h2>
         <table border="1" cellspacing="0" cellpadding="10">
             <tr>
                 <th>Id</th>
@@ -25,29 +25,29 @@
                 <th>Id фотографии</th>
             </tr>
             <tr>
-            <c:forEach begin="0" end="${newsCount}" varStatus="loop">
+            <c:forEach begin="0" end="${previewsCount}" varStatus="loop">
                 <tr>
                 <td>
-                    ${allNews.get(loop.index).getIdNews()}
+                    ${previews.get(loop.index).getIdPreview()}
                 </td>
                 <td>
-                    ${allNews.get(loop.index).getTitle()}
+                    ${previews.get(loop.index).getTitle()}
                 </td>
                 <td>
-                    ${allNews.get(loop.index).getDescription()}
+                    ${previews.get(loop.index).getDescription()}
                 </td>
                 <td>
-                    ${allNews.get(loop.index).getText()}
+                    ${previews.get(loop.index).getText()}
                 </td>
                 <td>
-                    ${allNews.get(loop.index).getEventDate()}
+                    ${previews.get(loop.index).getEventDate()}
                 </td>
                 <td>
-                    ${allNews.get(loop.index).getIdImg()}
+                    ${previews.get(loop.index).getIdImg()}
                 </td>
                 <td>
-                    <a href="news/change?id=${allNews.get(loop.index).getIdNews()}">Изменить</a>
-                    <a href="news/del?id=${allNews.get(loop.index).getIdNews()}">Удалить</a>
+                    <a href="preview/change?id=${previews.get(loop.index).getIdPreview()}">Изменить</a>
+                    <a href="preview/del?id=${previews.get(loop.index).getIdPreview()}">Удалить</a>
                 </td>
                 </tr>
                 

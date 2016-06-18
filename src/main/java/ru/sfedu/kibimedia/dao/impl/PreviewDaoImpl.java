@@ -5,60 +5,26 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
+import ru.sfedu.kibimedia.dao.PreviewDao;
+import ru.sfedu.kibimedia.tables.Preview;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
-import ru.sfedu.kibimedia.tables.AlbumsPhoto;
+import org.hibernate.criterion.Order;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
-import ru.sfedu.kibimedia.dao.AlbumsPhotoDao;
-
 /**
  *
- * @author Сергей
+ * @author Mishas
  */
-public class AlbumsPhotoDaoImpl implements AlbumsPhotoDao {
+public class PreviewDaoImpl implements PreviewDao {
 
     @Override
-    public void addAlbumsPhoto(AlbumsPhoto albumsPhoto) throws SQLException {
+    public void addPreview(Preview preview) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(albumsPhoto);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-    }
-
-    @Override
-    public void deleteAlbumsPhoto(AlbumsPhoto albumsPhoto) throws SQLException {
-
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.delete(albumsPhoto);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-    }
-
-    @Override
-    public void deleteAlbumsPhoto(int id) throws SQLException {
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.delete(getPhotoById(id));
+            session.save(preview);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,14 +35,61 @@ public class AlbumsPhotoDaoImpl implements AlbumsPhotoDao {
     }
     
     @Override
-    public AlbumsPhoto getPhotoById(int id) throws SQLException {
-        AlbumsPhoto albumsPhoto = null;
-
+    public void updatePreview(Preview preview) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            albumsPhoto = (AlbumsPhoto) session.load(AlbumsPhoto.class, id);
+            session.beginTransaction();
+            session.update(preview);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+    }
 
+    @Override
+    public void deletePreview(Preview preview) throws SQLException {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(preview);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+    }
+
+    @Override
+    public void deletePreview(int id) throws SQLException {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(getPreview(id));
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+    }
+
+    @Override
+    public Preview getPreview(int id) throws SQLException {
+        Preview preview = null;
+        
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            preview = (Preview) session.load(Preview.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -84,44 +97,26 @@ public class AlbumsPhotoDaoImpl implements AlbumsPhotoDao {
                 session.close();
         }
         
-        return albumsPhoto;
+        return preview;
+    }
+
+    @Override
+    public ArrayList<Preview> getPreviews() throws SQLException {
+        ArrayList<Preview> preview = null;
+        
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            preview = (ArrayList<Preview>) session.createCriteria(Preview.class)
+                    .addOrder(Order.asc("eventDate")).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }        
+        return preview;
     }
     
-    @Override
-    public ArrayList<AlbumsPhoto> getPhotosByAlbum(int album) throws SQLException {
-        ArrayList<AlbumsPhoto> albumsPhotos = null;
-
-        
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            albumsPhotos = (ArrayList<AlbumsPhoto>) session.createCriteria(AlbumsPhoto.class)
-                    .add(Restrictions.eq("idAlbum", new Integer(album))).list();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-        
-        return albumsPhotos;
-    }
-
-    @Override
-    public ArrayList<AlbumsPhoto> getAllAlbumsPhoto() throws SQLException {
-        ArrayList<AlbumsPhoto> albumsPhotos = null;
-
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            albumsPhotos = (ArrayList<AlbumsPhoto>) session.createCriteria(AlbumsPhoto.class).list();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-        
-        return albumsPhotos;
-    }  
+    
 }

@@ -17,14 +17,14 @@
           </small>
   </h2>
  
-  <img src="<c:url value="resources/images/awards.jpg" />">   
+  <img src="<c:url value="resources/images/award.jpg" />">   
         <div class="container">
-            <c:forEach begin="0" end="${awardsCount}" varStatus="loop">
+            <c:forEach begin="0" end="${awardCount}" varStatus="loop">
                 <div class="row">
 
                 <p>
                     ${loop.index+1})  
-                    ${awards.get(loop.index).getText()}
+                    ${award.get(loop.index).getText()}
                 </p>
                 </div>
             </c:forEach>

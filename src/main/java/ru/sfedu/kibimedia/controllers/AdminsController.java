@@ -6,18 +6,20 @@
 package ru.sfedu.kibimedia.controllers;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.sfedu.kibimedia.dao.AnnouncementsDao;
+import ru.sfedu.kibimedia.dao.PreviewDao;
 import ru.sfedu.kibimedia.dao.EventRegDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
+import ru.sfedu.kibimedia.dao.VideosDao;
 import ru.sfedu.kibimedia.main.Factory;
-import ru.sfedu.kibimedia.tables.Announcements;
+import ru.sfedu.kibimedia.tables.Preview;
 import ru.sfedu.kibimedia.tables.EventReg;
 import ru.sfedu.kibimedia.tables.News;
 
@@ -26,30 +28,16 @@ import ru.sfedu.kibimedia.tables.News;
  * @author 1
  */
 @Controller
-public class AdminsController {
+public class AdminController {
     @RequestMapping(value="/admin")
-    public String viewAdmins() {  
-        return "admins_page";
+    public String viewAdmin() {  
+        return "aAdmin_page";
     }
     
-    @RequestMapping(value="/admin/ann", method = RequestMethod.GET)
-    public String viewAnnounce(Model model) { 
-        Factory factory = Factory.getInstance();
-        
-        AnnouncementsDao announcementsDao = factory.getAnnouncementsDao();
-        
-        ArrayList<Announcements> announcements = null;
-        
-        try {
-            announcements = announcementsDao.getAnnouncements();
-        } catch (SQLException ex) {
-            System.out.println("Exception in getDocumentation in Controller: " + ex);
-        }   
-        
-        model.addAttribute("announcements", announcements);  
-        model.addAttribute("announCount", announcements.size()-1); 
-        return "announ_table";
-    }
+    /**
+     * 
+     * News 
+     */
     
     @RequestMapping(value="/admin/news", method = RequestMethod.GET)
     public String viewNews(Model model) { 
@@ -71,57 +59,35 @@ public class AdminsController {
         return "news_table";
     }
     
-    @RequestMapping(value="/admin/news/add", method = RequestMethod.POST, 
-            params = {"id_news", "title", "description", "text", "id_writer", "event_date", "id_img"})
-    public void addNews(Model model, 
-                        @RequestParam(value = "id_news") int idNews,
-                        @RequestParam(value = "title") String title,
-                        @RequestParam(value = "description") String description,
-                        @RequestParam(value = "text") String text,
-                        @RequestParam(value = "id_writer") int idWriter,
-                        @RequestParam(value = "event_date") Date eventDate,
-                        @RequestParam(value = "id_img") int idImg){
+    @RequestMapping(value="/admin/news/add", method = RequestMethod.GET)
+    public String addNews(Model model) {
+        model.addAttribute("action", "add");
         
-        News news = null;
-        Factory factory = Factory.getInstance();
-        NewsDao newsDao = factory.getNewsDao();
-        
-        news.setIdImg(idImg);
-        news.setTitle(title);
-        news.setDescription(description);
-        news.setText(text);
-        news.setIdWriter(idWriter);
-        news.setEventDate(eventDate);
-        news.setIdImg(idImg);
-
-        try {
-            newsDao.addNews(news);
-        } catch (SQLException ex) {
-            System.out.println("Exception in getDocumentation in Controller: " + ex);
-        }
+        return "change_one_news";
     }
     
-    @RequestMapping(value="/admin/news/chng", method = RequestMethod.GET, 
-            params = {"title", "description", "text", "id_writer", "event_date", "id_img"})
-    public String changeNews(Model model, 
+    @RequestMapping(value="/admin/news/add", method = RequestMethod.GET, 
+            params = {"id", "title", "description", "text", "event_date", "id_img"})
+    public String addNews(Model model, 
+                        @RequestParam(value = "id") String id,
                         @RequestParam(value = "title") String title,
                         @RequestParam(value = "description") String description,
                         @RequestParam(value = "text") String text,
-                        @RequestParam(value = "id_writer") int idWriter,
-                        @RequestParam(value = "event_date") Date eventDate,
+                        @RequestParam(value = "event_date") String eventDate,
                         @RequestParam(value = "id_img") int idImg){
         
-        News news = null;
+        News news = new News();
         Factory factory = Factory.getInstance();
         NewsDao newsDao = factory.getNewsDao();
-        
-        System.out.println(title + " " + description + " " + text  + " " + idWriter + " " + eventDate + " " + idImg);
-        
+
         news.setTitle(title);
         news.setDescription(description);
         news.setText(text);
-        news.setIdWriter(idWriter);
-        news.setEventDate(eventDate);
+        try {
+        news.setEventDate(new SimpleDateFormat("yyyy-MM-dd").parse(eventDate));
+        } catch (ParseException ex) {
+            System.out.println("Exception in admin/news/add with param" + ex);
+        }
         news.setIdImg(idImg);
 
         try {
@@ -130,11 +96,10 @@ public class AdminsController {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
         
-        return "news_table";
+        return "change_one_news";
     }
     
-    @RequestMapping(value="/admin/news/chng", method = RequestMethod.GET, 
-            params = "id")
+    @RequestMapping(value="/admin/news/change", method = RequestMethod.GET, params = "id")
     public String changeNews(Model model, 
                         @RequestParam(value = "id") int id){
         
@@ -147,14 +112,48 @@ public class AdminsController {
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
-        
         model.addAttribute("news", news);
+        model.addAttribute("action", "change");
         
         return "change_one_news";
     }
     
-    @RequestMapping(value="/admin/news/del", method = RequestMethod.POST, params = "idNews")
-    public void deleteNews(Model model, @RequestParam(value = "idNews") int id) {
+    @RequestMapping(value="/admin/news/change", method = RequestMethod.GET, 
+            params = {"id", "title", "description", "text", "event_date", "id_img"})
+    public String changeNews(Model model, 
+                        @RequestParam(value = "id") int id,
+                        @RequestParam(value = "title") String title,
+                        @RequestParam(value = "description") String description,
+                        @RequestParam(value = "text") String text,
+                        @RequestParam(value = "event_date") String eventDate,
+                        @RequestParam(value = "id_img") int idImg){
+        
+        News news = new News();
+        Factory factory = Factory.getInstance();
+        NewsDao newsDao = factory.getNewsDao();
+                
+        news.setIdNews(id);
+        news.setTitle(title);
+        news.setDescription(description);
+        news.setText(text);
+        try {
+        news.setEventDate(new SimpleDateFormat("yyyy-MM-dd").parse(eventDate));
+        } catch (ParseException ex) {
+            System.out.println("Exception in admin/news/change with param" + ex);
+        }
+        news.setIdImg(idImg);
+
+        try {
+            newsDao.updateNews(news);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+        
+        return "change_one_news";
+    }
+    
+    @RequestMapping(value="/admin/news/del", method = RequestMethod.GET, params = "id")
+    public String deleteNews(Model model, @RequestParam(value = "id") int id) {
         
         Factory factory = Factory.getInstance();
         NewsDao newsDao = factory.getNewsDao();
@@ -164,6 +163,140 @@ public class AdminsController {
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
+        
+        return "admin_page";
+    }
+    
+    
+    
+    /**
+     * 
+     * Preview 
+     */
+    
+    @RequestMapping(value="/admin/preview", method = RequestMethod.GET)
+    public String viewPreview(Model model) { 
+        Factory factory = Factory.getInstance();
+        
+        PreviewDao previewDao = factory.getPreviewDao();
+        
+        ArrayList<Preview> previews = null;      
+        try {
+            previews = previewDao.getPreviews();
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }   
+        model.addAttribute("previews", previews);
+        model.addAttribute("previewsCount", previews.size() - 1);
+        return "previews_table";
+    }
+    
+    @RequestMapping(value="/admin/preview/add", method = RequestMethod.GET)
+    public String addPreview(Model model) {
+        model.addAttribute("action", "add");
+        
+        return "change_one_preview";
+    }
+    
+    @RequestMapping(value="/admin/preview/add", method = RequestMethod.GET, 
+            params = {"id", "title", "description", "text", "event_date", "id_img"})
+    public String addPreview(Model model, 
+                        @RequestParam(value = "id") String id,
+                        @RequestParam(value = "title") String title,
+                        @RequestParam(value = "description") String description,
+                        @RequestParam(value = "text") String text,
+                        @RequestParam(value = "event_date") String eventDate,
+                        @RequestParam(value = "id_img") int idImg){
+        
+        Preview preview = new Preview();
+        Factory factory = Factory.getInstance();
+        PreviewDao previewDao = factory.getPreviewDao();
+
+        preview.setTitle(title);
+        preview.setDescription(description);
+        preview.setText(text);
+        try {
+        preview.setEventDate(new SimpleDateFormat("yyyy-MM-dd").parse(eventDate));
+        } catch (ParseException ex) {
+            System.out.println("Exception in admin/news/add with param" + ex);
+        }
+        preview.setIdImg(idImg);
+
+        try {
+            previewDao.addPreview(preview);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+        
+        return "change_one_preview";
+    }
+    
+    @RequestMapping(value="/admin/preview/change", method = RequestMethod.GET, params = "id")
+    public String changePreview(Model model, 
+                        @RequestParam(value = "id") int id){
+        
+        Preview preview = null;
+        Factory factory = Factory.getInstance();
+        PreviewDao previewDao = factory.getPreviewDao();
+
+        try {
+            preview = previewDao.getPreview(id);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+        model.addAttribute("preview", preview);
+        model.addAttribute("action", "change");
+        
+        return "change_one_preview";
+    }
+    
+    @RequestMapping(value="/admin/preview/change", method = RequestMethod.GET, 
+            params = {"id", "title", "description", "text", "event_date", "id_img"})
+    public String changePreview(Model model, 
+                        @RequestParam(value = "id") int id,
+                        @RequestParam(value = "title") String title,
+                        @RequestParam(value = "description") String description,
+                        @RequestParam(value = "text") String text,
+                        @RequestParam(value = "event_date") String eventDate,
+                        @RequestParam(value = "id_img") int idImg){
+        
+        Preview preview = new Preview();
+        Factory factory = Factory.getInstance();
+        PreviewDao previewDao = factory.getPreviewDao();
+                
+        preview.setIdPreview(id);
+        preview.setTitle(title);
+        preview.setDescription(description);
+        preview.setText(text);
+        try {
+        preview.setEventDate(new SimpleDateFormat("yyyy-MM-dd").parse(eventDate));
+        } catch (ParseException ex) {
+            System.out.println("Exception in admin/news/change with param" + ex);
+        }
+        preview.setIdImg(idImg);
+
+        try {
+            previewDao.updatePreview(preview);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+        
+        return "change_one_preview";
+    }
+    
+    @RequestMapping(value="/admin/preview/del", method = RequestMethod.GET, params = "id")
+    public String deletePreview(Model model, @RequestParam(value = "id") int id) {
+        
+        Factory factory = Factory.getInstance();
+        PreviewDao previewDao = factory.getPreviewDao();
+                
+        try {
+            previewDao.deletePreview(id);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+        
+        return "aAdmin_page";
     }
     
     @RequestMapping(value="/admin/photo")
@@ -171,9 +304,134 @@ public class AdminsController {
         return "change_photos";
     }
     
-    @RequestMapping(value="/admin/video")
-    public String viewVideo() {  
-        return "change_video";
+    /**
+     * 
+     * Video 
+     */
+    
+    @RequestMapping(value="/admin/video", method = RequestMethod.GET)
+    public String viewVideo(Model model) { 
+        Factory factory = Factory.getInstance();
+        
+        VideosDao previewDao = factory.getVideosDao();
+        
+        ArrayList<Videos> videos = null;      
+        try {
+            previews = previewDao.getPreviews();
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }   
+        model.addAttribute("previews", previews);
+        model.addAttribute("previewsCount", previews.size() - 1);
+        return "previews_table";
+    }
+    
+    @RequestMapping(value="/admin/preview/add", method = RequestMethod.GET)
+    public String addPreview(Model model) {
+        model.addAttribute("action", "add");
+        
+        return "change_one_preview";
+    }
+    
+    @RequestMapping(value="/admin/preview/add", method = RequestMethod.GET, 
+            params = {"id", "title", "description", "text", "event_date", "id_img"})
+    public String addPreview(Model model, 
+                        @RequestParam(value = "id") String id,
+                        @RequestParam(value = "title") String title,
+                        @RequestParam(value = "description") String description,
+                        @RequestParam(value = "text") String text,
+                        @RequestParam(value = "event_date") String eventDate,
+                        @RequestParam(value = "id_img") int idImg){
+        
+        Preview preview = new Preview();
+        Factory factory = Factory.getInstance();
+        PreviewDao previewDao = factory.getPreviewDao();
+
+        preview.setTitle(title);
+        preview.setDescription(description);
+        preview.setText(text);
+        try {
+        preview.setEventDate(new SimpleDateFormat("yyyy-MM-dd").parse(eventDate));
+        } catch (ParseException ex) {
+            System.out.println("Exception in admin/news/add with param" + ex);
+        }
+        preview.setIdImg(idImg);
+
+        try {
+            previewDao.addPreview(preview);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+        
+        return "change_one_preview";
+    }
+    
+    @RequestMapping(value="/admin/preview/change", method = RequestMethod.GET, params = "id")
+    public String changePreview(Model model, 
+                        @RequestParam(value = "id") int id){
+        
+        Preview preview = null;
+        Factory factory = Factory.getInstance();
+        PreviewDao previewDao = factory.getPreviewDao();
+
+        try {
+            preview = previewDao.getPreview(id);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+        model.addAttribute("preview", preview);
+        model.addAttribute("action", "change");
+        
+        return "change_one_preview";
+    }
+    
+    @RequestMapping(value="/admin/preview/change", method = RequestMethod.GET, 
+            params = {"id", "title", "description", "text", "event_date", "id_img"})
+    public String changePreview(Model model, 
+                        @RequestParam(value = "id") int id,
+                        @RequestParam(value = "title") String title,
+                        @RequestParam(value = "description") String description,
+                        @RequestParam(value = "text") String text,
+                        @RequestParam(value = "event_date") String eventDate,
+                        @RequestParam(value = "id_img") int idImg){
+        
+        Preview preview = new Preview();
+        Factory factory = Factory.getInstance();
+        PreviewDao previewDao = factory.getPreviewDao();
+                
+        preview.setIdPreview(id);
+        preview.setTitle(title);
+        preview.setDescription(description);
+        preview.setText(text);
+        try {
+        preview.setEventDate(new SimpleDateFormat("yyyy-MM-dd").parse(eventDate));
+        } catch (ParseException ex) {
+            System.out.println("Exception in admin/news/change with param" + ex);
+        }
+        preview.setIdImg(idImg);
+
+        try {
+            previewDao.updatePreview(preview);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+        
+        return "change_one_preview";
+    }
+    
+    @RequestMapping(value="/admin/preview/del", method = RequestMethod.GET, params = "id")
+    public String deletePreview(Model model, @RequestParam(value = "id") int id) {
+        
+        Factory factory = Factory.getInstance();
+        PreviewDao previewDao = factory.getPreviewDao();
+                
+        try {
+            previewDao.deletePreview(id);
+        } catch (SQLException ex) {
+            System.out.println("Exception in getDocumentation in Controller: " + ex);
+        }
+        
+        return "aAdmin_page";
     }
     
     @RequestMapping(value="/admin/sign_up", method = RequestMethod.GET)

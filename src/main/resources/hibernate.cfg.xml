@@ -2,18 +2,18 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <!--<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/jst?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/vystavka?encoding=utf8&amp;useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password"/>-->
-    
+    <property name="hibernate.connection.password" />
+    <!--
     <property name="hibernate.dialect">org.hibernate.dialect.FirebirdDialect</property>
     <property name="hibernate.connection.driver_class">org.firebirdsql.jdbc.FBDriver</property>
     <property name="hibernate.connection.url">jdbc:firebirdsql:class.mmcs.sfedu.ru:/fbdata/kibimedia.fdb?encoding=utf8&amp;useUnicode=true&amp;characterEncoding=utf8</property>
     <property name="hibernate.connection.username">PM44</property>
     <property name="hibernate.connection.password">pm44</property>
-    
+    -->
     <!-- JDBC connection pool (use the built-in) -->
     <property name="connection.pool_size">1</property>
 
@@ -29,19 +29,19 @@
     
     <!-- Mapping files -->
     <mapping class="ru.sfedu.kibimedia.tables.News" />
-    <mapping class="ru.sfedu.kibimedia.tables.Admins" />
-    <mapping class="ru.sfedu.kibimedia.tables.Announcements" />
-    <mapping class="ru.sfedu.kibimedia.tables.Coments" />
+    <mapping class="ru.sfedu.kibimedia.tables.Admin" />
+    <mapping class="ru.sfedu.kibimedia.tables.Preview" />
+    <mapping class="ru.sfedu.kibimedia.tables.Comment" />
     <mapping class="ru.sfedu.kibimedia.tables.EventReg" />
     <mapping class="ru.sfedu.kibimedia.tables.Organizations" />
     <mapping class="ru.sfedu.kibimedia.tables.Pages" />
     <mapping class="ru.sfedu.kibimedia.tables.Photos" />
     <mapping class="ru.sfedu.kibimedia.tables.Users" />
-    <mapping class="ru.sfedu.kibimedia.tables.Albums" />
-    <mapping class="ru.sfedu.kibimedia.tables.AlbumsPhoto" />
-    <mapping class="ru.sfedu.kibimedia.tables.Creators" />
+    <mapping class="ru.sfedu.kibimedia.tables.Album" />
+    <mapping class="ru.sfedu.kibimedia.tables.AlbumPhoto" />
+    <mapping class="ru.sfedu.kibimedia.tables.Creator" />
     <mapping class="ru.sfedu.kibimedia.tables.Videos" />
-    <mapping class="ru.sfedu.kibimedia.tables.Awards" />
+    <mapping class="ru.sfedu.kibimedia.tables.Award" />
     <mapping class="ru.sfedu.kibimedia.tables.Employee" />
 
   </session-factory>

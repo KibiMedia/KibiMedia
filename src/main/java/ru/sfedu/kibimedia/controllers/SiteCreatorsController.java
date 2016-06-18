@@ -20,8 +20,8 @@ import ru.sfedu.kibimedia.tables.Pages;
  * @author Сергей
  */
 @Controller
-public class SiteCreatorsController {
-    @RequestMapping(value="/site_creators", method = RequestMethod.GET)
+public class SiteCreatorController {
+    @RequestMapping(value="/site_creator", method = RequestMethod.GET)
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
@@ -43,6 +43,6 @@ public class SiteCreatorsController {
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
         
-        return "site_creators";
+        return "site_creator";
     }
 }

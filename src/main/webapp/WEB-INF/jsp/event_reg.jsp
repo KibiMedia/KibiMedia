@@ -19,30 +19,30 @@
             <form action="event_reg" method="get">
               <div class="form-group">
                 <label>Название организации (структурного подразделения):</label>
-                <input class="form-control" placeholder="организация" type="text" name="org_name" value="">
+                <input class="form-control" placeholder="Полное наименование" type="text" name="org_name" value="">
                 <label class="label label-danger" id="loginLabel" style="display: none">Название организации должно содержать
                   только русские или латинские символы.</label>
               </div>
               <div class="form-group">
                 <label>Название мероприятия:</label>
-                <input class="form-control" placeholder="мероприятие" type="text" name="event_name" value="">
+                <input class="form-control" placeholder="Так будет отображаться в анонсах" type="text" name="event_name" value="">
                 <label class="label label-danger" style="display: none">Название мероприятия должно содержать
                   только русские или латинские символы.</label>
               </div>
               <div class="form-group">
                 <label>Краткое описание мероприятия:</label>
-                <input name="description" class="form-control" placeholder="описание" type="text" name="description" value="">
+                <input name="description" class="form-control" placeholder="100-200 символов" type="text" name="description" value="">
                 <label class="label label-danger" style="display: none">Описание должно содержать
                   только русские или латинские символы.</label>
               </div>
               <div class="form-group">
-                <label>Контактный телефон:</label>
-                <input class="form-control" placeholder="введите номер телефона" type="text" name="phone" value="">
+                <label>Контактный телефон ответственного:</label>
+                <input class="form-control" placeholder="Например, +7(800)1234567" type="text" name="phone" value="">
                 <label class="label label-danger" style="display: none">Телефон может содержать только цифры</label>
               </div>
               <div class="form-group">
-                <label>ФИО ответственного мероприятия:</label>
-                <input class="form-control" placeholder="введите ФИО" type="text" name="full_name" value="">
+                <label>ФИО ответственного:</label>
+                <input class="form-control" placeholder="Полностью" type="text" name="full_name" value="">
                 <label class="label label-danger" style="display: none">Поле должно содержать
                   только русские или латинские символы</label>
               </div>

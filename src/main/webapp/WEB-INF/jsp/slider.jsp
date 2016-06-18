@@ -9,7 +9,7 @@
     <!--Индикаторы слайдов-->
     <ol class="carousel-indicators">
         <li class="active" data-target="#carousel" data-slide-to="0"></li>
-        <c:forEach begin="1" end="${previewCount}" varStatus="loop">
+        <c:forEach begin="1" end="${previewsCount}" varStatus="loop">
             <li data-target="#carousel" data-slide-to="loop.index"></li>
         </c:forEach>
     </ol>
@@ -19,12 +19,12 @@
         <div class="item active">
             <img src="resources/images${previewPhotos.get(0).getHrefImg()}" alt="">
             <div class="carousel-caption">
-                <h3><a href="previews?id=${preview.get(0).getIdAnnoncement()}">${preview.get(0).getTitle()}</a></h3>
-                <p>${preview.get(0).getDescription()}</p>
+                <h3><a href="previews?id=${previews.get(0).getIdPreview()}">${previews.get(0).getTitle()}</a></h3>
+                <p>${previews.get(0).getDescription()}</p>
             </div>
         </div>
 
-        <c:forEach begin="1" end="${previewCount}" varStatus="loop">
+        <c:forEach begin="1" end="${previewsCount}" varStatus="loop">
             <jsp:include page="slide.jsp" >
                 <jsp:param name="index" value="${loop.index}" />
             </jsp:include>

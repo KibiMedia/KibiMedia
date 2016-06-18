@@ -12,12 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.sfedu.kibimedia.dao.AlbumsDao;
-import ru.sfedu.kibimedia.dao.AlbumsPhotoDao;
+import ru.sfedu.kibimedia.dao.AlbumDao;
+import ru.sfedu.kibimedia.dao.AlbumPhotoDao;
 import ru.sfedu.kibimedia.dao.PagesDao;
 import ru.sfedu.kibimedia.main.Factory;
-import ru.sfedu.kibimedia.tables.Albums;
-import ru.sfedu.kibimedia.tables.AlbumsPhoto;
+import ru.sfedu.kibimedia.tables.Album;
+import ru.sfedu.kibimedia.tables.AlbumPhoto;
 import ru.sfedu.kibimedia.tables.Pages;
 
 /**
@@ -30,18 +30,18 @@ public class PhotoController {
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
-        AlbumsDao albumsDao = factory.getAlbumsDao();
+        AlbumDao albumDao = factory.getAlbumDao();
         
         ArrayList<Pages> mainPages = null;
         ArrayList<Pages> footerPages = null;
         
-        ArrayList<Albums> albums = null;
+        ArrayList<Album> album = null;
 
         try {
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);
             
-            albums = albumsDao.getAlbums();
+            album = albumDao.getAlbum();
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
@@ -53,8 +53,8 @@ public class PhotoController {
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
         
-        model.addAttribute("albums", albums);
-        model.addAttribute("albumsCount", albums.size() - 1);
+        model.addAttribute("album", album);
+        model.addAttribute("albumCount", album.size() - 1);
         
         return "photo";
     }
@@ -63,10 +63,10 @@ public class PhotoController {
     public String viewHomeWithId(Model model, @RequestParam(value = "id") int id) {
         Factory factory = Factory.getInstance();
         PagesDao pagesDao = factory.getPagesDao();
-        AlbumsPhotoDao albumsPhotoDao = factory.getAlbumsPhotoDao();
-        AlbumsDao albumsDao = factory.getAlbumsDao();
+        AlbumPhotoDao albumPhotoDao = factory.getAlbumPhotoDao();
+        AlbumDao albumDao = factory.getAlbumDao();
         
-        ArrayList<AlbumsPhoto> albumsPhoto = null;
+        ArrayList<AlbumPhoto> albumPhoto = null;
         ArrayList<Pages> mainPages = null;
         ArrayList<Pages> footerPages = null;
         
@@ -75,8 +75,8 @@ public class PhotoController {
         try {
             mainPages = pagesDao.getPagesByType(0);
             footerPages = pagesDao.getPagesByType(2);
-            albumsPhoto = albumsPhotoDao.getPhotosByAlbum(id);
-            albumName = albumsDao.getAlbumById(id).getTitle();
+            albumPhoto = albumPhotoDao.getPhotosByAlbum(id);
+            albumName = albumDao.getAlbumById(id).getTitle();
             
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
@@ -88,11 +88,11 @@ public class PhotoController {
         model.addAttribute("mainPagesCount", mainPages.size() - 1);
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
-        model.addAttribute("albumsPhoto", albumsPhoto);
-        model.addAttribute("albumsPhotoCount", albumsPhoto.size() - 1);
+        model.addAttribute("albumPhoto", albumPhoto);
+        model.addAttribute("albumPhotoCount", albumPhoto.size() - 1);
         model.addAttribute("albumName", albumName);
         
-        return "one_albums_photo";
+        return "one_album_photo";
     }
      
 }

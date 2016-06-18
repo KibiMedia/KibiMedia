@@ -17,8 +17,8 @@ import javax.persistence.Table;
  * @author 1
  */
 @Entity
-@Table(name = "creators")
-public class Creators implements Serializable{
+@Table(name = "creator")
+public class Creator implements Serializable{
     
     private static final long serialVersionUID = -5527566248002296042L;
     public static long getSerialVersionUID() {

@@ -25,19 +25,19 @@
             <c:forEach begin="0" end="${announCount}" varStatus="loop">
                 <tr>
                 <td>
-                    ${announcements.get(loop.index).getIdAnnoncement()}
+                    ${preview.get(loop.index).getIdAnnoncement()}
                 </td>
                 <td>
-                    ${announcements.get(loop.index).getTitle()}
+                    ${preview.get(loop.index).getTitle()}
                 </td>
                 <td>
-                    ${announcements.get(loop.index).getDescription()}
+                    ${preview.get(loop.index).getDescription()}
                 </td>
                 <td>
-                    ${announcements.get(loop.index).getEventDate()}
+                    ${preview.get(loop.index).getEventDate()}
                 </td>
                 <td>
-                    ${announcements.get(loop.index).getIdImg()}
+                    ${preview.get(loop.index).getIdImg()}
                 </td>
                 <td>
                     <!--<c:url value="/resources/images/favicon.ico" />-->

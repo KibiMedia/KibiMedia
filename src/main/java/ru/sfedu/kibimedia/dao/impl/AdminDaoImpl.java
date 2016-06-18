@@ -5,8 +5,8 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
-import ru.sfedu.kibimedia.dao.AdminsDao;
-import ru.sfedu.kibimedia.tables.Admins;
+import ru.sfedu.kibimedia.dao.AdminDao;
+import ru.sfedu.kibimedia.tables.Admin;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +18,10 @@ import ru.sfedu.kibimedia.utils.HibernateUtils;
  *
  * @author Mishas
  */
-public class AdminsDaoImpl implements AdminsDao {
+public class AdminDaoImpl implements AdminDao {
 
     @Override
-    public void addAdmin(Admins admin) throws SQLException {
+    public void addAdmin(Admin admin) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -37,7 +37,7 @@ public class AdminsDaoImpl implements AdminsDao {
     }
 
     @Override
-    public void deleteAdmin(Admins admin) throws SQLException {
+    public void deleteAdmin(Admin admin) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -69,13 +69,13 @@ public class AdminsDaoImpl implements AdminsDao {
     }
 
     @Override
-    public Admins getAdminById(int id) throws SQLException {
-        Admins admin = null;
+    public Admin getAdminById(int id) throws SQLException {
+        Admin admin = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            admin = (Admins) session.load(Admins.class, id);
+            admin = (Admin) session.load(Admin.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -87,13 +87,13 @@ public class AdminsDaoImpl implements AdminsDao {
     }
 
     @Override
-    public ArrayList<Admins> getAdmins() throws SQLException {
-        ArrayList<Admins> admins = null;
+    public ArrayList<Admin> getAdmins() throws SQLException {
+        ArrayList<Admin> aAdmin = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            admins = (ArrayList<Admins>) session.createCriteria(Admins.class).list();
+            aAdmin = (ArrayList<Admin>) session.createCriteria(Admin.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -101,7 +101,7 @@ public class AdminsDaoImpl implements AdminsDao {
                 session.close();
         }
         
-        return admins;
+        return aAdmin;
     }
     
 }
