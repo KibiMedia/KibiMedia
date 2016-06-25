@@ -17,7 +17,7 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <img style="float:left; margin: 7px 7px 0px 0" src="resources/images${newsPhoto.getHrefImg()}" alt="">
+                    <img style="float:left; margin: 7px 7px 0px 0" src="resources/images${newsPhotos.getHrefImg()}" alt="">
                     <div class="panel-body">
                         <p>${news.getText()}</p>
                     </div>

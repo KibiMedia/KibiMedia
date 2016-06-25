@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.sfedu.kibimedia.dao.NewsDao;
-import ru.sfedu.kibimedia.dao.PagesDao;
-import ru.sfedu.kibimedia.dao.PhotosDao;
+import ru.sfedu.kibimedia.dao.PageDao;
+import ru.sfedu.kibimedia.dao.PhotoDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.News;
-import ru.sfedu.kibimedia.tables.Pages;
-import ru.sfedu.kibimedia.tables.Photos;
+import ru.sfedu.kibimedia.tables.Page;
+import ru.sfedu.kibimedia.tables.Photo;
 
 /**
  *
@@ -29,22 +29,22 @@ public class NewsController {
     @RequestMapping(value="/news", method = RequestMethod.GET)
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
-        PagesDao pagesDao = factory.getPagesDao();
+        PageDao pageDao = factory.getPageDao();
         NewsDao newsDao = factory.getNewsDao();
-        PhotosDao photosDao = factory.getPhotosDao();
+        PhotoDao photoDao = factory.getPhotoDao();
         
         ArrayList<News> news = null;
-        ArrayList<Photos> newsPhotos = new ArrayList<>();
-        ArrayList<Pages> mainPages = null;
-        ArrayList<Pages> footerPages = null;
+        ArrayList<Photo> newsPhotos = new ArrayList<>();
+        ArrayList<Page> mainPages = null;
+        ArrayList<Page> footerPages = null;
 
         try {
-            mainPages = pagesDao.getPagesByType(0);
-            footerPages = pagesDao.getPagesByType(2);
+            mainPages = pageDao.getPagesByType(0);
+            footerPages = pageDao.getPagesByType(2);
             
             news = newsDao.getAllNews();
             for (int i = 0; i < news.size(); ++i) 
-                newsPhotos.add(photosDao.getPhoto(news.get(i).getIdImg()));
+                newsPhotos.add(photoDao.getPhoto(news.get(i).getIdImg()));
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
@@ -65,20 +65,20 @@ public class NewsController {
     @RequestMapping(value="/news", method = RequestMethod.GET, params = "id")
     public String viewHomeWithId(Model model, @RequestParam(value = "id") int id) {
         Factory factory = Factory.getInstance();
-        PagesDao pagesDao = factory.getPagesDao();
+        PageDao pageDao = factory.getPageDao();
         NewsDao newsDao = factory.getNewsDao();
-        PhotosDao photosDao = factory.getPhotosDao();
+        PhotoDao photoDao = factory.getPhotoDao();
         
         News news = null;
-        ArrayList<Pages> mainPages = null;
-        ArrayList<Pages> footerPages = null;
-        Photos newsPhoto = null;
+        ArrayList<Page> mainPages = null;
+        ArrayList<Page> footerPages = null;
+        Photo newsPhotos = null;
 
         try {
-            mainPages = pagesDao.getPagesByType(0);
-            footerPages = pagesDao.getPagesByType(2);
+            mainPages = pageDao.getPagesByType(0);
+            footerPages = pageDao.getPagesByType(2);
             news = newsDao.getNews(id);
-            newsPhoto = photosDao.getPhoto(news.getIdImg());
+            newsPhotos = photoDao.getPhoto(news.getIdImg());
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
@@ -90,7 +90,7 @@ public class NewsController {
         model.addAttribute("footerPages", footerPages);
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
         model.addAttribute("news", news);
-        model.addAttribute("newsPhoto", newsPhoto);
+        model.addAttribute("newsPhotos", newsPhotos);
         return "one_news";
     }
     

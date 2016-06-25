@@ -17,8 +17,8 @@ import javax.persistence.Table;
  * @author Mishas
  */
 @Entity
-@Table(name = "photos")
-public class Photos implements Serializable{
+@Table(name = "page")
+public class Page implements Serializable{
     
     private static final long serialVersionUID = -5527566248002296042L;
     public static long getSerialVersionUID() {
@@ -27,22 +27,44 @@ public class Photos implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_img")
-    private Integer idImg;
+    @Column(name = "id_page")
+    private Integer idPage;
     
-    @Column(name = "href_img")
-    private String hrefImg;
+    @Column(name = "title")
+    private String title;
+    
+    @Column(name = "href")
+    private String href;
+    
+    @Column(name = "type")
+    private Integer type;
 
-    public Integer getIdImg() {
-        return idImg;
+    public Integer getIdPage() {
+        return idPage;
     }
     
-    public String getHrefImg() {
-        return hrefImg;
+    public String getTitle() {
+        return title;
     }
 
-    public void setHrefImg(String hrefImg) {
-        this.hrefImg = hrefImg;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
 }

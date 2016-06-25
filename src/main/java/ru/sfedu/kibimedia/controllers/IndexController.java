@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.sfedu.kibimedia.dao.PreviewDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
-import ru.sfedu.kibimedia.dao.PagesDao;
-import ru.sfedu.kibimedia.dao.PhotosDao;
+import ru.sfedu.kibimedia.dao.PageDao;
+import ru.sfedu.kibimedia.dao.PhotoDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.Preview;
 import ru.sfedu.kibimedia.tables.News;
-import ru.sfedu.kibimedia.tables.Pages;
-import ru.sfedu.kibimedia.tables.Photos;
+import ru.sfedu.kibimedia.tables.Page;
+import ru.sfedu.kibimedia.tables.Photo;
 
 /**
  *
@@ -34,28 +34,28 @@ public class IndexController {
         
         NewsDao newsDao = factory.getNewsDao();
         PreviewDao previewDao = factory.getPreviewDao();
-        PhotosDao photosDao = factory.getPhotosDao();
-        PagesDao pagesDao = factory.getPagesDao();
+        PhotoDao photoDao = factory.getPhotoDao();
+        PageDao pageDao = factory.getPageDao();
         
         ArrayList<News> sixNews = null;
         ArrayList<Preview> previews = null;
-        ArrayList<Pages> mainPages = null;
-        ArrayList<Pages> footerPages = null;
-        ArrayList<Pages> topPages = null;
-        ArrayList<Photos> newsPhotos = new ArrayList<>();
-        ArrayList<Photos> previewPhotos = new ArrayList<>();
+        ArrayList<Page> mainPages = null;
+        ArrayList<Page> footerPages = null;
+        ArrayList<Page> topPages = null;
+        ArrayList<Photo> newsPhotos = new ArrayList<>();
+        ArrayList<Photo> previewPhotos = new ArrayList<>();
         try {
             sixNews = newsDao.getLastSixNews(); 
             for (int i = 0; i < 6; ++i) {
-                newsPhotos.add(photosDao.getPhoto(sixNews.get(i).getIdImg()));
+                newsPhotos.add(photoDao.getPhoto(sixNews.get(i).getIdImg()));
             }
             previews = previewDao.getPreviews();
             for (int i = 0; i < previews.size(); ++i) {
-                previewPhotos.add(photosDao.getPhoto(previews.get(i).getIdImg()));
+                previewPhotos.add(photoDao.getPhoto(previews.get(i).getIdImg()));
             }
-            mainPages = pagesDao.getPagesByType(0);
-            footerPages = pagesDao.getPagesByType(2);
-            topPages = pagesDao.getPagesByType(1);
+            mainPages = pageDao.getPagesByType(0);
+            footerPages = pageDao.getPagesByType(2);
+            topPages = pageDao.getPagesByType(1);
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }       

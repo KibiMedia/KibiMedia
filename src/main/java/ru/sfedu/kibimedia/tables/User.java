@@ -18,8 +18,8 @@ import javax.persistence.Table;
  * @author Mishas
  */
 @Entity
-@Table(name = "users")
-public class Users implements Serializable{
+@Table(name = "user")
+public class User implements Serializable{
     
     private static final long serialVersionUID = -5527566248002296042L;
     public static long getSerialVersionUID() {

@@ -5,7 +5,7 @@
  */
 package ru.sfedu.kibimedia.dao;
 
-import ru.sfedu.kibimedia.tables.Pages;
+import ru.sfedu.kibimedia.tables.Page;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +14,13 @@ import java.util.List;
  *
  * @author Mishas
  */
-public interface PagesDao {
+public interface PageDao {
     
-    public void addPage(Pages page) throws SQLException;
-    public void deletePage(Pages page) throws SQLException;
+    public void addPage(Page page) throws SQLException;
+    public void deletePage(Page page) throws SQLException;
     public void deletePage(int id) throws SQLException;
-    public Pages getPage(int id) throws SQLException;
-    public ArrayList<Pages> getPages() throws SQLException;
-    public ArrayList<Pages> getPagesByType(int type) throws SQLException;
+    public Page getPage(int id) throws SQLException;
+    public ArrayList<Page> getPages() throws SQLException;
+    public ArrayList<Page> getPagesByType(int type) throws SQLException;
     
 }

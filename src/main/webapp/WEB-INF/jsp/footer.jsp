@@ -20,7 +20,7 @@
                 <div class="content">
                     <c:forEach begin="0" end="${footerPagesCount}" varStatus="loop">
                     <ul>
-                        <a href="<c:url value="${footerPages.get(loop.index).getHref()}" />">${footerPages.get(loop.index).getTitle()}</a>
+                        <a href="<c:url value="/${footerPages.get(loop.index).getHref()}" />">${footerPages.get(loop.index).getTitle()}</a>
                     </ul>
                     </c:forEach>
                 </div>

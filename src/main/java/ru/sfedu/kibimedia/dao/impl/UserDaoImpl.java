@@ -5,23 +5,21 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
-import ru.sfedu.kibimedia.dao.UsersDao;
-import ru.sfedu.kibimedia.tables.Users;
+import ru.sfedu.kibimedia.dao.UserDao;
+import ru.sfedu.kibimedia.tables.User;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import org.hibernate.Session;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
 /**
  *
  * @author Mishas
  */
-public class UsersDaoImpl implements UsersDao {
+public class UserDaoImpl implements UserDao {
 
     @Override
-    public void addUser(Users user) throws SQLException {
+    public void addUser(User user) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -37,7 +35,7 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Override
-    public void deleteUser(Users user) throws SQLException {
+    public void deleteUser(User user) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -69,13 +67,13 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Override
-    public Users getUserById(int id) throws SQLException {
-        Users user = null;
+    public User getUserById(int id) throws SQLException {
+        User user = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            user = (Users) session.load(Users.class, id);
+            user = (User) session.load(User.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -87,13 +85,13 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Override
-    public ArrayList<Users> getUsers() throws SQLException {
-        ArrayList<Users> users = null;
+    public ArrayList<User> getUsers() throws SQLException {
+        ArrayList<User> user = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            users = (ArrayList<Users>) session.createCriteria(Users.class).list();
+            user = (ArrayList<User>) session.createCriteria(User.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -101,16 +99,16 @@ public class UsersDaoImpl implements UsersDao {
                 session.close();
         }
         
-        return users;
+        return user;
     }
 
     @Override
-    public Users getUserByLoginAndPassword(String login, String pass) throws SQLException {
-        ArrayList<Users> users = null;
+    public User getUserByLoginAndPassword(String login, String pass) throws SQLException {
+        ArrayList<User> user = null;
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            users = (ArrayList<Users>) session.createCriteria(Users.class).add(Restrictions.eq("login", login)).add(Restrictions.eq("password", pass)).list();
+            user = (ArrayList<User>) session.createCriteria(User.class).add(Restrictions.eq("login", login)).add(Restrictions.eq("password", pass)).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -118,13 +116,13 @@ public class UsersDaoImpl implements UsersDao {
                 session.close();
         }
         
-        if (users == null)
+        if (user == null)
             return null;
         
-        if (users.isEmpty())
+        if (user.isEmpty())
             return null; 
         
-        return users.get(0);
+        return user.get(0);
     }
     
 }

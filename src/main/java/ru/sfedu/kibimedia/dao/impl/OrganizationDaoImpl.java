@@ -5,8 +5,8 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
-import ru.sfedu.kibimedia.dao.VideosDao;
-import ru.sfedu.kibimedia.tables.Videos;
+import ru.sfedu.kibimedia.dao.OrganizationDao;
+import ru.sfedu.kibimedia.tables.Organization;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,17 +16,17 @@ import org.hibernate.criterion.Restrictions;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
 /**
  *
- * @author 1
+ * @author Mishas
  */
-public class VideosDaoImpl implements VideosDao{
-    
+public class OrganizationDaoImpl implements OrganizationDao {
+
     @Override
-    public void addVideo(Videos video) throws SQLException {
+    public void addOrganization(Organization organization) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(video);
+            session.save(organization);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,12 +37,12 @@ public class VideosDaoImpl implements VideosDao{
     }
 
     @Override
-    public void deleteVideo(Videos video) throws SQLException {
+    public void deleteOrganization(Organization organization) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(video);
+            session.delete(organization);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,12 +53,12 @@ public class VideosDaoImpl implements VideosDao{
     }
 
     @Override
-    public void deleteVideoById(int id) throws SQLException {
+    public void deleteOrganization(int id) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(getVideo(id));
+            session.delete(getOrganization(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,13 +69,13 @@ public class VideosDaoImpl implements VideosDao{
     }
 
     @Override
-    public Videos getVideo(int id) throws SQLException {
-        Videos video = null;
+    public Organization getOrganization(int id) throws SQLException {
+        Organization organization = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            video = (Videos) session.load(Videos.class, id);
+            organization = (Organization) session.load(Organization.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -83,17 +83,17 @@ public class VideosDaoImpl implements VideosDao{
                 session.close();
         }
         
-        return video;
+        return organization;
     }
 
     @Override
-    public ArrayList<Videos> getVideos() throws SQLException {
-        ArrayList<Videos> videos = null;
+    public ArrayList<Organization> getOrganizations() throws SQLException {
+        ArrayList<Organization> organization = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            videos = (ArrayList<Videos>) session.createCriteria(Videos.class).list();
+            organization = (ArrayList<Organization>) session.createCriteria(Organization.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -101,7 +101,8 @@ public class VideosDaoImpl implements VideosDao{
                 session.close();
         }
         
-        return videos;
+        return organization;
     }
+
     
 }

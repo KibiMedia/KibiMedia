@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.sfedu.kibimedia.dao.AlbumDao;
 import ru.sfedu.kibimedia.dao.AlbumPhotoDao;
-import ru.sfedu.kibimedia.dao.PagesDao;
+import ru.sfedu.kibimedia.dao.PageDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.Album;
 import ru.sfedu.kibimedia.tables.AlbumPhoto;
-import ru.sfedu.kibimedia.tables.Pages;
+import ru.sfedu.kibimedia.tables.Page;
 
 /**
  *
@@ -29,17 +29,17 @@ public class PhotoController {
     @RequestMapping(value="/photo", method = RequestMethod.GET)
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
-        PagesDao pagesDao = factory.getPagesDao();
+        PageDao pageDao = factory.getPageDao();
         AlbumDao albumDao = factory.getAlbumDao();
         
-        ArrayList<Pages> mainPages = null;
-        ArrayList<Pages> footerPages = null;
+        ArrayList<Page> mainPages = null;
+        ArrayList<Page> footerPages = null;
         
         ArrayList<Album> album = null;
 
         try {
-            mainPages = pagesDao.getPagesByType(0);
-            footerPages = pagesDao.getPagesByType(2);
+            mainPages = pageDao.getPagesByType(0);
+            footerPages = pageDao.getPagesByType(2);
             
             album = albumDao.getAlbum();
         } catch (SQLException ex) {
@@ -62,20 +62,20 @@ public class PhotoController {
     @RequestMapping(value="/photo", method = RequestMethod.GET, params = "id")
     public String viewHomeWithId(Model model, @RequestParam(value = "id") int id) {
         Factory factory = Factory.getInstance();
-        PagesDao pagesDao = factory.getPagesDao();
+        PageDao pageDao = factory.getPageDao();
         AlbumPhotoDao albumPhotoDao = factory.getAlbumPhotoDao();
         AlbumDao albumDao = factory.getAlbumDao();
         
         ArrayList<AlbumPhoto> albumPhoto = null;
-        ArrayList<Pages> mainPages = null;
-        ArrayList<Pages> footerPages = null;
+        ArrayList<Page> mainPages = null;
+        ArrayList<Page> footerPages = null;
         
         String albumName = "";
 
         try {
-            mainPages = pagesDao.getPagesByType(0);
-            footerPages = pagesDao.getPagesByType(2);
-            albumPhoto = albumPhotoDao.getPhotosByAlbum(id);
+            mainPages = pageDao.getPagesByType(0);
+            footerPages = pageDao.getPagesByType(2);
+            albumPhoto = albumPhotoDao.getPhotoByAlbum(id);
             albumName = albumDao.getAlbumById(id).getTitle();
             
         } catch (SQLException ex) {

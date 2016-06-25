@@ -19,7 +19,7 @@ public interface AlbumPhotoDao {
     public void deleteAlbumPhoto(AlbumPhoto albumPhoto) throws SQLException;
     public void deleteAlbumPhoto(int id) throws SQLException;
     public AlbumPhoto getPhotoById(int id) throws SQLException;
-    public ArrayList<AlbumPhoto> getPhotosByAlbum(int album) throws SQLException;
+    public ArrayList<AlbumPhoto> getPhotoByAlbum(int album) throws SQLException;
     public ArrayList<AlbumPhoto> getAllAlbumPhoto() throws SQLException;
     
 }

@@ -81,12 +81,13 @@
                     <ul class="nav navbar-nav sf-menu" data-type="navbar">
                         <c:forEach begin="0" end="${mainPagesCount}" varStatus="loop">
                             <li>
-                              <a href="<c:url value="${mainPages.get(loop.index).getHref()}" />">${mainPages.get(loop.index).getTitle()}</a>
+                              <a href="<c:url value="/${mainPages.get(loop.index).getHref()}" />">${mainPages.get(loop.index).getTitle()}</a>
                             </li>
                         </c:forEach>
                     </ul>                           
                 </div>
-            </nav>   
+            </nav>
+    <!--
             <form class="search-form" action="search.php" method="GET" accept-charset="utf-8">
                 <label class="search-form_label">
                     <input class="search-form_input" type="text" name="s" autocomplete="off" placeholder=""/>
@@ -94,6 +95,7 @@
                 </label>
                 <button class="search-form_submit fa-search" type="submit"></button>
             </form>       
+    -->
             </div>
         </div>  
     </header>

@@ -5,28 +5,25 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
-import ru.sfedu.kibimedia.dao.PagesDao;
-import ru.sfedu.kibimedia.tables.Pages;
+import ru.sfedu.kibimedia.dao.VideoDao;
+import ru.sfedu.kibimedia.tables.Video;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import org.hibernate.Session;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
 /**
  *
- * @author Mishas
+ * @author 1
  */
-public class PagesDaoImpl implements PagesDao {
-
+public class VideoDaoImpl implements VideoDao{
+    
     @Override
-    public void addPage(Pages page) throws SQLException {
+    public void addVideo(Video video) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(page);
+            session.save(video);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -34,87 +31,64 @@ public class PagesDaoImpl implements PagesDao {
             if ((session != null) && (session.isOpen()))
                 session.close();
         }
-    }
-
-    @Override
-    public void deletePage(Pages page) throws SQLException {
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.delete(page);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-    }
-
-    @Override
-    public void deletePage(int id) throws SQLException {
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.delete(getPage(id));
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-    }
-
-    @Override
-    public Pages getPage(int id) throws SQLException {
-        Pages page = null;
-        
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            page = (Pages) session.load(Pages.class, id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-        
-        return page;
-    }
-
-    @Override
-    public ArrayList<Pages> getPages() throws SQLException {
-        ArrayList<Pages> pages = null;
-        
-        Session session = null;
-        try {
-            session = HibernateUtils.getSessionFactory().openSession();
-            pages = (ArrayList<Pages>) session.createCriteria(Pages.class).list();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((session != null) && (session.isOpen()))
-                session.close();
-        }
-        
-        return pages;
     }
     
     @Override
-    public ArrayList<Pages> getPagesByType(int type) throws SQLException {
-        ArrayList<Pages> pages = null;
+    public void updateVideo(Video video) throws SQLException {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.update(video);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+    }
+
+    @Override
+    public void deleteVideo(Video video) throws SQLException {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(video);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+    }
+
+    @Override
+    public void deleteVideo(int id) throws SQLException {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(getVideo(id));
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+    }
+
+    @Override
+    public Video getVideo(int id) throws SQLException {
+        Video video = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            pages = (ArrayList<Pages>) session.createCriteria(Pages.class)
-                    .add(Restrictions.eq("type", new Integer(type)))
-                    .addOrder(Order.asc("idPage"))
-                    .list();
+            video = (Video) session.load(Video.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -122,8 +96,25 @@ public class PagesDaoImpl implements PagesDao {
                 session.close();
         }
         
-        return pages;
+        return video;
     }
-    
+
+    @Override
+    public ArrayList<Video> getVideos() throws SQLException {
+        ArrayList<Video> video = null;
+        
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+            video = (ArrayList<Video>) session.createCriteria(Video.class).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if ((session != null) && (session.isOpen()))
+                session.close();
+        }
+        
+        return video;
+    }
     
 }

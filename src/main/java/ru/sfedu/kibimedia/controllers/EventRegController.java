@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ru.sfedu.kibimedia.dao.EventRegDao;
-import ru.sfedu.kibimedia.dao.PagesDao;
+import ru.sfedu.kibimedia.dao.PageDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.EventReg;
-import ru.sfedu.kibimedia.tables.Pages;
+import ru.sfedu.kibimedia.tables.Page;
 
 
 /**
@@ -29,14 +29,14 @@ public class EventRegController {
     @RequestMapping(value="/event_reg", method = RequestMethod.GET)
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
-        PagesDao pagesDao = factory.getPagesDao();
+        PageDao pageDao = factory.getPageDao();
         
-        ArrayList<Pages> mainPages = null;
-        ArrayList<Pages> footerPages = null;
+        ArrayList<Page> mainPages = null;
+        ArrayList<Page> footerPages = null;
 
         try {
-            mainPages = pagesDao.getPagesByType(0);
-            footerPages = pagesDao.getPagesByType(2);
+            mainPages = pageDao.getPagesByType(0);
+            footerPages = pageDao.getPagesByType(2);
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
@@ -61,12 +61,12 @@ public class EventRegController {
             @RequestParam(value = "full_name") String fullName)
             {
         Factory factory = Factory.getInstance();    
-        PagesDao pagesDao = factory.getPagesDao();
+        PageDao pageDao = factory.getPageDao();
         EventRegDao eventRegDao = factory.getEventRegDao();
         
         
-        ArrayList<Pages> mainPages = null;
-        ArrayList<Pages> footerPages = null;
+        ArrayList<Page> mainPages = null;
+        ArrayList<Page> footerPages = null;
         
         EventReg event = new EventReg();            
         
@@ -77,8 +77,8 @@ public class EventRegController {
         event.setFullName(fullName);
        
         try {
-            mainPages = pagesDao.getPagesByType(0);
-            footerPages = pagesDao.getPagesByType(2);       
+            mainPages = pageDao.getPagesByType(0);
+            footerPages = pageDao.getPagesByType(2);       
             eventRegDao.addEvent(event);
             
         } catch (SQLException ex) {

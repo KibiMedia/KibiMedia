@@ -12,9 +12,9 @@ import ru.sfedu.kibimedia.dao.AwardDao;
 import ru.sfedu.kibimedia.dao.EmployeeDao;
 import ru.sfedu.kibimedia.dao.EventRegDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
-import ru.sfedu.kibimedia.dao.PagesDao;
-import ru.sfedu.kibimedia.dao.PhotosDao;
-import ru.sfedu.kibimedia.dao.VideosDao;
+import ru.sfedu.kibimedia.dao.PageDao;
+import ru.sfedu.kibimedia.dao.PhotoDao;
+import ru.sfedu.kibimedia.dao.VideoDao;
 import ru.sfedu.kibimedia.dao.impl.AlbumDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.AlbumPhotoDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.PreviewDaoImpl;
@@ -22,9 +22,9 @@ import ru.sfedu.kibimedia.dao.impl.AwardDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.EmployeeDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.EventRegDaoImpl;
 import ru.sfedu.kibimedia.dao.impl.NewsDaoImpl;
-import ru.sfedu.kibimedia.dao.impl.PagesDaoImpl;
-import ru.sfedu.kibimedia.dao.impl.PhotosDaoImpl;
-import ru.sfedu.kibimedia.dao.impl.VideosDaoImpl;
+import ru.sfedu.kibimedia.dao.impl.PageDaoImpl;
+import ru.sfedu.kibimedia.dao.impl.PhotoDaoImpl;
+import ru.sfedu.kibimedia.dao.impl.VideoDaoImpl;
 
 /**
  *
@@ -36,13 +36,13 @@ public class Factory {
     
     private NewsDao newsDao;
     private PreviewDao previewDao;
-    private PhotosDao photosDao;
-    private PagesDao pagesDao;
+    private PhotoDao photoDao;
+    private PageDao pageDao;
     private EventRegDao eventRegDao;
     private AlbumDao albumDao;
     private AlbumPhotoDao albumPhotoDao;
     private AwardDao awardDao;
-    private VideosDao videosDao;
+    private VideoDao videoDao;
     private EmployeeDao employeeDao;
 
     
@@ -70,16 +70,16 @@ public class Factory {
         return previewDao;
     }
     
-    public PhotosDao getPhotosDao() {
-        if (photosDao == null) 
-            photosDao = new PhotosDaoImpl();
-        return photosDao;
+    public PhotoDao getPhotoDao() {
+        if (photoDao == null) 
+            photoDao = new PhotoDaoImpl();
+        return photoDao;
     }
     
-    public PagesDao getPagesDao() {
-        if (pagesDao == null) 
-            pagesDao = new PagesDaoImpl();
-        return pagesDao;
+    public PageDao getPageDao() {
+        if (pageDao == null) 
+            pageDao = new PageDaoImpl();
+        return pageDao;
     }
     
     public AlbumDao getAlbumDao() {
@@ -100,10 +100,10 @@ public class Factory {
         return awardDao;
     }
     
-    public VideosDao getVideosDao() {
-        if (videosDao == null) 
-            videosDao = new VideosDaoImpl();
-        return videosDao;
+    public VideoDao getVideoDao() {
+        if (videoDao == null) 
+            videoDao = new VideoDaoImpl();
+        return videoDao;
     }
     
     public EmployeeDao getEmployeeDao() {

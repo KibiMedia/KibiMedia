@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.sfedu.kibimedia.dao.PreviewDao;
-import ru.sfedu.kibimedia.dao.PagesDao;
-import ru.sfedu.kibimedia.dao.PhotosDao;
+import ru.sfedu.kibimedia.dao.PageDao;
+import ru.sfedu.kibimedia.dao.PhotoDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.Preview;
-import ru.sfedu.kibimedia.tables.Pages;
-import ru.sfedu.kibimedia.tables.Photos;
+import ru.sfedu.kibimedia.tables.Page;
+import ru.sfedu.kibimedia.tables.Photo;
 
 /**
  *
@@ -26,25 +26,25 @@ import ru.sfedu.kibimedia.tables.Photos;
  */
 @Controller
 public class PreviewController {
-    @RequestMapping(value="/previews", method = RequestMethod.GET)
+    @RequestMapping(value="/preview", method = RequestMethod.GET)
     public String viewHome(Model model) {  
         Factory factory = Factory.getInstance();
-        PagesDao pagesDao = factory.getPagesDao();
+        PageDao pageDao = factory.getPageDao();
         PreviewDao previewDao = factory.getPreviewDao();
-        PhotosDao photosDao = factory.getPhotosDao();
+        PhotoDao photoDao = factory.getPhotoDao();
         
         ArrayList<Preview> previewes = null;
-        ArrayList<Photos> previewPhotos = new ArrayList<>();
-        ArrayList<Pages> mainPages = null;
-        ArrayList<Pages> footerPages = null;
+        ArrayList<Photo> previewPhoto = new ArrayList<>();
+        ArrayList<Page> mainPages = null;
+        ArrayList<Page> footerPages = null;
 
         try {
-            mainPages = pagesDao.getPagesByType(0);
-            footerPages = pagesDao.getPagesByType(2);
+            mainPages = pageDao.getPagesByType(0);
+            footerPages = pageDao.getPagesByType(2);
             
             previewes = previewDao.getPreviews();
             for (int i = 0; i < previewes.size(); ++i) 
-                previewPhotos.add(photosDao.getPhoto(previewes.get(i).getIdImg()));
+                previewPhoto.add(photoDao.getPhoto(previewes.get(i).getIdImg()));
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
@@ -57,24 +57,24 @@ public class PreviewController {
         model.addAttribute("footerPagesCount", footerPages.size() - 1);
         model.addAttribute("previews", previewes);
         model.addAttribute("previewsCount", previewes.size() - 1);
-        model.addAttribute("previewsPhotos", previewPhotos);
+        model.addAttribute("previewsPhoto", previewPhoto);
         
         return "previews";
     } 
 
-    @RequestMapping(value="/previews", method = RequestMethod.GET, params = "id")
+    @RequestMapping(value="/preview", method = RequestMethod.GET, params = "id")
     public String viewHomeWithId(Model model, @RequestParam(value = "id") int id) {
         Factory factory = Factory.getInstance();
-        PagesDao pagesDao = factory.getPagesDao();
+        PageDao pageDao = factory.getPageDao();
         PreviewDao previewDao = factory.getPreviewDao();
         
         Preview preview = null;
-        ArrayList<Pages> mainPages = null;
-        ArrayList<Pages> footerPages = null;
+        ArrayList<Page> mainPages = null;
+        ArrayList<Page> footerPages = null;
 
         try {
-            mainPages = pagesDao.getPagesByType(0);
-            footerPages = pagesDao.getPagesByType(2);
+            mainPages = pageDao.getPagesByType(0);
+            footerPages = pageDao.getPagesByType(2);
             preview = previewDao.getPreview(id);
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);

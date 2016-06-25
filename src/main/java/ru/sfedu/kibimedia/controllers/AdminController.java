@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.sfedu.kibimedia.dao.PreviewDao;
 import ru.sfedu.kibimedia.dao.EventRegDao;
 import ru.sfedu.kibimedia.dao.NewsDao;
-import ru.sfedu.kibimedia.dao.VideosDao;
+import ru.sfedu.kibimedia.dao.VideoDao;
 import ru.sfedu.kibimedia.main.Factory;
 import ru.sfedu.kibimedia.tables.Preview;
 import ru.sfedu.kibimedia.tables.EventReg;
 import ru.sfedu.kibimedia.tables.News;
+import ru.sfedu.kibimedia.tables.Video;
 
 /**
  *
@@ -29,9 +31,9 @@ import ru.sfedu.kibimedia.tables.News;
  */
 @Controller
 public class AdminController {
-    @RequestMapping(value="/admin")
+    @RequestMapping(value="/admin", method = RequestMethod.GET)
     public String viewAdmin() {  
-        return "aAdmin_page";
+        return "admin_page";
     }
     
     /**
@@ -301,7 +303,14 @@ public class AdminController {
     
     @RequestMapping(value="/admin/photo")
     public String viewPhoto() {  
-        return "change_photos";
+        return "files_upload";
+    }
+    
+    @RequestMapping(value="/admin/photo/add", method = RequestMethod.GET)
+    public String viewPhoto(Model model,
+            @RequestParam(value = "file[]") String[] files) {  
+        System.out.println(Arrays.toString(files));
+        return "files_upload";
     }
     
     /**
@@ -313,120 +322,97 @@ public class AdminController {
     public String viewVideo(Model model) { 
         Factory factory = Factory.getInstance();
         
-        VideosDao previewDao = factory.getVideosDao();
+        VideoDao videoDao = factory.getVideoDao();
         
-        ArrayList<Videos> videos = null;      
+        ArrayList<Video> videos = null;      
         try {
-            previews = previewDao.getPreviews();
+            videos = videoDao.getVideos();
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }   
-        model.addAttribute("previews", previews);
-        model.addAttribute("previewsCount", previews.size() - 1);
-        return "previews_table";
+        model.addAttribute("videos", videos);
+        model.addAttribute("videosCount", videos.size() - 1);
+        return "videos_table";
     }
     
-    @RequestMapping(value="/admin/preview/add", method = RequestMethod.GET)
-    public String addPreview(Model model) {
+    @RequestMapping(value="/admin/video/add", method = RequestMethod.GET)
+    public String addVideo(Model model) {
         model.addAttribute("action", "add");
         
-        return "change_one_preview";
+        return "change_one_video";
     }
     
-    @RequestMapping(value="/admin/preview/add", method = RequestMethod.GET, 
-            params = {"id", "title", "description", "text", "event_date", "id_img"})
-    public String addPreview(Model model, 
-                        @RequestParam(value = "id") String id,
-                        @RequestParam(value = "title") String title,
-                        @RequestParam(value = "description") String description,
-                        @RequestParam(value = "text") String text,
-                        @RequestParam(value = "event_date") String eventDate,
-                        @RequestParam(value = "id_img") int idImg){
-        
-        Preview preview = new Preview();
+    @RequestMapping(value="/admin/video/add", method = RequestMethod.GET, 
+            params = {"id", "href"})
+    public String addVideo(Model model, 
+                        @RequestParam(value = "id") int id,
+                        @RequestParam(value = "href") String href){
+        System.out.println("1111111111111");
+        Video video = new Video();
         Factory factory = Factory.getInstance();
-        PreviewDao previewDao = factory.getPreviewDao();
+        VideoDao videoDao = factory.getVideoDao();
 
-        preview.setTitle(title);
-        preview.setDescription(description);
-        preview.setText(text);
-        try {
-        preview.setEventDate(new SimpleDateFormat("yyyy-MM-dd").parse(eventDate));
-        } catch (ParseException ex) {
-            System.out.println("Exception in admin/news/add with param" + ex);
-        }
-        preview.setIdImg(idImg);
+        video.setHref(href);
 
         try {
-            previewDao.addPreview(preview);
+            videoDao.addVideo(video);
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
         
-        return "change_one_preview";
+        return "change_one_video";
     }
     
-    @RequestMapping(value="/admin/preview/change", method = RequestMethod.GET, params = "id")
-    public String changePreview(Model model, 
+    @RequestMapping(value="/admin/video/change", method = RequestMethod.GET, params = "id")
+    public String changeVideo(Model model, 
                         @RequestParam(value = "id") int id){
         
-        Preview preview = null;
+        Video video = null;
         Factory factory = Factory.getInstance();
-        PreviewDao previewDao = factory.getPreviewDao();
+        VideoDao videoDao = factory.getVideoDao();
 
         try {
-            preview = previewDao.getPreview(id);
+            video = videoDao.getVideo(id);
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
-        model.addAttribute("preview", preview);
+        model.addAttribute("video", video);
         model.addAttribute("action", "change");
         
-        return "change_one_preview";
+        return "change_one_video";
     }
     
-    @RequestMapping(value="/admin/preview/change", method = RequestMethod.GET, 
-            params = {"id", "title", "description", "text", "event_date", "id_img"})
-    public String changePreview(Model model, 
+    @RequestMapping(value="/admin/video/change", method = RequestMethod.GET, 
+            params = {"id", "href"})
+    public String changeVideo(Model model, 
                         @RequestParam(value = "id") int id,
-                        @RequestParam(value = "title") String title,
-                        @RequestParam(value = "description") String description,
-                        @RequestParam(value = "text") String text,
-                        @RequestParam(value = "event_date") String eventDate,
-                        @RequestParam(value = "id_img") int idImg){
+                        @RequestParam(value = "href") String href){
         
-        Preview preview = new Preview();
+        Video video = new Video();
         Factory factory = Factory.getInstance();
-        PreviewDao previewDao = factory.getPreviewDao();
+        VideoDao videoDao = factory.getVideoDao();
                 
-        preview.setIdPreview(id);
-        preview.setTitle(title);
-        preview.setDescription(description);
-        preview.setText(text);
-        try {
-        preview.setEventDate(new SimpleDateFormat("yyyy-MM-dd").parse(eventDate));
-        } catch (ParseException ex) {
-            System.out.println("Exception in admin/news/change with param" + ex);
-        }
-        preview.setIdImg(idImg);
+        video.setIdVideo(id);
+        video.setHref(href);
+
 
         try {
-            previewDao.updatePreview(preview);
+            videoDao.updateVideo(video);
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }
         
-        return "change_one_preview";
+        return "change_one_video";
     }
     
-    @RequestMapping(value="/admin/preview/del", method = RequestMethod.GET, params = "id")
-    public String deletePreview(Model model, @RequestParam(value = "id") int id) {
+    @RequestMapping(value="/admin/video/del", method = RequestMethod.GET, params = "id")
+    public String deleteVideo(Model model, @RequestParam(value = "id") int id) {
         
         Factory factory = Factory.getInstance();
-        PreviewDao previewDao = factory.getPreviewDao();
+        VideoDao videoDao = factory.getVideoDao();
                 
         try {
-            previewDao.deletePreview(id);
+            videoDao.deleteVideo(id);
         } catch (SQLException ex) {
             System.out.println("Exception in getDocumentation in Controller: " + ex);
         }

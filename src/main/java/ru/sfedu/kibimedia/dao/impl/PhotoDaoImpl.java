@@ -5,23 +5,20 @@
  */
 package ru.sfedu.kibimedia.dao.impl;
 
-import ru.sfedu.kibimedia.dao.PhotosDao;
-import ru.sfedu.kibimedia.tables.Photos;
+import ru.sfedu.kibimedia.dao.PhotoDao;
+import ru.sfedu.kibimedia.tables.Photo;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import org.hibernate.Session;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import ru.sfedu.kibimedia.utils.HibernateUtils;
 /**
  *
  * @author Mishas
  */
-public class PhotosDaoImpl implements PhotosDao {
+public class PhotoDaoImpl implements PhotoDao {
 
     @Override
-    public void addPhoto(Photos photo) throws SQLException {
+    public void addPhoto(Photo photo) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -37,7 +34,7 @@ public class PhotosDaoImpl implements PhotosDao {
     }
 
     @Override
-    public void deletePhoto(Photos photo) throws SQLException {
+    public void deletePhoto(Photo photo) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
@@ -69,13 +66,13 @@ public class PhotosDaoImpl implements PhotosDao {
     }
 
     @Override
-    public Photos getPhoto(int id) throws SQLException {
-        Photos photo = null;
+    public Photo getPhoto(int id) throws SQLException {
+        Photo photo = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            photo = (Photos) session.load(Photos.class, id);
+            photo = (Photo) session.load(Photo.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -87,13 +84,13 @@ public class PhotosDaoImpl implements PhotosDao {
     }
 
     @Override
-    public ArrayList<Photos> getPhotos() throws SQLException {
-        ArrayList<Photos> photos = null;
+    public ArrayList<Photo> getPhotos() throws SQLException {
+        ArrayList<Photo> photo = null;
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            photos = (ArrayList<Photos>) session.createCriteria(Photos.class).list();
+            photo = (ArrayList<Photo>) session.createCriteria(Photo.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -101,7 +98,7 @@ public class PhotosDaoImpl implements PhotosDao {
                 session.close();
         }
         
-        return photos;
+        return photo;
     }
     
     

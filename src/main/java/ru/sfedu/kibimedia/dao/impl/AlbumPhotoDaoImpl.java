@@ -88,14 +88,14 @@ public class AlbumPhotoDaoImpl implements AlbumPhotoDao {
     }
     
     @Override
-    public ArrayList<AlbumPhoto> getPhotosByAlbum(int album) throws SQLException {
-        ArrayList<AlbumPhoto> albumPhotos = null;
+    public ArrayList<AlbumPhoto> getPhotoByAlbum(int album) throws SQLException {
+        ArrayList<AlbumPhoto> albumPhoto = null;
 
         
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            albumPhotos = (ArrayList<AlbumPhoto>) session.createCriteria(AlbumPhoto.class)
+            albumPhoto = (ArrayList<AlbumPhoto>) session.createCriteria(AlbumPhoto.class)
                     .add(Restrictions.eq("idAlbum", new Integer(album))).list();
         } catch (Exception e) {
             e.printStackTrace();
@@ -104,17 +104,17 @@ public class AlbumPhotoDaoImpl implements AlbumPhotoDao {
                 session.close();
         }
         
-        return albumPhotos;
+        return albumPhoto;
     }
 
     @Override
     public ArrayList<AlbumPhoto> getAllAlbumPhoto() throws SQLException {
-        ArrayList<AlbumPhoto> albumPhotos = null;
+        ArrayList<AlbumPhoto> albumPhoto = null;
 
         Session session = null;
         try {
             session = HibernateUtils.getSessionFactory().openSession();
-            albumPhotos = (ArrayList<AlbumPhoto>) session.createCriteria(AlbumPhoto.class).list();
+            albumPhoto = (ArrayList<AlbumPhoto>) session.createCriteria(AlbumPhoto.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -122,6 +122,6 @@ public class AlbumPhotoDaoImpl implements AlbumPhotoDao {
                 session.close();
         }
         
-        return albumPhotos;
+        return albumPhoto;
     }  
 }

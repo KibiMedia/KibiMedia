@@ -4,9 +4,12 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/vystavka?encoding=utf8&amp;useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/vystavka?autoReconnect=true</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password" />
+    
+
+
     <!--
     <property name="hibernate.dialect">org.hibernate.dialect.FirebirdDialect</property>
     <property name="hibernate.connection.driver_class">org.firebirdsql.jdbc.FBDriver</property>
@@ -33,14 +36,14 @@
     <mapping class="ru.sfedu.kibimedia.tables.Preview" />
     <mapping class="ru.sfedu.kibimedia.tables.Comment" />
     <mapping class="ru.sfedu.kibimedia.tables.EventReg" />
-    <mapping class="ru.sfedu.kibimedia.tables.Organizations" />
-    <mapping class="ru.sfedu.kibimedia.tables.Pages" />
-    <mapping class="ru.sfedu.kibimedia.tables.Photos" />
-    <mapping class="ru.sfedu.kibimedia.tables.Users" />
+    <mapping class="ru.sfedu.kibimedia.tables.Organization" />
+    <mapping class="ru.sfedu.kibimedia.tables.Page" />
+    <mapping class="ru.sfedu.kibimedia.tables.Photo" />
+    <mapping class="ru.sfedu.kibimedia.tables.User" />
     <mapping class="ru.sfedu.kibimedia.tables.Album" />
     <mapping class="ru.sfedu.kibimedia.tables.AlbumPhoto" />
     <mapping class="ru.sfedu.kibimedia.tables.Creator" />
-    <mapping class="ru.sfedu.kibimedia.tables.Videos" />
+    <mapping class="ru.sfedu.kibimedia.tables.Video" />
     <mapping class="ru.sfedu.kibimedia.tables.Award" />
     <mapping class="ru.sfedu.kibimedia.tables.Employee" />
 
